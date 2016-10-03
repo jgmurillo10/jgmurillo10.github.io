@@ -35,7 +35,24 @@ angular.module('routerRoutes',['ngRoute'])
 			templateUrl: 'views/pages/portfolio.html',
 			controller: 'portfolioController',
 			controllerAs: 'portfolio'
-		});
+		})
+			//route for portfolio subpages
+
+			.when('/portfolio/myvacations', {
+				templateUrl: 'views/pages/portfolio/myvacations.html',
+				controller: 'myvacationsController',
+				controllerAs: 'myvacations'
+			})
+			.when('/portfolio/grupoacera', {
+				templateUrl: 'views/pages/portfolio/grupoacera.html',
+				controller: 'grupoaceraController',
+				controllerAs: 'grupoacera'
+			})
+			.when('/portfolio/rming', {
+				templateUrl: 'views/pages/portfolio/rming.html',
+				controller: 'rmingController',
+				controllerAs: 'rming'
+			});
 
 	//setup our app to have pretty URLS
 

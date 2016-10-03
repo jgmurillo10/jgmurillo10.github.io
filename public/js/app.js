@@ -38,3 +38,18 @@ angular.module('routerApp',['routerRoutes', 'ngAnimate'])
 	var vm=this;
 	vm.message = 'This is the portfolio page. ';
 })
+
+.controller('myvacationsController', function(){
+	var vm=this;
+	vm.message = 'This is the vaca page. ';
+})
+
+.controller('grupoaceraController', function(){
+	var vm=this;
+	vm.message = 'This is the grupo acera page. ';
+})
+
+.controller('rmingController', function(){
+	var vm=this;
+	vm.message = 'This is the rm ingenieria page. ';
+})
