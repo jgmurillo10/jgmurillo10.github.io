@@ -27,6 +27,14 @@ angular.module('routerRoutes',['ngRoute'])
 			templateUrl: 'views/pages/contact.html',
 			controller: 'contactController',
 			controllerAs: 'contact'
+		})
+
+		//route for portfolio page
+
+		.when('/portfolio',{
+			templateUrl: 'views/pages/portfolio.html',
+			controller: 'portfolioController',
+			controllerAs: 'portfolio'
 		});
 
 	//setup our app to have pretty URLS

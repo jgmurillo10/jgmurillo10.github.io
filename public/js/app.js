@@ -33,3 +33,8 @@ angular.module('routerApp',['routerRoutes', 'ngAnimate'])
 
 	vm.message = 'This is the contact page. ';
 })
+
+.controller('portfolioController', function(){
+	var vm=this;
+	vm.message = 'This is the portfolio page. ';
+})
