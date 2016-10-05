@@ -1,38 +1,48 @@
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" ng-controller="portfolioController">
 	<h1>Portfolio page</h1>
 	<p>{{portfolio.message}}</p>
 
+	<!-- <table class="table table-responsive table-striped">
+		<tr>
+			<td>Project Name</td>
+			<td>Duration (months)</td>
+			<td>Description</td>
+			<td>
+				View project details
+			</td>
+		</tr>
+		<tr ng-repeat="product in products">
+			<td>
+				{{product.name}}
+			</td>
+			<td>
+				{{product.duration}}
+			</td>
+			<td>
+				{{product.description}}
+			</td>
+			<td>
+				<a ui-sref="{{product.state}}"><button class="btn btn-default">View</button></a>
+			</td>
+		</tr>
+			
+	</table>
+ -->
 
 	<div class="row">
-	  <div class="col-sm-4 col-md-4">
+	 
+	  <div class="col-sm-4 col-md-4" ng-repeat="product in products">
 	    <div class="thumbnail">
-	      <img src="../img/500x500.png" alt="grupoacera">
+	      <img src="{{product.thumbail}}" alt="grupoacera">
 	      <div class="caption">
-	        <h3><strong>Grupo Acera</strong></h3>
+	        <h3><strong>{{product.name}}</strong></h3>
 	        <p></p>
-	        <p><a href="/portfolio/grupoacera" class="btn btn-default" role="button">Detalles</a> <a href="www.grupoacera.com" class="btn btn-default" role="button">Visitar</a></p>
+	        <p><a ui-sref="{{product.state}}" class="btn btn-default" role="button">Detalles</a> <a href="{{product.webpage}}" class="btn btn-default" role="button">Visitar</a></p>
 	      </div>
 	    </div>
 	  </div>
-	  <div class="col-sm-4 col-md-4">
-	    <div class="thumbnail">
-	      <img src="../img/500x500.png" alt="grupoacera">
-	      <div class="caption">
-	        <h3><strong>RM ING</strong></h3>
-	        <p></p>
-	        <p><a href="/portfolio/rming" class="btn btn-default" role="button">Detalles</a> <a href="www.rmingenieria.com.co" class="btn btn-default" role="button">Visitar</a></p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-4 col-md-4">
-	    <div class="thumbnail">
-	      <img src="../img/500x500.png" alt="grupoacera">
-	      <div class="caption">
-	        <h3><strong>My App</strong></h3>
-	        <p></p>
-	        <p><a href="/portfolio/myvacations" class="btn btn-default" role="button">Detalles</a> <a href="www.grupoacera.com" class="btn btn-default" role="button">Visitar</a></p>
-	      </div>
-	    </div>
+	  
+	
 	  </div>
 	</div>
 

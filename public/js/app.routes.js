@@ -1,62 +1,64 @@
 //inject ngRoute  for all our routing needs
-angular.module('routerRoutes',['ngRoute'])
+angular.module('routerRoutes',['ui.router'])
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+    
+    $urlRouterProvider.otherwise('/home');
+    
+    $stateProvider
+        
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('home', {
+            url: '/home',
+            templateUrl: '../views/pages/home.html'
+        })
+        
+        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+       .state('about', {
+    	    url: '/about',
+	     	templateUrl: '../views/pages/about.html'   
+        })
+       .state('contact',{
+       		url: '/contact',
+       		templateUrl: '../views/pages/contact.html'
+       })
+       .state('portfolio',{
+       		url: '/portfolio',
+       		templateUrl: '../views/pages/portfolio.html'
+       })
 
-//configure our routes
-.config(function($routeProvider,$locationProvider){
-	$routeProvider
+       .state('portfolio.grupoacera', {
+       		url: '/grupoacera',
+       		templateUrl: '../views/pages/portfolio/grupoacera.html'
+       })
 
+       .state('portfolio.rming', {
+       		url: '/rming',
+       		templateUrl: '../views/pages/portfolio/rming.html'
+       })
 
-		//route for the homepage
+       .state('portfolio.myvacations', {
+       		url: '/myvacations',
+       		templateUrl: '../views/pages/portfolio/myvacations.html'
+       })
+       .state('porfolio.myapp', {
+        url: '/myapp',
+        template: '../views/pages/portfolio/myapp.html'
+       })
+         // nested list with custom controller
+		    // .state('home.list', {
+		    //     url: '/list',
+		    //     templateUrl: '../views/pages/home-list.html',
+		    //     controller: function($scope) {
+		    //         $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
+		    //     }
+		    // })
 
-		.when('/',{
-			templateUrl: 'views/pages/home.html',
-			controller: 'homeController',
-			controllerAs: 'home'
-		})
+		    // // nested list with just some random string data
+		    // .state('home.paragraph', {
+		    //     url: '/paragraph',
+		    //     template: 'I could sure use a drink right now.'
+		    // })  
 
-		//route for the about page
-
-		.when('/about',{
-			templateUrl: 'views/pages/about.html',
-			controller: 'aboutController',
-			controllerAs: 'about'
-		})
-		//route for the contact page
-
-		.when('/contact', {
-			templateUrl: 'views/pages/contact.html',
-			controller: 'contactController',
-			controllerAs: 'contact'
-		})
-
-		//route for portfolio page
-
-		.when('/portfolio',{
-			templateUrl: 'views/pages/portfolio.html',
-			controller: 'portfolioController',
-			controllerAs: 'portfolio'
-		})
-			//route for portfolio subpages
-
-			.when('/portfolio/myvacations', {
-				templateUrl: 'views/pages/portfolio/myvacations.html',
-				controller: 'myvacationsController',
-				controllerAs: 'myvacations'
-			})
-			.when('/portfolio/grupoacera', {
-				templateUrl: 'views/pages/portfolio/grupoacera.html',
-				controller: 'grupoaceraController',
-				controllerAs: 'grupoacera'
-			})
-			.when('/portfolio/rming', {
-				templateUrl: 'views/pages/portfolio/rming.html',
-				controller: 'rmingController',
-				controllerAs: 'rming'
-			});
-
-	//setup our app to have pretty URLS
-
-	$locationProvider.html5Mode(true);
-
+    $locationProvider.html5Mode(true);
+        
 });
-
