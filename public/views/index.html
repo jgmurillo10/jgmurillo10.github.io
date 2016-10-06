@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS (load bootstrap) -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/examples/sticky-footer/sticky-footer.css">
     <style>
         .navbar { border-radius:0; }
     </style>
@@ -19,13 +20,13 @@
 </head>
 
 <!-- apply our angular app to our site -->
-<body ng-app="routerApp">
+<body ng-app="routerApp" >
 
-<div class="">
+<div class="jumbotron">
 	
 
 <!-- NAVIGATION -->
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" ui-sref="home">Juan Murillo</a>
     </div>
@@ -47,9 +48,19 @@
 </div>
 </div>
 
-<footer>
+
 	<!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/jgmurillo10" data-style="mega" data-count-href="/jgmurillo10/followers" data-count-api="/users/jgmurillo10#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @jgmurillo10 on GitHub">Follow @jgmurillo10</a>
+
+
+
+<div class=" navbar-fixed-bottom">
+	
+ <footer class="footer">
+      <div class="container">
+        <p class="text-muted"><a class="github-button" href="https://github.com/jgmurillo10" data-style="mega" data-count-href="/jgmurillo10/followers" data-count-api="/users/jgmurillo10#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @jgmurillo10 on GitHub">Follow @jgmurillo10</a></p>
+      </div>
 </footer>
+
+</div>
 </body>
 </html>

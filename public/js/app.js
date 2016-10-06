@@ -9,7 +9,7 @@ angular.module('routerApp',['routerRoutes'])
 		duration: '3',
 		description: 'Web page for a colombian company specialized in civil engineer. ',
 		state: 'portfolio.grupoacera',
-		webpage: 'https://www.grupoacera.com',
+		webpage: 'http://www.grupoacera.com',
 		thumbnail: '../img/500x500.png'
 	},
 	{
@@ -26,7 +26,7 @@ angular.module('routerApp',['routerRoutes'])
 		duration: '4.3',
 		description: 'Web Application made with AngularJS, Java EE for an university project. ',
 		state: 'portfolio.myvacations',
-		webpage: 'https://www.rmingenieria.com.co',
+		webpage: 'http://www.rmingenieria.com.co',
 		thumbnail: '../img/500x500.png'
 
 	},
