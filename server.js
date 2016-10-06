@@ -12,6 +12,6 @@ app.get('*',function(req,res){
 	res.sendFile(path.join(__dirname + '/public/views/index.html')); 
 });
 
-//start the server on port 8080 (http://localhost:8080)
+//start the server on port 3000 (http://localhost:3000)
 app.listen(port);
 console.log('Magic happens on port 3000. ');

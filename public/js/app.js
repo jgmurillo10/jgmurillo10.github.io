@@ -10,7 +10,8 @@ angular.module('routerApp',['routerRoutes'])
 		description: 'Web page for a colombian company specialized in civil engineer. ',
 		state: 'portfolio.grupoacera',
 		webpage: 'http://www.grupoacera.com',
-		thumbnail: '../img/500x500.png'
+		thumbnail: '../img/500x500.png',
+		github: 'https://github.com/jgmurillo10/grupo-acera'
 	},
 	{
 		name: 'RM Ingenieria',
@@ -18,7 +19,8 @@ angular.module('routerApp',['routerRoutes'])
 		description: 'Web page for a colombian company specialized in electrical engineer. ',
 		state: 'portfolio.rming',
 		webpage: 'https://www.rmingenieria.com.co',
-		thumbnail: '../img/500x500.png'
+		thumbnail: '../img/500x500.png',
+		github: 'https://github.com/jgmurillo10/rmingenieria'
 
 	},
 	{

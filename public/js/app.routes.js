@@ -23,26 +23,31 @@ angular.module('routerRoutes',['ui.router'])
        })
        .state('portfolio',{
        		url: '/portfolio',
-       		templateUrl: '../views/pages/portfolio.html'
+       		templateUrl: '../views/pages/portfolio.html',
+          controller: 'portfolioController'
        })
 
        .state('portfolio.grupoacera', {
        		url: '/grupoacera',
-       		templateUrl: '../views/pages/portfolio/grupoacera.html'
+       		templateUrl: '../views/pages/portfolio/grupoacera.html',
+          controller: 'portfolioController'
        })
 
        .state('portfolio.rming', {
        		url: '/rming',
-       		templateUrl: '../views/pages/portfolio/rming.html'
+       		templateUrl: '../views/pages/portfolio/rming.html',
+          controller: 'portfolioController'
        })
 
        .state('portfolio.myvacations', {
        		url: '/myvacations',
-       		templateUrl: '../views/pages/portfolio/myvacations.html'
+       		templateUrl: '../views/pages/portfolio/myvacations.html',
+          controller: 'portfolioController'
        })
-       .state('porfolio.myapp', {
+       .state('portfolio.myapp', {
         url: '/myapp',
-        template: '../views/pages/portfolio/myapp.html'
+        template: '../views/pages/portfolio/myapp.html',
+          controller: 'portfolioController'
        })
          // nested list with custom controller
 		    // .state('home.list', {

@@ -2,38 +2,13 @@
 	<h1>Portfolio page</h1>
 	<p>{{portfolio.message}}</p>
 
-	<!-- <table class="table table-responsive table-striped">
-		<tr>
-			<td>Project Name</td>
-			<td>Duration (months)</td>
-			<td>Description</td>
-			<td>
-				View project details
-			</td>
-		</tr>
-		<tr ng-repeat="product in products">
-			<td>
-				{{product.name}}
-			</td>
-			<td>
-				{{product.duration}}
-			</td>
-			<td>
-				{{product.description}}
-			</td>
-			<td>
-				<a ui-sref="{{product.state}}"><button class="btn btn-default">View</button></a>
-			</td>
-		</tr>
-			
-	</table>
- -->
+<div ui-view></div>
 
 	<div class="row">
 	 
 	  <div class="col-sm-4 col-md-4" ng-repeat="product in products">
 	    <div class="thumbnail">
-	      <img src="{{product.thumbail}}" alt="grupoacera">
+	      <img src="{{product.thumbnail}}" alt="grupoacera">
 	      <div class="caption">
 	        <h3><strong>{{product.name}}</strong></h3>
 	        <p></p>
