@@ -1,3 +1,5 @@
 # jgmurillo10.github.io
 
-NodeJS app using AngularJS
+
+Juan Murillo's website
+Build using HTML5, CSS3, JavaScript and AngularJS 1.
