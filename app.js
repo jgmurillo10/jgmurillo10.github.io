@@ -9,5 +9,6 @@
 		.controller('JuanMurilloAppController', JuanMurilloAppController){
 			JuanMurilloAppController.$inject=['$scope'];
 			
+			
 		}])
 })();
