@@ -16,11 +16,11 @@
 		// setup UI states
 		$stateProvider
 
-		.state('home', {
-			url: '',
-			templateUrl: 'src/templates/home.tpl.html',
-			controller: 'MainController as home'
-		})
+		// .state('home', {
+		// 	url: '',
+		// 	templateUrl: 'src/templates/home.tpl.html',
+		// 	controller: 'MainController as home'
+		// })
 		.state('about', {
 			url:'/about',
 			templateUrl: 'src/templates/about.tpl.html',
