@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Página web de juan murillo">
+	<meta name="keywords" content="Juan,Murillo,uniandes,java,HTML,CSS,JavaScript,angularjs,angular,bogota,colombia">
+	<meta name="author" content="Juan Guillermo Murillo Castillo">
+	<title>Juan Murillo</title>
+
+
+	<!-- LIBRARIES  -->
+
+	<!-- link jQuery -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+	</script>
+
+	<!-- link bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+
+	<!-- link angular -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+	<!-- link ui.bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+	
+	<!-- link ui.router -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+
+  <!-- link ngAnimate -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+
+	
+  <!-- link shopping style -->
+  <link rel="stylesheet" type="text/css" href="assets/css/shop-homepage.css">
+	<!-- link style.css -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- percicle -->
+  <link rel="stylesheet" type="text/css" href="assets/css/percircle.css">
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+  <script type="text/javascript" src="assets/js/percircle.js"></script>
+	<!-- link font awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  
+	<!-- MODULES -->
+
+	<!-- link app.js -->
+	<script type="text/javascript" src="src/app.js"></script>
+	<!-- ROUTES -->
+	<script type="text/javascript" src="src/routes.js"></script>
+
+
+</head>
+<body ng-app="JuanMurilloApp">
+
+		<!-- Fixed navbar -->
+	   <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Juan Murillo</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a  data-toggle="collapse" data-target=".navbar-collapse"  ui-sref="about">About</a>
+                    </li>
+                    <li>
+                        <a  data-toggle="collapse" data-target=".navbar-collapse"  ui-sref="projects">Projects</a>
+                    </li>
+                    <li>
+                        <a  data-toggle="collapse" data-target=".navbar-collapse" ui-sref="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- end fixed navbar -->
+
+	<div ng-controller="MainController">
+			<!-- <h1>hola mundo</h1> -->
+			<div class="container" >
+				<ui-view autoscroll="true"></ui-view>
+			</div>
+
+			
+
+       <br>
+       <br>
+       <br> 
+       <!-- Footer -->
+        <footer style="background-color:#2A2526;" class="navbar-fixed-bottom footer">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                <br>
+
+                    <p style="float:left;">Made with love <i class="fa fa-fw fa-heart"></i>Murillo 2017</p>
+                    <ul class="list-inline footer-list">
+                      <li>
+                        <a href="https://github.com/jgmurillo10" target="_blank">
+                          <i class="fa fa-fw fa-github"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/juan-murillo-castillo-a41216a4">
+                            <i class="fa fa-fw fa-linkedin"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://facebook.com/juanchomurcas" target="_blank">
+                            <i class="fa fa-fw fa-facebook"></i>
+                        </a>
+                      </li>
+                    </ul>
+
+                </div>
+            </div>
+        </footer>
+
+	</div>
+
+
+
+</body>
+</html>
