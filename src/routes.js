@@ -10,14 +10,14 @@
 	function RoutesConfig ($stateProvider, $urlRouterProvider) {
 		//redirects home if no url matches
 
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/about');
 
 
 		// setup UI states
 		$stateProvider
 
 		.state('home', {
-			url: '/',
+			url: '',
 			templateUrl: 'src/templates/home.tpl.html',
 			controller: 'MainController as home'
 		})
