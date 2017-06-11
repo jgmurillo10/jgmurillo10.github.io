@@ -40,24 +40,26 @@ body a {
 	-ms-transition:.5s ease-in-out;
 }
 .banner{
-	background:url(../images/banner.jpg) no-repeat 0px 0px;
+	background:url(../images/bannerBlur.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
 	min-height:680px;
-	    position: relative;
-		margin-bottom: 10.6em
+	position: relative;
+  margin-bottom: 10.6em;
+
 }
 .banner1{
-	background:url(../images/banner.jpg) no-repeat 0px 0px;
+	background:url(../images/bannerBlur.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
 	min-height:500px;
+
 }
 .header{
 	padding:5em 0 10em;
@@ -2148,4 +2150,8 @@ a.lightbox img:hover {
 	-moz-transition:.5s ease-in-out;
 	-o-transition:.5s ease-in-out;
 	-ms-transition:.5s ease-in-out;
+}
+banner-img{
+  -webkit-filter: blur(1px); /* Safari 6.0 - 9.0 */
+    filter: blur(1px);
 }

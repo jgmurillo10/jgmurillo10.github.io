@@ -18,6 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/font-awesome.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/switch.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script src="https://use.fontawesome.com/be36c20b93.js"></script>
@@ -54,32 +55,38 @@ $(document).ready(function(){
 
 </head>
 
-<body>
+<body ng-app="app" ng-controller="AppController as ctrl">
 <!-- banner -->
 	<div class="banner-figures">
 		<div class="banner">
 			<div class="container banner-drop">
 				<div class="header">
 					<div class="header-left logo">
-						<h1><a href="index.html"></a></h1>
+						<div class="onoffswitch">
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" ng-model="ctrl.change" id="myonoffswitch" checked ng-change="ctrl.updateLanguage()">
+						    <label class="onoffswitch-label" for="myonoffswitch">
+						        <span class="onoffswitch-inner"></span>
+						        <span class="onoffswitch-switch"></span>
+						    </label>
+						</div>
 					</div>
 					<div class="header-right">
 						<nav>
 						  <ul>
 							<li class="active">
-								<a href="index.html" class="active"><span>Inicio</span></a>
+								<a href="index.html" class="active"><span>{{ 'home' | translate }}</span></a>
 							</li>
 							<li>
-								<a href="#about" class="scroll"><span>Acerca de mí</span></a>
+								<a href="#about" class="scroll"><span>{{ 'about' | translate }}</span></a>
 							</li>
 							<li>
-								<a href="#experience" class="scroll"><span>Proyectos</span></a>
+								<a href="#experience" class="scroll"><span>{{ 'projects' | translate }}</span></a>
 							</li>
 							<!-- <li>
 								<a href="#projects" class="scroll"><span>Projects</span></a>
 							</li> -->
 							<li>
-								<a href="#contact" class="scroll"><span>Contacto</span></a>
+								<a href="#contact" class="scroll"><span>{{ 'contact' | translate }}</span></a>
 							</li>
 						  </ul>
 						</nav>
@@ -88,8 +95,8 @@ $(document).ready(function(){
 					<div class="clearfix"> </div>
 				</div>
 				<div class="name" >
-					<h2>Juan G Murillo</h2>
-					<p>Desarrollador Web</p>
+					<h2>{{ctrl.name}}</h2>
+					<p>{{ 'occu' | translate }}</p>
 				</div>
 				<div class="social-icons animated wow bounceInDown" data-wow-duration="1000ms" data-wow-delay="800ms">
 					<ul class="top-links">
@@ -102,13 +109,13 @@ $(document).ready(function(){
 			</div>
 	<div class="banner-btm-grid-w3ls">
 		<div class="banner-left-wthree">
-			<img src="images/banner-btm.jpg" alt=" " class="img-responsive">
+			<img  src="images/banner-btm.jpg" alt=" " class="img-responsive">
 			<ul class="address">
 
 					<li>
 							<ul class="address-text">
 								<li><b>NOMBRE</b></li>
-								<li>: Juan Guillermo Murillo</li>
+								<li>: {{ctrl.name}}</li>
 							</ul>
 						</li>
 						<li>
@@ -430,6 +437,12 @@ $(document).ready(function(){
 		</div>
 	</div>
 <!-- //footer -->
+<script src="lib/angular.min.js"></script>
+
+<script src="lib/angular-translate.min.js"></script>
+
+<script src="lib/angular-ui-router.min.js"></script>
+
 <script src="js/bars.js"></script>
 
 <!-- here stars scrolling icon -->
@@ -448,6 +461,14 @@ $(document).ready(function(){
 
 			});
 	</script>
-<!-- //here ends scrolling icon -->
+	<!-- //here ends scrolling icon -->
+	<script src="src/app.module.js"></script>
+
+	<!-- Public Module -->
+	<script src="src/public/public.module.js"></script>
+	<!-- <script src="src/public/public.routes.js"></script> -->
+	<script src="src/public/public.controller.js"></script>
+	<script src="src/public/public.translate.js"></script>
+
 </body>
 </html>
