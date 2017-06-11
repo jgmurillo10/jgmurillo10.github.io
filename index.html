@@ -20,6 +20,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="https://jgmurillo10.github.io/jgmurillo10.github.io/css/font-awesome.css" rel="stylesheet">
 <link href="https://jgmurillo10.github.io/jgmurillo10.github.io/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="https://jgmurillo10.github.io/jgmurillo10.github.io/css/switch.css" rel="stylesheet" type="text/css" media="all" />
+<link href="https://jgmurillo10.github.io/jgmurillo10.github.io/css/loader.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script src="https://use.fontawesome.com/be36c20b93.js"></script>
@@ -56,7 +57,7 @@ $(document).ready(function(){
 
 </head>
 
-<body ng-app="app" ng-controller="AppController as ctrl">
+<body ng-app="app" ng-controller="AppController as ctrl"  onload="loaded()">
 <!-- banner -->
 	<div class="banner-figures">
 		<div class="banner">
@@ -444,6 +445,7 @@ $(document).ready(function(){
 <script src="lib/angular-ui-router.min.js"></script>
 
 <script src="js/bars.js"></script>
+<script src="js/loader.js"></script>
 
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
