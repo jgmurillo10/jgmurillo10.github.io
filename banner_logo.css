@@ -1,0 +1,12 @@
+.banner_logo {
+  height: 1000px;
+  background-color: #222222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.img_logo {
+   width: 100%;
+}
