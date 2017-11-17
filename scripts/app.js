@@ -10,7 +10,7 @@
     if (desktopSize) {
       pageLoader.classList.add('stop'); pageLoaderContent.style.display = "block";pageLoaderLoader.style.display = "none";
     } else {
-      scroll(animationDuration);
+      scroll(animationDuration);pageLoaderContent.style.display = "block";pageLoaderLoader.style.display = "none";
     }
   }, animationDuration);
 
@@ -37,5 +37,3 @@
     }
   }
 })();
-
-
