@@ -7,15 +7,26 @@
 
   <title>juanmurillo</title>
   <meta property="og:type" content="website" />
-  <meta property="description" content="A digital designer who loves working on modern products">
-  <meta property="og:title" content="Denis Sharypin">
-  <meta property="og:description" content="A digital designer who loves working on modern products">
+  <meta property="description" content="">
+  <meta property="og:title" content="Juan Murillo">
+  <meta property="og:description" content="">
   <meta property="og:image" content="http://sharypin.cool/images/sharing.png">
   <meta property="og:image:width" content="968"/>
   <meta property="og:image:height" content="506"/>
   <link rel="shortcut icon" href="./images/favicon.ico">
 
   <link rel="stylesheet" href="./styles/app.css">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76028669-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 </head>
 <body>
   <svg class="svg-container">
@@ -24,72 +35,154 @@
   </svg>
 
   <section id="app-container" class="app">
+    <section class="page-profile">
+      <div id="fade-container">
+        <div class="page-profile-content">
+          <div class="img-profile-container">
+            <img class="img-profile" src="./assets/img/profile_low.png"></img>
+          </div>
+          <p class="page-profile-content-paragraph">Soy Juan Murillo,</p>
+
+          <p class="page-profile-content-paragraph">estudiante de Ingeniería de Sistemas <br> y Computación <a target="_blank" href="https://uniandes.edu.co/">@ Uniandes</a> .</p>
+          <p class="page-profile-content-paragraph"><a target="_blank" href="./assets/resume_english.pdf">Conóceme.</a></p>
+        </div>
+        <div class="page-profile-footer">
+          <!-- <p class="page-profile-footer-paragraph">Currently: product designer for <a class="page-profile-footer-paragraph-link" href="https://status.im/" target="_blank">Status</a></p> -->
+          <a class="page-profile-footer-link" target="_blank" href="./assets/resume_english.pdf">Résumé</a>
+          <a class="page-profile-footer-link" href="https://facebook.com/juanchomurcas" target="_blank">Facebook</a>
+           <!--<a class="page-profile-footer-link" href="https://www.behance.net/denis-sharypin" target="_blank">Behance</a>-->
+          <a class="page-profile-footer-link" href="https://github.com/jgmurillo10" target="_blank">GitHub</a>
+          <a class="page-profile-footer-link" href="mailto:jg.murillo10@uniandes.edu.co">Mail</a>
+
+        </div>
+      </div>
+    </section>
 
     <section id="page-loader" class="page-loader">
       <div id="page-loader-loader" class="page-loader-content">
         <div class="icon-loader">
           <svg class="svg-icon-loader"><use xlink:href="#ei-spinner-icon"></use></svg>
         </div>
-        
+
       </div>
+
       <div id="page-loader-content" class="projects">
-        <a target="_blank" href="http://trujillopolaniaasociados.com/">
-          <div class="project">
+        <p class="projects_title">Proyectos</p>
+
+          <div id="p1" class="project" onclick="showContent('project1','p1')">
             <div class="child">TrujilloPolanía</div>
           </div>
-        </a>
-        <a target="_blank" href="http://www.grupoacera.com/#/">
-          <div class="project">
+
+
+          <div id="p2" class="project"  onclick="showContent('project2','p2')" >
             <div class="child">GrupoAcera</div>
           </div>
-        </a>
-        <a target="_blank" href="http://data-navigator.herokuapp.com/">
-          <div class="project">
+          <div id="p3" class="project" onclick="showContent('project3','p3')">
             <div class="child">NodeNavigator</div>
           </div>
-        </a>
-        <a target="_blank" href="http://thebibl.herokuapp.com/">
-          <div class="project">
+          <div id="p4" class="project" onclick="showContent('project4','p4')">
             <div class="child">Academic Storage</div>
           </div>
-        </a>
-        
+
       </div>
     </section>
-    
-    <section class="page-profile">
-      <div id="fade-container">
-        <div class="page-profile-content">
-          <div class="pull-right">
-            <img class="img-profile" src="./assets/img/profile_low.png"></img>
-          </div>
-          <p class="page-profile-content-paragraph">Soy Juan Murillo,</p>
-          
-          <p class="page-profile-content-paragraph">estudiante de ingeniería de sistemas <br> y computación <a target="_blank" href="https://uniandes.edu.co/">@ Uniandes</a> .</p>
-          <p class="page-profile-content-paragraph"><a target="_blank" href="./assets/resume_english.pdf">Conóceme.</a></p>
-        </div>
-        <div class="page-profile-footer">
-          <!-- <p class="page-profile-footer-paragraph">Currently: product designer for <a class="page-profile-footer-paragraph-link" href="https://status.im/" target="_blank">Status</a></p> -->
-          <a class="page-profile-footer-link" href="https://facebook.com/juanchomurcas" target="_blank">Facebook</a>
-           <!--<a class="page-profile-footer-link" href="https://www.behance.net/denis-sharypin" target="_blank">Behance</a>-->
-         <a class="page-profile-footer-link" href="https://github.com/jgmurillo10" target="_blank">GitHub</a>
-          <a class="page-profile-footer-link" href="mailto:juanchomurcas@gmail.com">Mail</a>
-        </div>
-      </div>
-    </section>
+
 
   </section>
 
+  <div id="project1" class="project-n">
+    <div class="page-profile">
+      <div class="page-profile-content">
+        <div class="back" onclick="goback()" ><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> atrás</div>
+        <h1>TrujilloPolanía</h1>
+        <img width="600" src="./assets/img/trujillopolania.png" alt="">
+        <p>Página web</p>
+      </div>
+    </div>
+  </div>
+  <div id="project2" class="project-n">
+    <div class="page-profile">
+      <div class="page-profile-content">
+        <div class="back" onclick="goback()" ><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> atrás</div>
+        <h1>GrupoAcera</h1>
+        <img width="600" src="./assets/img/grupoacera.png" alt="">
+        <p>Página web</p>
+      </div>
+    </div>
+  </div>
+  <div id="project3" class="project-n">
+    <div class="page-profile">
+      <div class="page-profile-content">
+        <div class="back" onclick="goback()" ><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> atrás</div>
+        <h1>NodeNavigator</h1>
+        <img width="600" src="./assets/img/nodenavigator.png" alt="node navigator demo">
+        <p>Aplicación web para visualizar conjuntos de datos haciendo uso del <a href="https://github.com/john-guerra/nodenavigator">NodeNavigator</a>, un widget de visualización creado por <a href="http://johnguerra.co/">John Guerra</a>. </p>
+      </div>
+    </div>
+  </div>
+  <div id="project4" class="project-n">
+    <div class="page-profile">
+      <div class="page-profile-content">
+        <div class="back" onclick="goback()" ><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> atrás</div>
+        <h1>AcademicStorage</h1>
+        <ul class="badge-container">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>ReactJS</li>
+          <li>Amazon S3</li>
+        </ul>
+        <img width="600" src="./assets/img/thebible.png" alt="">
+        <p>Aplicación web para almacenar archivos académicos.</p>
+      </div>
+    </div>
+  </div>
   <script src="./scripts/app.js"></script>
   <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    console.log('h');
+    var lastId = "";
+    var lastSelf = "";
+    function showContent(d, self){
+      console.log(self);
+      if (lastId === ""){
+        var fadeContainer = document.getElementById('fade-container');
+        var container = document.getElementById(d);
+        console.log(container);
+        fadeContainer.style.display = "none";
+        container.style.display = "block";
+        //set active status to self
+        var selected = document.getElementById(self)
+        selected.classList.add('selected');
+      }
+      else {
+        var fadeContainer = document.getElementById(lastId);
+        var container = document.getElementById(d);
+        console.log(container);
+        fadeContainer.style.display = "none";
+        container.style.display = "block";
+        //set unactive status to lastSelf and active to self
+        var selected = document.getElementById(self)
+        var unselected = document.getElementById(lastSelf)
+        selected.classList.add('selected');
+        unselected.classList.remove('selected');
 
-  ga('create', 'UA-76028669-1', 'auto');
-  ga('send', 'pageview');
+      }
+      lastId = d;
+      lastSelf = self;
+    };
+    function goback() {
+      var prev = document.getElementById(lastId);
+      prev.style.display = "none";
+      var fadeContainer = document.getElementById('fade-container');
+      fadeContainer.style.display = "block";
+      var unselected = document.getElementById(lastSelf);
+      unselected.classList.remove('selected');
+      lastId = "";
+      lastSelf =  "";
 
-</script>
+    }
+  </script>
+  <script src="https://use.fontawesome.com/be36c20b93.js"></script>
+
 </body>
 </html>

@@ -118,18 +118,63 @@ html, body, .app {
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: scale(.9);
+    transform: scale(0.75);
   }
-  70% {
-    opacity: .2;
+  /*50% {
+    opacity: .5;
     transform: scale(.9);
-  }
+  }*/
   100% {
     opacity: 1;
     transform: scale(1);
   }
 }
-
+@-webkit-keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+.project-n {
+  display: none;
+  -webkit-animation: fade 1.5s; /* Safari 4+ */
+  -moz-animation:    fade 1.5s; /* Fx 5+ */
+  -o-animation:      fade 1.5s; /* Opera 12+ */
+  animation:         fade 1.5s; /* IE 10+, Fx 29+ */
+}
+.project-n.stop{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  /*align-self: center;*/
+  position: relative;
+  animation: fadeIn 1s ease;
+  z-index: 9999999;
+}
 #fade-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -296,7 +341,11 @@ html, body, .app {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  
+  margin: 0 auto;
+
+}
+.img-profile-container {
+  text-align: center;
 }
 .pull-right {
   text-align: right;
@@ -307,31 +356,54 @@ html, body, .app {
   letter-spacing: 1px;
 }
 .project {
+  cursor: pointer;
   position: relative;
   border: 1px solid white;
   background-color: black;
   width: 40vh;
-  height: 10vh;
+  height: 6vh;
   margin: 1em;
   padding: 1em;
   transition: background-color 1s ease;
   transition: color 1s ease;
+  transition: letter-spacing 1s ease;
+
 }
 .project:hover {
   border: 1px solid white;
   background-color: rgba(255,255,255,1);
   color: black;
-  width: 40vh;
-  height: 10vh;
   margin: 1em;
   padding: 1em;
+  letter-spacing: 4px;
 }
 .child {
     position: absolute;
-    text-align: right;
     top: 50%;
+    right: 5%;
     transform: translateY(-50%);
 }
 a {
   color:inherit;
+}
+.projects_title {
+  position: relative;
+  /*top:10%;
+  right:20%;*/
+  margin-right: 1em;
+}
+.back {
+  cursor: pointer;
+}
+.selected {
+  background-color: rgba(127,127,127,0.51);
+}
+.badge-container{
+  margin-bottom: 2em;
+}
+.badge-container > li {
+  display: inline;
+  background-color: rgba(0,0,0,0.05);
+  padding: 0.6em;
+
 }
