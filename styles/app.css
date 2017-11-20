@@ -393,6 +393,10 @@ a {
   margin-right: 1em;
 }
 .back {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-size: 2em;
   cursor: pointer;
 }
 .selected {
