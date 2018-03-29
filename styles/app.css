@@ -293,7 +293,7 @@ html, body, .app {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
-    justify-content: flex-start;
+    justify-content: center;
 
     padding: 8%;
   }
