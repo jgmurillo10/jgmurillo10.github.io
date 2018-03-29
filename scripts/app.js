@@ -6,9 +6,9 @@
   var pageLoaderLoader = document.getElementById('page-loader-loader');
   var pageLoaderContent = document.getElementById('page-loader-content');
 
-  var animationDuration = 800;
+  // var animationDuration = on load page;
   pageLoaderContent.style.display = "none";
-  setTimeout(function() {
+  window.onload = function() {
     if (desktopSize) {
       pageLoader.classList.add('stop'); 
       pageLoaderContent.style.display = "block";
@@ -18,7 +18,7 @@
       pageLoaderContent.style.display = "block";
       pageLoaderLoader.style.display = "none";
     }
-  }, animationDuration);
+  };
 
   function scroll(scrollDuration) {
     var scrollHeight = appContainer.scrollHeight,

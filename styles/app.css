@@ -147,10 +147,10 @@ html, body, .app {
 }
 .project-n {
   display: none;
-  -webkit-animation: fade 1.5s; /* Safari 4+ */
-  -moz-animation:    fade 1.5s; /* Fx 5+ */
-  -o-animation:      fade 1.5s; /* Opera 12+ */
-  animation:         fade 1.5s; /* IE 10+, Fx 29+ */
+  -webkit-animation: fade .5s; /* Safari 4+ */
+  -moz-animation:    fade .5s; /* Fx 5+ */
+  -o-animation:      fade .5s; /* Opera 12+ */
+  animation:         fade .5s; /* IE 10+, Fx 29+ */
 }
 .project-n.stop{
   display: -webkit-box;
@@ -364,9 +364,10 @@ html, body, .app {
   height: 6vh;
   margin: 1em;
   padding: 1em;
-  transition: background-color 1s ease;
-  transition: color 1s ease;
-  transition: letter-spacing 1s ease;
+  /*todo*/
+  transition: background-color 0.5s ease;
+  transition: color 0.5s ease;
+  transition: letter-spacing 0.5s ease;
 
 }
 .project:hover {
