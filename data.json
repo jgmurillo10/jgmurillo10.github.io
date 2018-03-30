@@ -1,0 +1,40 @@
+{
+	"projects": [
+		{
+			"name": "Data-Explorer",
+			"repository":"https://github.com/john-guerra/Navio",
+			"demo": "https://john-guerra.github.io/Navio/data-explorer/build/index.html",
+			"video": "",
+			"img": "https://github.com/john-guerra/Navio",
+			"description_eng": "Application that allows the user upload, preprocess, explore, summarize and visualize a dataset  using a widget  without writing a single line of code. Also, the user can export the data filtered or the visualization",
+			"technologies": [ "ReactJS", "D3.js", "Git" ]
+		},
+		{
+			"name": "Fulbright Association",
+			"repository":"https://github.com/jgmurillo10/project_visual",
+			"demo": "http://juanmurillo.me/project_visual/",
+			"video": "",
+			"img": "./assets/img/fulbright.png",
+			"description_eng": "Application that allows fulbright researchers around the world to connect by their research topics through an intuitive interface",
+			"technologies": [ "D3.js", "Git" ]
+		},
+		{
+			"name": "Accio Planner",
+			"repository":"https://github.com/projectsuniandes/planeadorsemestral_back",
+			"demo": "",
+			"video": "",
+			"img": "./assets/img/accio.png",
+			"description_eng": "Application that optimizes the number of semesters for students doing double major.  It merges the current state of two different undergraduate programs and generates a graph with the courses that should take each semester",
+			"technologies": [ "NodeJS", "AngularJS", "GAMS", "Git" ]
+		},
+		{
+			"name": "Academic Storage",
+			"repository":"",
+			"demo": "",
+			"video": "",
+			"img": "",
+			"description_eng": "Application that storages academic files. Cloud Storage with Amazon S3. Usability tests (Monkey tests, expert review, etc). Accessibility testing and Unit testing",
+			"technologies": [ "MeteorJS", "ReactJS", "Amazon S3", "Git" ]
+		}
+	]
+}

@@ -1,4 +1,4 @@
-(function() {
+( function () {
   var desktopSize = window.innerWidth > 980;
 
   var appContainer = document.getElementById('app-container');
