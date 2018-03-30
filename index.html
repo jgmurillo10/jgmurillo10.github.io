@@ -165,43 +165,31 @@
   </div>
   <script src="./scripts/app.js"></script>
   <script>
-    console.log('h');
-    var lastId = "";
-    var lastSelf = "";
-    function showContent(d, self){
-      console.log(d, self);
-      if (lastId === ""){
-        var fadeContainer = document.getElementById('fade-container');
-        var container = document.getElementById(d);
-        console.log(container);
-        fadeContainer.style.display = "none";
-        container.style.display = "block";
-        //set active status to self
-        var selected = document.getElementById(self)
-        selected.classList.add('selected');
-      }
-      else {
-        var fadeContainer = document.getElementById(lastId);
-        var container = document.getElementById(d);
-        console.log(container);
-        fadeContainer.style.display = "none";
-        container.style.display = "block";
-        //set unactive status to lastSelf and active to self
-        var selected = document.getElementById(self)
-        var unselected = document.getElementById(lastSelf)
-        selected.classList.add('selected');
+    let lastId = "";
+    let lastSelf = "";
+    const showContent = (d, self) => {
+      let container = document.getElementById(d);
+      let fadeContainer;
+      if (lastId === "") {
+        fadeContainer = document.getElementById('fade-container');
+      } else {
+        fadeContainer = document.getElementById(lastId);
+        let unselected = document.getElementById(lastSelf)
         unselected.classList.remove('selected');
-
       }
+      fadeContainer.style.display = "none";
+      container.style.display = "block";
+      let selected = document.getElementById(self)
+      selected.classList.add('selected');
       lastId = d;
       lastSelf = self;
     };
-    function goback() {
-      var prev = document.getElementById(lastId);
+    const goback = () => {
+      let prev = document.getElementById(lastId);
       prev.style.display = "none";
-      var fadeContainer = document.getElementById('fade-container');
+      let fadeContainer = document.getElementById('fade-container');
       fadeContainer.style.display = "block";
-      var unselected = document.getElementById(lastSelf);
+      let unselected = document.getElementById(lastSelf);
       unselected.classList.remove('selected');
       lastId = "";
       lastSelf =  "";

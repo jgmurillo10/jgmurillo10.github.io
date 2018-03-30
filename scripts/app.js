@@ -8,7 +8,7 @@
 
   // var animationDuration = on load page;
   pageLoaderContent.style.display = "none";
-  window.onload = function() {
+  window.onload = function () {
     if (desktopSize) {
       pageLoader.classList.add('stop'); 
       pageLoaderContent.style.display = "block";
@@ -19,27 +19,4 @@
       pageLoaderLoader.style.display = "none";
     }
   };
-
-  function scroll(scrollDuration) {
-    var scrollHeight = appContainer.scrollHeight,
-        scrollStep  = Math.PI / ( scrollDuration / 15 ),
-        cosParameter = scrollHeight / 2;
-    var scrollCount = 0,
-        scrollMargin;
-
-    requestAnimationFrame(step);
-
-    function step () {
-      setTimeout(function() {
-        if (appContainer.scrollTop != scrollHeight / 2) {
-          requestAnimationFrame(step);
-
-          scrollCount = scrollCount + 1;
-          scrollMargin = cosParameter - cosParameter * Math.cos( scrollCount * scrollStep );
-
-          appContainer.scrollTop = scrollMargin;
-        }
-      }, 15 );
-    }
-  }
 })();
