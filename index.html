@@ -2,8 +2,10 @@
 <html lang="en" prefix='og: http://ogp.me/ns#'>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
-  <meta name="mobile-web-app-capable" content="yes">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"> -->
+  <!-- <meta name="mobile-web-app-capable" content="yes"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 
   <title>juanmurillo</title>
   <meta property="og:type" content="website" />
@@ -35,11 +37,13 @@
   </svg>
 
   <section id="app-container" class="app">
+    <h1 style="visibility: hidden">about me</h1>
     <section class="page-profile">
       <div id="fade-container">
+        <h2 style="visibility: hidden">hi</h2>
         <div class="page-profile-content">
           <div class="img-profile-container">
-            <img class="img-profile" src="./assets/img/profile_low.png"></img>
+            <img class="img-profile" src="./assets/img/profile_low.png" alt="Juan Guillermo Murillo Castillo">
           </div>
           <p class="page-profile-content-paragraph">I'm Juan Murillo,</p>
 
@@ -59,7 +63,9 @@
     </section>
 
     <section id="page-loader" class="page-loader">
+
       <div id="page-loader-loader" class="page-loader-content">
+        <h2>loading...</h2>
         <div class="icon-loader">
           <svg class="svg-icon-loader"><use xlink:href="#ei-spinner-icon"></use></svg>
         </div>
@@ -87,84 +93,103 @@
 
 
   </section>
-
-  <div id="project1" class="project-n">
-    <div class="page-profile">
-      <div class="page-profile-content">
-        <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
-        <h1>Data-Explorer: <a href="https://john-guerra.github.io/Navio/data-explorer/build/index.html" target="_blank" title="Demo">Demo</a></h1>
-        <ul class="badge-container">
-          <li>ReactJS</li>
-          <li>D3.js</li>
-          <li>Git</li>
-        </ul>
-        <img width="100%" src="./assets/img/data-explorer.png" alt="data explorer demo image">
-        <p>
-          Application that allows the user upload, preprocess, explore, summarize and visualize a dataset  using a widget  without writing a single line of code. Also, the user can export the data filtered or the visualization.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div id="project2" class="project-n">
-    <div class="page-profile">
-      <div class="page-profile-content">
-        <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
-        <h1>Fulbright Association: <a href="http://juanmurillo.me/project_visual" title="Demo" target="_blank">Demo</a></h1>
-        <ul class="badge-container">
-          <li>D3.js</li>
-          <li>GIT</li>
-        </ul>
-        <img width="100%" src="./assets/img/fulbright.png" alt="fulbright association demo image">
-        <p>
-          Application that allows fulbright researchers around the world to connect by their research topics through an intuitive interface.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div id="project3" class="project-n">
-    <div class="page-profile">
-      <div class="page-profile-content">
-        <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
-        <h1>Accio Planner</h1>
-        <ul class="badge-container">
-          <li>NodeJS</li>
-          <li>AngularJS</li>
-          <li>GAMS</li>
-          <li>GIT</li>
-        </ul>
-        <img width="100%" src="./assets/img/accio.png" alt="node navigator demo">
-        <p>
-          Application that optimizes the number of semesters for students doing double major.  It merges the current state of two different undergraduate programs and generates a graph with the courses that should take each semester.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div id="project4" class="project-n">
-    <div class="page-profile">
-      <div class="page-profile-content">
-        <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
-        <h1>AcademicStorage: <a href="http://thebibl.herokuapp.com/" title="Demo" target="_blank">Demo</a></h1>
-        <ul class="badge-container">
-          <li>MeteorJS</li>
-          <li>ReactJS</li>
-          <li>Amazon S3</li>
-          <li>GIT</li>
-        </ul>
-        <img width="100%" src="./assets/img/academic-storage.png" alt="academic storage demo image">
-        <div>
-          Application that storages academic files
-          <ul>
-            <li>Cloud Storage with Amazon S3. </li>
-            <li>Usability tests (Monkey tests, expert review, etc). </li>
-            <li>Accessibility testing and Unit testing.</li>
+  <section id="projects">
+    <div id="project1" class="project-n">
+      <div class="page-profile">
+        <div class="page-profile-content">
+          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
+          <h1>Data-Explorer: <a href="https://john-guerra.github.io/Navio/data-explorer/build/index.html" target="_blank" title="Demo">Demo</a></h1>
+          <ul class="badge-container">
+            <li>ReactJS</li>
+            <li>D3.js</li>
+            <li>Git</li>
           </ul>
-
+          <img class="project-image" src="./assets/img/data-explorer.png" alt="data explorer demo image">
+          <p>
+            Application that allows the user upload, preprocess, explore, summarize and visualize a dataset  using a widget  without writing a single line of code. Also, the user can export the data filtered or the visualization.
+          </p>
         </div>
       </div>
     </div>
-  </div>
+    <div id="project2" class="project-n">
+      <div class="page-profile">
+        <div class="page-profile-content">
+          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
+          <h1>Fulbright Association: <a href="http://juanmurillo.me/project_visual" title="Demo" target="_blank">Demo</a></h1>
+          <ul class="badge-container">
+            <li>D3.js</li>
+            <li>GIT</li>
+          </ul>
+          <img class="project-image" src="./assets/img/fulbright.png" alt="fulbright association demo image">
+          <p>
+            Application that allows fulbright researchers around the world to connect by their research topics through an intuitive interface.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="project3" class="project-n">
+      <div class="page-profile">
+        <div class="page-profile-content">
+          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
+          <h1>Accio Planner</h1>
+          <ul class="badge-container">
+            <li>NodeJS</li>
+            <li>AngularJS</li>
+            <li>GAMS</li>
+            <li>GIT</li>
+          </ul>
+          <img class="project-image" src="./assets/img/accio.png" alt="node navigator demo">
+          <p>
+            Application that optimizes the number of semesters for students doing double major.  It merges the current state of two different undergraduate programs and generates a graph with the courses that should take each semester.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="project4" class="project-n">
+      <div class="page-profile">
+        <div class="page-profile-content">
+          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> atrás</div>
+          <h1>AcademicStorage: <a href="http://thebibl.herokuapp.com/" title="Demo" target="_blank">Demo</a></h1>
+          <ul class="badge-container">
+            <li>MeteorJS</li>
+            <li>ReactJS</li>
+            <li>Amazon S3</li>
+            <li>GIT</li>
+          </ul>
+          <img class="project-image" src="./assets/img/academic-storage.png" alt="academic storage demo image">
+          <div>
+            Application that storages academic files
+            <ul>
+              <li>Cloud Storage with Amazon S3. </li>
+              <li>Usability tests (Monkey tests, expert review, etc). </li>
+              <li>Accessibility testing and Unit testing.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <script src="./scripts/app.js"></script>
   <script>
+    const loadJSON = (callback) => {   
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', 'data.json', true); // Replace 'my_data' with the path to your file
+        xobj.onreadystatechange = function () {
+              if (xobj.readyState == 4 && xobj.status == "200") {
+                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                callback(xobj.responseText);
+              }
+        };
+        xobj.send(null);  
+     }
+    loadJSON((response) => {
+      // Parse JSON string into object
+        var data = JSON.parse(response);
+        console.log(data)
+     });
     let lastId = "";
     let lastSelf = "";
     const showContent = (d, self) => {

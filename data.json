@@ -32,7 +32,7 @@
 			"repository":"",
 			"demo": "",
 			"video": "",
-			"img": "",
+			"img": "./assets/img/academic-storage.png",
 			"description_eng": "Application that storages academic files. Cloud Storage with Amazon S3. Usability tests (Monkey tests, expert review, etc). Accessibility testing and Unit testing",
 			"technologies": [ "MeteorJS", "ReactJS", "Amazon S3", "Git" ]
 		}
