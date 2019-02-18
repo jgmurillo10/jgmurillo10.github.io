@@ -73,7 +73,7 @@ html, body, .app {
   left: 0;
   z-index: 1;
 
-  width: 50%;
+  width: 60%;
   min-height: 100vh;
 
   display: -webkit-box;
@@ -273,7 +273,7 @@ html, body, .app {
 }
 
 .page-loader.stop {
-  width: 50%;
+  width: 40%;
 }
 
 .page-loader-content {
@@ -353,34 +353,28 @@ html, body, .app {
 }
 .projects {
   text-align: right;
-  font-size: 1.8em;
+  font-size: 1.5em;
   letter-spacing: 1px;
+  width: 100%;
 }
 .project {
   cursor: pointer;
   position: relative;
-  border: 1px solid white;
+  left: 0;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 5px;
   background-color: black;
-  width: 40vh;
-  height: 6vh;
+  height: 80px;
   margin: 1em;
-  padding: 1em;
-  /*todo*/
-  transition: background-color 0.5s ease;
-  transition: color 0.5s ease;
-  transition: letter-spacing 0.5s ease;
-
+  margin-left: 5em;
+  transition: background-color 1s ease, font-weight 0.5s ease, margin-left 0.5s ease;
 }
 .project:hover {
-  border: 1px solid white;
-  background-color: rgba(255,255,255,1);
-  color: black;
-  margin: 1em;
-  padding: 1em;
-  letter-spacing: 4px;
+  font-weight: bold;
+  margin-left: 2em;
 }
 .child {
-    position: absolute;
+    position: relative;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
