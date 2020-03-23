@@ -15,8 +15,6 @@ html, body, .app {
 }
 
 .app {
-
-
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -338,6 +336,7 @@ html, body, .app {
     transform:rotate(360deg);
   }
 }
+
 .img-profile {
   width: 200px;
   height: 200px;
@@ -345,18 +344,22 @@ html, body, .app {
   margin: 0 auto;
 
 }
+
 .img-profile-container {
   text-align: center;
 }
+
 .pull-right {
   text-align: right;
 }
+
 .projects {
   text-align: right;
   font-size: 1.5em;
   letter-spacing: 1px;
   width: 100%;
 }
+
 .project {
   cursor: pointer;
   position: relative;
@@ -369,43 +372,56 @@ html, body, .app {
   margin-left: 5em;
   transition: background-color 1s ease, font-weight 0.5s ease, margin-left 0.5s ease;
 }
+
 .project:hover {
   font-weight: bold;
   margin-left: 2em;
 }
+
 .child {
     position: relative;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
 }
+
 a {
   color:inherit;
 }
+
 .projects_title {
   position: relative;
   /*top:10%;
   right:20%;*/
   margin-right: 1em;
 }
+
 .back {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  font-size: 2em;
+  border: none;
   cursor: pointer;
+  font-size: 2em;
+  left: 5%;
+  top: 5%;
+  position: absolute;
 }
+.back img {
+  height: 16px;
+}
+
 .selected {
   background-color: rgba(127,127,127,0.51);
 }
+
 .badge-container{
   margin-bottom: 2em;
 }
+
 .badge-container > li {
   display: inline;
   background-color: rgba(0,0,0,0.05);
   padding: 0.6em;
 }
+
 .project-image {
   width: 100%;
 }

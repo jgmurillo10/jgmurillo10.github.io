@@ -78,16 +78,16 @@
       <div id="page-loader-content" class="projects">
         <p class="projects_title">Projects</p>
 
-          <div id="p1" class="project" onclick="showContent('project1','p1')">
+          <div tabindex="0" id="p1" class="project" onclick="showContent('project1','p1')">
             <div class="child">Shipyard</div>
           </div>
-          <div id="p2" class="project"  onclick="showContent('project2','p2')" >
+          <div tabindex="0" id="p2" class="project"  onclick="showContent('project2','p2')" >
             <div class="child">Fulbright Association</div>
           </div>
-          <div id="p3" class="project" onclick="showContent('project3','p3')">
+          <div tabindex="0" id="p3" class="project" onclick="showContent('project3','p3')">
             <div class="child">Accio Planner</div>
           </div>
-          <div id="p4" class="project" onclick="showContent('project4','p4')">
+          <div tabindex="0" id="p4" class="project" onclick="showContent('project4','p4')">
             <div class="child">Academic Storage</div>
           </div>
 
@@ -100,7 +100,7 @@
     <div id="project1" class="project-n">
       <div class="page-profile">
         <div class="page-profile-content">
-          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> back</div>
+          <button class="back" onclick="goback()" ><img src="./assets/img/left.svg"/> back</button>
           <h1>Shipyard: <a href="https://john-guerra.github.io/shipyard" target="_blank" rel="noopener noreferrer" title="Demo">Demo</a></h1>
           <ul class="badge-container">
             <li>ReactJS</li>
@@ -118,7 +118,7 @@
     <div id="project2" class="project-n">
       <div class="page-profile">
         <div class="page-profile-content">
-          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> back</div>
+          <button class="back" onclick="goback()" ><img src="./assets/img/left.svg"/> back</button>
           <h1>Fulbright Association: <a href="http://juanmurillo.co/project_visual" title="Demo" target="_blank" rel="noopener noreferrer">Demo</a></h1>
           <ul class="badge-container">
             <li>D3.js</li>
@@ -134,7 +134,7 @@
     <div id="project3" class="project-n">
       <div class="page-profile">
         <div class="page-profile-content">
-          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> back</div>
+          <button class="back" onclick="goback()" ><img src="./assets/img/left.svg"/> back</button>
           <h1>Accio Planner</h1>
           <ul class="badge-container">
             <li>NodeJS</li>
@@ -152,7 +152,7 @@
     <div id="project4" class="project-n">
       <div class="page-profile">
         <div class="page-profile-content">
-          <div class="back" onclick="goback()" ><i class="fa fa-angle-left" aria-hidden="true"></i> back</div>
+          <button class="back" onclick="goback()" ><img src="./assets/img/left.svg"/> back</button>
           <h1>AcademicStorage: <a href="http://thebibl.herokuapp.com/" title="Demo" target="_blank" rel="noopener noreferrer">Demo</a></h1>
           <ul class="badge-container">
             <li>MeteorJS</li>
@@ -212,6 +212,9 @@
       selected.classList.add('selected');
       lastId = d;
       lastSelf = self;
+      const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      if (width < 1024)
+        container.scrollIntoView();
     };
     const goback = () => {
       let prev = document.getElementById(lastId);
@@ -222,8 +225,17 @@
       unselected.classList.remove('selected');
       lastId = "";
       lastSelf =  "";
-
     }
+
+    const titles = [...document.querySelectorAll('.project')];
+
+    titles.forEach(title => {
+      title.addEventListener('keypress', (event) => {
+        if (event.key === "Enter") {
+          event.target.click();
+        }
+      })
+    })
   </script>
   <!-- <script src="https://use.fontawesome.com/be36c20b93.js"></script> -->
 
