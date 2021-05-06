@@ -1,13 +1,36 @@
 const path = require('path');
+const fs = require("fs");
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
-    promise.then(result => {
-        if (result.errors) {
-            throw result.errors
-        }
-        return result
-    });
+  promise.then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+    return result
+  });
+
+exports.onPreInit = () => {
+  if (process.argv[2] === "build") {
+    fs.rmdirSync(path.join(__dirname, "docs"), { recursive: true })
+    fs.renameSync(
+      path.join(__dirname, "public"),
+      path.join(__dirname, "public_dev")
+    )
+  }
+}
+
+exports.onPostBuild = () => {
+  fs.renameSync(path.join(__dirname, "public"), path.join(__dirname, "docs"))
+  fs.renameSync(
+    path.join(__dirname, "public_dev"),
+    path.join(__dirname, "public")
+  )
+  fs.copyFile('CNAME', 'docs/CNAME', function (err) {
+    if (err) throw err;
+    console.log('File was copied successfully.');
+  });
+}
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;

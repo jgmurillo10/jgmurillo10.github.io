@@ -7,7 +7,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.12",
-    "gatsby": "^2.12.0",
     "gatsby-image": "^2.2.20",
     "gatsby-plugin-catch-links": "^2.0.12",
     "gatsby-plugin-emotion": "^4.1.0",
@@ -37,6 +36,7 @@
     "smooth-scroll": "^16.0.3"
   },
   "devDependencies": {
+    "gatsby": "^2.32.13",
     "gatsby-plugin-remove-trailing-slashes": "^2.0.11",
     "prettier": "^1.18.2"
   },
