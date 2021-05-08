@@ -1,7 +1,8 @@
 {
-  "name": "gatsby-prismic-starter-prist",
+  "homepage": "https://jgmurillo10.github.io/",
+  "name": "jgmurillo10",
   "private": true,
-  "description": "A starter powered by Gatsby and Prismic to showcase portfolios and blogs.",
+  "description": "Juan Murillo, developer and coffee drinker.",
   "version": "0.1.0",
   "author": "Juan Murillo | juanmurillo.co | juanchomurcas@gmail.com",
   "dependencies": {
@@ -38,6 +39,7 @@
   "devDependencies": {
     "gatsby": "^2.32.13",
     "gatsby-plugin-remove-trailing-slashes": "^2.0.11",
+    "gh-pages": "^3.1.0",
     "prettier": "^1.18.2"
   },
   "keywords": [
@@ -53,7 +55,9 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "predeploy": "gatsby build",
+    "deploy": "gh-pages -d docs"
   },
   "repository": {
     "type": "git",
