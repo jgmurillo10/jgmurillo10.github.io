@@ -11,9 +11,9 @@ const wrapper = promise =>
   });
 
 exports.onPostBuild = () => {
-  fs.copyFile('CNAME', 'build/CNAME', function (err) {
+  fs.writeFile('CNAME', 'juanmurillo.co', function (err) {
     if (err) throw err;
-    console.log('File was copied successfully.');
+    console.log('File was created successfully.');
   });
 }
 
