@@ -10,13 +10,6 @@ const wrapper = promise =>
     return result
   });
 
-exports.onPostBuild = () => {
-  fs.writeFile('CNAME', 'juanmurillo.co', function (err) {
-    if (err) throw err;
-    console.log('File was created successfully.');
-  });
-}
-
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
 
