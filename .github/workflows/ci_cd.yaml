@@ -10,6 +10,9 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
+      - run: |
+          touch public/CNAME
+          echo "juanmurillo.co" > public/CNAME
       - name: Deploy
         run: |
           git config --global user.name $user_name
