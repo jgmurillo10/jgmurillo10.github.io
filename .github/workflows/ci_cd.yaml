@@ -1,5 +1,14 @@
 name: CI/CD
-on: [push]
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+      - master
+  repository_dispatch:
+    schedule:
+      - cron: '5 12 * * 0'
 jobs:
   CI-CD:
     runs-on: ubuntu-latest
