@@ -18,7 +18,7 @@
 
 /*! ./richtext */
 
-/*! /Users/hvillain/Libs/prismic-reactjs/src/index.js */
+/*! D:\Libraries\Desktop\prismic\sdk\reactjs/src/index.js */
 
 /*! exports provided: asText, renderRichText */
 
