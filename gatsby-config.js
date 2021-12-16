@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Juan Murillo`,
-        description: `Colombian Software Engineer passionate about web development and coffee.`,
+    description: `Colombian Software Engineer passionate about web development and coffee.`,
+    image: 'https://images.prismic.io/juanmurillo/5b80d6a0-22b2-425b-b33d-f6a77a88c5d3_arje_car_high.jpg?auto=compress,format',
     author: `Juan Murillo | juanmurillo.co`,
   },
   plugins: [

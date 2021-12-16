@@ -48,6 +48,14 @@ const Work = ({ projects, meta }) => (
                     name: `twitter:description`,
                     content: meta.description,
                 },
+                {
+                    name: `og:image`,
+                    content: meta.image,
+                },
+                {
+                    name: `twitter:image`,
+                    content: meta.image,
+                },
             ].concat(meta)}
         />
         <Layout>
