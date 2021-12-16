@@ -42,13 +42,18 @@ module.exports = {
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
-    // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
     {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-            trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
-            head: true,
-        },
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "GTM-53VVVRQ",
+          "UA-151322260-1"
+        ],
+        pluginConfig: {
+          head: true,
+        }
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

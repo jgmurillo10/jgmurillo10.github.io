@@ -72,8 +72,7 @@ const Blog = ({ posts, meta }) => (
                 Blog
             </BlogTitle>
             <BlogGrid>
-                Coming soon...
-                {/* {posts.map((post, i) => (
+                {posts.map((post, i) => (
                     <PostCard
                         key={i}
                         author={post.node.post_author}
@@ -83,7 +82,7 @@ const Blog = ({ posts, meta }) => (
                         description={post.node.post_preview_description}
                         uid={post.node._meta.uid}
                     />
-                ))} */}
+                ))}
             </BlogGrid>
         </Layout>
     </>
