@@ -66,11 +66,11 @@ const Blog = ({ posts, meta }) => (
                     content: meta.description,
                 },
                 {
-                    name: `og:image`,
+                    property: `og:image`,
                     content: meta.image,
                 },
                 {
-                    name: `twitter:image`,
+                    property: `twitter:image`,
                     content: meta.image,
                 },
             ].concat(meta)}
@@ -78,6 +78,7 @@ const Blog = ({ posts, meta }) => (
         <Layout>
             <BlogTitle>
                 Blog
+                <pre>{JSON.stringify(meta)}</pre>
             </BlogTitle>
             <BlogGrid>
                 {posts.map((post, i) => (
@@ -135,6 +136,7 @@ export const query = graphql`
                 title
                 description
                 author
+                image
             }
         }
     }

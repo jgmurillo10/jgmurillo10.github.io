@@ -168,11 +168,11 @@ const RenderBody = ({ home, projects, meta }) => (
           content: meta.description,
         },
         {
-            name: `og:image`,
+            property: `og:image`,
             content: meta.image,
         },
         {
-            name: `twitter:image`,
+            property: `twitter:image`,
             content: meta.image,
         },
       ].concat(meta)}
@@ -275,6 +275,7 @@ export const query = graphql`
         title
         description
         author
+        image
       }
     }
   }
