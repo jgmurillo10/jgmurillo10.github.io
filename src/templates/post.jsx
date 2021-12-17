@@ -111,7 +111,7 @@ const Subscribe = styled("div")`
         outline: none;
         padding: 1em 2em;
         width: 100%;
-        
+
         &:focus {
             outline: auto 5px -webkit-focus-ring-color;
         }
@@ -215,7 +215,7 @@ const Post = ({ post, meta }) => {
                     {RichText.render(post.post_body)}
                 </PostBody>
                 <Subscribe>
-                    <h4>Si te gustó este post agrega tu mail aquí abajo y dale "Submit" para para mantenerte al tanto</h4    >
+                    <h4>Si te gustó este post agrega tu mail aquí abajo y dale "Submit" para mantenerte al tanto</h4    >
                     <MailchimpSubscribe url={url}/>
                 </Subscribe>
             </Layout>
