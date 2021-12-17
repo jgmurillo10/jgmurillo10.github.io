@@ -7,6 +7,7 @@ import { RichText } from "prismic-reactjs";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import Layout from "components/Layout";
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 const PostHeroContainer = styled("div")`
     max-height: 500px;
@@ -92,7 +93,53 @@ const PostDate = styled("div")`
     margin: 0;
 `
 
+const Subscribe = styled("div")`
+    box-shadow: 0px 9px 24px rgb(0 0 0 / 6%);
+    max-width: 550px;
+    margin: 90px auto 0;
+    padding: 24px;
+    h4 {
+        padding: 12px;
+    }
+    button {
+        background-color: #73abff;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 12px;
+        outline: none;
+        padding: 1em 2em;
+        width: 100%;
+        
+        &:focus {
+            outline: auto 5px -webkit-focus-ring-color;
+        }
+    }
+    input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        margin: 12px;
+        font-size: 1rem;
+    }
+
+    > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        > div {
+            display: block;
+            width: 100%;
+            margin: 12px;
+        }
+    }
+`
+
 const Post = ({ post, meta }) => {
+    const url = "https://juanmurillo.us20.list-manage.com/subscribe/post?u=8099ac62ba887740228d614c1&id=1ffbb498a4"
+
     return (
         <>
             <Helmet
@@ -167,6 +214,10 @@ const Post = ({ post, meta }) => {
                 <PostBody>
                     {RichText.render(post.post_body)}
                 </PostBody>
+                <Subscribe>
+                    <h4>Si te gustó este post agrega tu mail aquí abajo y dale "Submit" para para mantenerte al tanto</h4    >
+                    <MailchimpSubscribe url={url}/>
+                </Subscribe>
             </Layout>
         </>
     )
