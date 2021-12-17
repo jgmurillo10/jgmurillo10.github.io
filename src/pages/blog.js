@@ -78,7 +78,6 @@ const Blog = ({ posts, meta }) => (
         <Layout>
             <BlogTitle>
                 Blog
-                <pre>{JSON.stringify(meta)}</pre>
             </BlogTitle>
             <BlogGrid>
                 {posts.map((post, i) => (
