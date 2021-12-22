@@ -49,6 +49,20 @@ const WorkLink = styled(Link)`
     text-align: center;
 `
 
+const StackPill = styled("span")`
+    background-color: #F2F2F2;
+    border-radius: 32px;
+    margin: 8px;
+    padding: 8px 16px;
+`
+
+const ProjectStack = styled("div")`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 24px 0;
+    justify-content: center;
+`
+
 
 const Project = ({ project, meta }) => {
     return (
@@ -103,6 +117,10 @@ const Project = ({ project, meta }) => {
                 <ProjectTitle>
                     {RichText.render(project.project_title)}
                 </ProjectTitle>
+                <ProjectStack>
+                    {project.stack.map(({technology})=>
+                        <StackPill>{technology[0].text}</StackPill>)}
+                </ProjectStack>
                 {project.project_hero_image && (
                     <ProjectHeroContainer>
                         <img src={project.project_hero_image.url} alt="bees" />
@@ -146,6 +164,9 @@ export const query = graphql`
                         project_post_date
                         project_hero_image
                         project_description
+                        stack {
+                            technology
+                        }
                         _meta {
                             uid
                         }
