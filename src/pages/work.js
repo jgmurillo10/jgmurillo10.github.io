@@ -63,7 +63,7 @@ const Work = ({ projects, meta }) => (
                 Work
             </WorkTitle>
             <>
-                {projects.map((project, i) => (
+                {projects.filter((project) => project.node.project_is_public).map((project, i) => (
                     <ProjectCard
                         key={i}
                         category={project.node.project_category}
@@ -103,6 +103,7 @@ export const query = graphql`
                         project_preview_thumbnail
                         project_category
                         project_post_date
+                        project_is_public
                         _meta {
                             uid
                         }
