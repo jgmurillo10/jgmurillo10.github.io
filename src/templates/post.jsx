@@ -180,11 +180,11 @@ const Post = ({ post, meta }) => {
                     },
                     {
                         property: `og:image`,
-                        content: meta.image,
+                        content: post.post_meta_image.url || meta.image,
                     },
                     {
                         property: `twitter:image`,
-                        content: meta.image,
+                        content: post.post_meta_image.url || meta.image,
                     },
                 ].concat(meta)}
             />
@@ -250,6 +250,7 @@ export const query = graphql`
                         post_body
                         post_author
                         post_preview_description
+                        post_meta_image
                         _meta {
                             uid
                         }
