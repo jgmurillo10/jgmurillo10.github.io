@@ -168,12 +168,12 @@ const RenderBody = ({ home, projects, meta }) => (
           content: meta.description,
         },
         {
-            property: `og:image`,
-            content: meta.image,
+          property: `og:image`,
+          content: meta.image,
         },
         {
-            property: `twitter:image`,
-            content: meta.image,
+          property: `twitter:image`,
+          content: meta.image,
         },
       ].concat(meta)}
     />
@@ -189,16 +189,19 @@ const RenderBody = ({ home, projects, meta }) => (
       </a>
     </Hero>
     <Section>
-      {projects.filter((project) => project.node.project_is_public).map((project, i) => (
-        <ProjectCard
-          key={i}
-          category={project.node.project_category}
-          title={project.node.project_title}
-          description={project.node.project_preview_description}
-          thumbnail={project.node.project_preview_thumbnail}
-          uid={project.node._meta.uid}
-        />
-      ))}
+      {projects
+        .filter(project => project.node.project_is_public)
+        .slice(0, 3)
+        .map((project, i) => (
+          <ProjectCard
+            key={i}
+            category={project.node.project_category}
+            title={project.node.project_title}
+            description={project.node.project_preview_description}
+            thumbnail={project.node.project_preview_thumbnail}
+            uid={project.node._meta.uid}
+          />
+        ))}
       <WorkAction to={"/work"}>
         See more work <span>&#8594;</span>
       </WorkAction>
