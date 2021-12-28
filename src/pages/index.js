@@ -191,7 +191,7 @@ const RenderBody = ({ home, projects, meta }) => (
     <Section>
       {projects
         .filter(project => project.node.project_is_public)
-        .slice(0, 3)
+        .filter(project => project.node.project_is_featured)
         .map((project, i) => (
           <ProjectCard
             key={i}
@@ -267,6 +267,7 @@ export const query = graphql`
             project_category
             project_post_date
             project_is_public
+            project_is_featured
             _meta {
               uid
             }
