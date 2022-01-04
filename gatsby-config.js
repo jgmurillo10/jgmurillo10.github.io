@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Juan Murillo`,
     description: `Colombian Software Engineer passionate about web development and coffee.`,
-    image: 'https://images.prismic.io/juanmurillo/5b80d6a0-22b2-425b-b33d-f6a77a88c5d3_arje_car_high.jpg?auto=compress,format',
+    image:
+      "https://images.prismic.io/juanmurillo/5b80d6a0-22b2-425b-b33d-f6a77a88c5d3_arje_car_high.jpg?auto=compress,format",
     author: `Juan Murillo | juanmurillo.co`,
   },
   plugins: [
@@ -25,11 +26,11 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-        resolve: 'gatsby-source-prismic-graphql',
-        options: {
-            repositoryName: 'juanmurillo', // (REQUIRED, replace with your own)
-            linkResolver: () => post => `/${post.uid}`,
-        }
+      resolve: "gatsby-source-prismic-graphql",
+      options: {
+        repositoryName: "juanmurillo", // (REQUIRED, replace with your own)
+        linkResolver: () => post => `/${post.uid}`,
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -47,13 +48,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          "GTM-53VVVRQ",
-          "UA-151322260-1"
-        ],
+        trackingIds: ["GTM-53VVVRQ", "UA-151322260-1"],
         pluginConfig: {
           head: true,
-        }
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
