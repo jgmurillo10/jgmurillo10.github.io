@@ -41,7 +41,7 @@ const Footer = () => (
             <Logo />
         </Link>
         <FooterAuthor target="_blank" href="https://www.marguerite.io/?utm_source=prist&utm_medium=footer&utm_campaign=prist_starter">
-            © 2021
+            © 2022
         </FooterAuthor>
     </FooterContainer>
 )
