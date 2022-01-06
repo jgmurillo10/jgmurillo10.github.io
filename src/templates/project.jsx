@@ -7,6 +7,7 @@ import { Link, graphql } from "gatsby"
 import { RichText } from "prismic-reactjs"
 import Button from "components/_ui/Button"
 import Layout from "components/Layout"
+import Newsletter from "../components/_ui/Newsletter"
 
 const ProjectHeroContainer = styled("div")`
   background: ${colors.grey200};
@@ -116,7 +117,7 @@ const Project = ({ project, meta }) => {
         <ProjectTitle>{RichText.render(project.project_title)}</ProjectTitle>
         <ProjectStack>
           {project.stack.map(({ technology }) => (
-            <StackPill>{technology[0].text}</StackPill>
+            <StackPill key={technology[0].text}>{technology[0].text}</StackPill>
           ))}
         </ProjectStack>
         {project.project_hero_image && (
@@ -130,6 +131,9 @@ const Project = ({ project, meta }) => {
             <Button className="Button--secondary">See other work</Button>
           </WorkLink>
         </ProjectBody>
+        <Newsletter
+          body={`Subscribe here to keep up to date on this or other projects.`}
+        />
       </Layout>
     </>
   )
