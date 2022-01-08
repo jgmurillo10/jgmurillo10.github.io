@@ -4,12 +4,14 @@ import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 const Subscribe = styled("div")`
   box-shadow: 0px 9px 24px rgb(0 0 0 / 6%);
-  max-width: 550px;
   margin: 90px auto 0;
+  max-width: 550px;
   padding: 24px;
+
   h4 {
     padding: 12px;
   }
+
   button {
     background-color: #73abff;
     border: none;
@@ -26,11 +28,12 @@ const Subscribe = styled("div")`
     }
   }
   input {
-    width: 100%;
     border: none;
     border-bottom: 1px solid #ccc;
-    margin: 12px;
     font-size: 1rem;
+    margin: 12px;
+    padding: 8px;
+    width: 100%;
   }
 
   > div {
@@ -40,8 +43,8 @@ const Subscribe = styled("div")`
 
     > div {
       display: block;
-      width: 100%;
       margin: 12px;
+      width: 100%;
     }
   }
 `
