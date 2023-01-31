@@ -180,13 +180,13 @@ const RenderBody = ({ home, projects, meta }) => (
     <Hero>
       <HeroImage src={home.hero_image.url} alt="" />
       <>{RichText.render(home.hero_title)}</>
-      {/* <a
+      <a
         href={home.hero_button_link.url}
         target="_blank"
         rel="noopener noreferrer"
       >
         <Button>{RichText.render(home.hero_button_text)}</Button>
-      </a> */}
+      </a>
     </Hero>
     <Section>
       {projects
