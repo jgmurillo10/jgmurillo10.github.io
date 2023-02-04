@@ -19,7 +19,7 @@
     "gatsby-plugin-react-helmet": "^3.1.8",
     "gatsby-plugin-resolve-src": "^2.0.0",
     "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.14.4",
+    "gatsby-plugin-sharp": "^5.5.0",
     "gatsby-source-filesystem": "^2.1.26",
     "gatsby-source-prismic-graphql": "npm:@prismicio/gatsby-source-prismic-graphql@^3.6.10",
     "gatsby-transformer-sharp": "^2.2.16",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "babel-jest": "^27.4.6",
     "babel-preset-gatsby": "^2.4.0",
-    "gatsby": "^2.32.13",
+    "gatsby": "^5.5.0",
     "gatsby-plugin-remove-trailing-slashes": "^2.0.11",
     "gh-pages": "^3.2.3",
     "identity-obj-proxy": "^3.0.0",
