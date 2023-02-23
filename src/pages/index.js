@@ -181,7 +181,7 @@ const RenderBody = ({ home, projects, meta }) => (
       <HeroImage src={home.hero_image.url} alt="" />
       <>{RichText.render(home.hero_title)}</>
       <a
-        href={home.hero_button_link.url}
+        href="https://drive.google.com/file/d/1AKFJ3tXX50QW-UsGw9WfJy30SUCzGggd/view"
         target="_blank"
         rel="noopener noreferrer"
       >
