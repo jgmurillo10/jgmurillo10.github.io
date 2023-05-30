@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { RichText } from "prismic-reactjs"
+import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
@@ -162,7 +162,7 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
     <ProjectCardContent className="ProjectCardContent">
       <ProjectCardCategory>{category[0].text}</ProjectCardCategory>
       <ProjectCardTitle>{title[0].text}</ProjectCardTitle>
-      <ProjectCardBlurb>{RichText.render(description)}</ProjectCardBlurb>
+      <ProjectCardBlurb><PrismicRichText field={description} /></ProjectCardBlurb>
       <ProjectCardAction className="ProjectCardAction">
         Details <span>&#8594;</span>
       </ProjectCardAction>

@@ -4,7 +4,7 @@ import Helmet from "react-helmet"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import { Link, graphql } from "gatsby"
-import { RichText } from "prismic-reactjs"
+import { PrismicRichText } from "@prismicio/react"
 import Button from "components/_ui/Button"
 import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
@@ -114,7 +114,7 @@ const Project = ({ project, meta }) => {
         ].concat(meta)}
       />
       <Layout>
-        <ProjectTitle>{RichText.render(project.project_title)}</ProjectTitle>
+        <ProjectTitle><PrismicRichText field={project.project_title} /></ProjectTitle>
         <ProjectStack>
           {project.stack.map(({ technology }) => (
             <StackPill key={technology[0].text}>{technology[0].text}</StackPill>
@@ -126,7 +126,7 @@ const Project = ({ project, meta }) => {
           </ProjectHeroContainer>
         )}
         <ProjectBody>
-          {RichText.render(project.project_description)}
+          <PrismicRichText field={project.project_description} />
           <WorkLink to={"/work"}>
             <Button className="Button--secondary">See other work</Button>
           </WorkLink>

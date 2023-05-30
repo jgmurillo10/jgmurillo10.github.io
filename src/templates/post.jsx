@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import Moment from "react-moment"
 import { graphql } from "gatsby"
-import { RichText } from "prismic-reactjs"
+import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import Layout from "components/Layout"
@@ -143,8 +143,8 @@ const Post = ({ post, meta }) => {
         ].concat(meta)}
       />
       <Layout>
-        <PostCategory>{RichText.render(post.post_category)}</PostCategory>
-        <PostTitle>{RichText.render(post.post_title)}</PostTitle>
+        <PostCategory><PrismicRichText field={post.post_category} /></PostCategory>
+        <PostTitle><PrismicRichText field={post.post_title} /></PostTitle>
         <PostMetas>
           <PostAuthor>{post.post_author}</PostAuthor>
           <PostDate>
@@ -155,11 +155,11 @@ const Post = ({ post, meta }) => {
           <PostHeroContainer>
             <img src={post.post_hero_image.url} alt="bees" />
             <PostHeroAnnotation>
-              {RichText.render(post.post_hero_annotation)}
+              <PrismicRichText field={post.post_hero_annotation} />
             </PostHeroAnnotation>
           </PostHeroContainer>
         )}
-        <PostBody>{RichText.render(post.post_body)}</PostBody>
+        <PostBody><PrismicRichText field={post.post_body} /></PostBody>
         <Newsletter
           body={`Si te gustó este post agrega tu mail aquí abajo y dale "Submit" para mantenerte al tanto`}
         />

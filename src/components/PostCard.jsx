@@ -1,7 +1,7 @@
 import React from "react"
 import Moment from "react-moment"
 import { Link } from "gatsby"
-import { RichText } from "prismic-reactjs"
+import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import PropTypes from "prop-types"
@@ -89,7 +89,7 @@ const PostCard = ({ author, category, date, title, description, uid }) => (
   <PostCardContainer className="BlogPostCard" to={`/blog/${uid}`}>
     <PostCategory>{category[0].text}</PostCategory>
     <PostTitle>{title[0].text}</PostTitle>
-    <PostDescription>{RichText.render(description)}</PostDescription>
+    <PostDescription><PrismicRichText field={description} /></PostDescription>
     <PostCardAction className="PostCardAction">
       Read more <span>&#8594;</span>
     </PostCardAction>
