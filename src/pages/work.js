@@ -91,13 +91,15 @@ const Work = ({ projects, meta }) => {
   )
 }
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   const projects = data.prismic.allProjects.edges
   const meta = data.site.siteMetadata
   if (!projects) return null
 
   return <Work projects={projects} meta={meta} />
 }
+
+export default Component;
 
 Work.propTypes = {
   projects: PropTypes.array.isRequired,

@@ -93,13 +93,14 @@ const Blog = ({ posts, meta }) => (
   </>
 )
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   const posts = data.prismic.allPosts.edges
   const meta = data.site.siteMetadata
   if (!posts) return null
 
   return <Blog posts={posts} meta={meta} />
 }
+export default Component;
 
 Blog.propTypes = {
   posts: PropTypes.array.isRequired,

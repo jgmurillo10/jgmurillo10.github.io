@@ -139,11 +139,13 @@ const Project = ({ project, meta }) => {
   )
 }
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   const projectContent = data.prismic.allProjects.edges[0].node
   const meta = data.site.siteMetadata
   return <Project project={projectContent} meta={meta} />
 }
+
+export default Component;
 
 Project.propTypes = {
   project: PropTypes.object.isRequired,

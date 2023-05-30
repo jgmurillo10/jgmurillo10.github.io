@@ -213,7 +213,7 @@ const RenderBody = ({ home, projects, meta }) => (
   </>
 )
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   //Required check for no data being returned
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
   const projects = data.prismic.allProjects.edges
@@ -227,6 +227,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default Component;
 
 RenderBody.propTypes = {
   home: PropTypes.object.isRequired,
@@ -243,12 +245,6 @@ export const query = graphql`
             hero_title
             hero_image
             hero_button_text
-            hero_button_link {
-              ... on PRISMIC__ExternalLink {
-                _linkType
-                url
-              }
-            }
             content
             about_title
             about_bio

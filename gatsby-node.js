@@ -1,6 +1,3 @@
-const path = require("path")
-const fs = require("fs")
-
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
   promise.then(result => {

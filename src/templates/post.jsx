@@ -168,11 +168,13 @@ const Post = ({ post, meta }) => {
   )
 }
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   const postContent = data.prismic.allPosts.edges[0].node
   const meta = data.site.siteMetadata
   return <Post post={postContent} meta={meta} />
 }
+
+export default Component;
 
 Post.propTypes = {
   post: PropTypes.object.isRequired,
