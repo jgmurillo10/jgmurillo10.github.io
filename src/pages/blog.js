@@ -94,7 +94,6 @@ const Blog = ({ posts, meta }) => (
 )
 
 const Component = ({ data }) => {
-  console.log('>>>', {data});
   const posts = data.allPrismicPost.edges
   const meta = data.site.siteMetadata
   if (!posts) return null

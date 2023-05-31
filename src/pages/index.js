@@ -214,7 +214,6 @@ const RenderBody = ({ home, projects, meta }) => (
 )
 
 const Component = ({ data }) => {
-  console.log('>>>> index', {data});
   //Required check for no data being returned
   const doc = data.allPrismicHomepage.edges.slice(0, 1).pop()
   const projects = data.allPrismicProject.edges
