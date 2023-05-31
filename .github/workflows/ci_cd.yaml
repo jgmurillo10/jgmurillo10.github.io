@@ -21,7 +21,7 @@ jobs:
       - name: Install packages
         run: npm install
       - name: Build
-        run: npm run build
+        run: GATSBY_PRISMIC_REPO_NAME=$repoName PRISMIC_ACCESS_TOKEN=$prismicToken PRISMIC_CUSTOM_TYPES_API_TOKEN=$prismicTypesToken npm run build
       - name: Create CNAME
         run: |
           touch public/CNAME
@@ -37,3 +37,6 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
+          repoName: ${{ secrets.GATSBY_PRISMIC_REPO_NAME }}
+          prismicToken: ${{ secrets.PRISMIC_ACCESS_TOKEN }}
+          prismicTypesToken: ${{ secrets.PRISMIC_CUSTOM_TYPES_API_TOKEN }}

@@ -1,5 +1,4 @@
 import React from "react"
-import Moment from "react-moment"
 import { Link } from "gatsby"
 import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
@@ -87,17 +86,15 @@ const PostCardAction = styled("div")`
 
 const PostCard = ({ author, category, date, title, description, uid }) => (
   <PostCardContainer className="BlogPostCard" to={`/blog/${uid}`}>
-    <PostCategory>{category[0].text}</PostCategory>
-    <PostTitle>{title[0].text}</PostTitle>
-    <PostDescription><PrismicRichText field={description} /></PostDescription>
+    <PostCategory>{category.text}</PostCategory>
+    <PostTitle>{title.text}</PostTitle>
+    <PostDescription><PrismicRichText field={description.richText} /></PostDescription>
     <PostCardAction className="PostCardAction">
       Read more <span>&#8594;</span>
     </PostCardAction>
     <PostMetas>
       <PostAuthor>{author}</PostAuthor>
-      <PostDate>
-        <Moment format="MMMM D, YYYY">{date}</Moment>
-      </PostDate>
+      <PostDate>{date}</PostDate>
     </PostMetas>
   </PostCardContainer>
 )
@@ -106,9 +103,9 @@ export default PostCard
 
 PostCard.propTypes = {
   author: PropTypes.string.isRequired,
-  category: PropTypes.array.isRequired,
+  category: PropTypes.object.isRequired,
   date: PropTypes.string.isRequired,
-  title: PropTypes.array.isRequired,
-  description: PropTypes.array.isRequired,
+  title: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
   uid: PropTypes.string.isRequired,
 }

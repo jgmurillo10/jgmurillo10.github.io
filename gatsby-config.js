@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `Juan Murillo`,
@@ -24,10 +27,13 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     {
-      resolve: "gatsby-source-prismic-graphql",
+      resolve: "gatsby-source-prismic",
       options: {
-        repositoryName: "juanmurillo", // (REQUIRED, replace with your own)
+        repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         linkResolver: () => post => `/${post.uid}`,
       },
     },

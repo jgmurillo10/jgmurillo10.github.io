@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import Moment from "react-moment"
 import { graphql } from "gatsby"
 import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
@@ -97,7 +96,7 @@ const Post = ({ post, meta }) => {
   return (
     <>
       <Helmet
-        title={`${post.post_title[0].text} | Blog`}
+        title={`${post.post_title.text} | Blog`}
         titleTemplate={`%s | ${meta.title}`}
         meta={[
           {
@@ -106,7 +105,7 @@ const Post = ({ post, meta }) => {
           },
           {
             property: `og:title`,
-            content: `${post.post_title[0].text} | Blog`,
+            content: `${post.post_title.text} | Blog`,
           },
           {
             property: `og:description`,
@@ -143,23 +142,23 @@ const Post = ({ post, meta }) => {
         ].concat(meta)}
       />
       <Layout>
-        <PostCategory><PrismicRichText field={post.post_category} /></PostCategory>
-        <PostTitle><PrismicRichText field={post.post_title} /></PostTitle>
+        <PostCategory><PrismicRichText field={post.post_category.richText} /></PostCategory>
+        <PostTitle><PrismicRichText field={post.post_title.richText} /></PostTitle>
         <PostMetas>
           <PostAuthor>{post.post_author}</PostAuthor>
           <PostDate>
-            <Moment format="MMMM D, YYYY">{post.post_date}</Moment>
+            {post.post_date}
           </PostDate>
         </PostMetas>
         {post.post_hero_image && (
           <PostHeroContainer>
             <img src={post.post_hero_image.url} alt="bees" />
             <PostHeroAnnotation>
-              <PrismicRichText field={post.post_hero_annotation} />
+              <PrismicRichText field={post.post_hero_annotation.richText} />
             </PostHeroAnnotation>
           </PostHeroContainer>
         )}
-        <PostBody><PrismicRichText field={post.post_body} /></PostBody>
+        <PostBody><PrismicRichText field={post.post_body.richText} /></PostBody>
         <Newsletter
           body={`Si te gustó este post agrega tu mail aquí abajo y dale "Submit" para mantenerte al tanto`}
         />
@@ -169,7 +168,7 @@ const Post = ({ post, meta }) => {
 }
 
 const Component = ({ data }) => {
-  const postContent = data.prismic.allPosts.edges[0].node
+  const postContent = data.prismicPost.data
   const meta = data.site.siteMetadata
   return <Post post={postContent} meta={meta} />
 }
@@ -183,23 +182,34 @@ Post.propTypes = {
 
 export const query = graphql`
   query PostQuery($uid: String) {
-    prismic {
-      allPosts(uid: $uid) {
-        edges {
-          node {
-            post_title
-            post_hero_image
-            post_hero_annotation
-            post_date
-            post_category
-            post_body
-            post_author
-            post_preview_description
-            post_meta_image
-            _meta {
-              uid
-            }
-          }
+    prismicPost(uid: {eq: $uid}) {
+      id
+      uid
+      data {
+        post_author
+        post_title {
+          richText
+          text
+        }
+        post_hero_annotation {
+          richText
+        }
+        post_hero_image {
+          url
+        }
+        post_meta_image {
+          url
+        }
+        post_date(fromNow: true)
+        post_category {
+          richText
+        }
+        post_preview_description {
+          text
+        }
+        post_body {
+          richText
+          text
         }
       }
     }

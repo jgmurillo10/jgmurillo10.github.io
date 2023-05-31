@@ -68,7 +68,7 @@ const Project = ({ project, meta }) => {
   return (
     <>
       <Helmet
-        title={`${project.project_title[0].text} | Projects`}
+        title={`${project.project_title.text} | Projects`}
         titleTemplate={`%s | ${meta.title}`}
         meta={[
           {
@@ -77,7 +77,7 @@ const Project = ({ project, meta }) => {
           },
           {
             property: `og:title`,
-            content: `${project.project_title[0].text} | Projects`,
+            content: `${project.project_title.text} | Projects`,
           },
           {
             property: `og:description`,
@@ -114,10 +114,10 @@ const Project = ({ project, meta }) => {
         ].concat(meta)}
       />
       <Layout>
-        <ProjectTitle><PrismicRichText field={project.project_title} /></ProjectTitle>
+        <ProjectTitle><PrismicRichText field={project.project_title.richText} /></ProjectTitle>
         <ProjectStack>
           {project.stack.map(({ technology }) => (
-            <StackPill key={technology[0].text}>{technology[0].text}</StackPill>
+            <StackPill key={technology.text}>{technology.text}</StackPill>
           ))}
         </ProjectStack>
         {project.project_hero_image && (
@@ -126,7 +126,7 @@ const Project = ({ project, meta }) => {
           </ProjectHeroContainer>
         )}
         <ProjectBody>
-          <PrismicRichText field={project.project_description} />
+          <PrismicRichText field={project.project_description.richText} />
           <WorkLink to={"/work"}>
             <Button className="Button--secondary">See other work</Button>
           </WorkLink>
@@ -140,7 +140,7 @@ const Project = ({ project, meta }) => {
 }
 
 const Component = ({ data }) => {
-  const projectContent = data.prismic.allProjects.edges[0].node
+  const projectContent = data.prismicProject.data
   const meta = data.site.siteMetadata
   return <Project project={projectContent} meta={meta} />
 }
@@ -153,23 +153,33 @@ Project.propTypes = {
 
 export const query = graphql`
   query ProjectQuery($uid: String) {
-    prismic {
-      allProjects(uid: $uid) {
-        edges {
-          node {
-            project_title
-            project_preview_description
-            project_preview_thumbnail
-            project_category
-            project_post_date
-            project_hero_image
-            project_description
-            stack {
-              technology
-            }
-            _meta {
-              uid
-            }
+    prismicProject(uid: {eq: $uid}) {
+      uid
+      data {
+        project_title {
+          richText
+        }
+        project_preview_description {
+          text
+        }
+        project_preview_thumbnail {
+          url
+        }
+        project_category {
+          text
+        }
+        project_post_date(fromNow: true)
+        project_is_public
+        project_is_featured
+        project_hero_image {
+          url
+        }
+        project_description {
+          richText
+        }
+        stack {
+          technology {
+            text
           }
         }
       }

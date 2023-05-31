@@ -13,36 +13,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await wrapper(
     graphql(`
       {
-        prismic {
-          allProjects {
-            edges {
-              node {
-                project_title
-                project_preview_description
-                project_preview_thumbnail
-                project_category
-                project_post_date
-                _meta {
-                  uid
-                }
-              }
+        allPrismicProject {
+          edges {
+            node {
+              uid
             }
           }
-          allPosts {
-            edges {
-              node {
-                post_title
-                post_hero_image
-                post_hero_annotation
-                post_date
-                post_category
-                post_body
-                post_preview_description
-                post_author
-                _meta {
-                  uid
-                }
-              }
+        }
+        allPrismicPost {
+          edges {
+            node {
+              uid
             }
           }
         }
@@ -50,8 +31,8 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
-  const projectsList = result.data.prismic.allProjects.edges
-  const postsList = result.data.prismic.allPosts.edges
+  const projectsList = result.data.allPrismicProject.edges
+  const postsList = result.data.allPrismicPost.edges
 
   const projectTemplate = require.resolve("./src/templates/project.jsx")
   const postTemplate = require.resolve("./src/templates/post.jsx")
@@ -62,21 +43,21 @@ exports.createPages = async ({ graphql, actions }) => {
     console.log({
       type: "Project",
       match: "/work/:uid",
-      path: `/work/${edge.node._meta.uid}`,
+      path: `/work/${edge.node.uid}`,
       component: projectTemplate,
       context: {
         // Pass the unique ID (uid) through context so the template can filter by it
-        uid: edge.node._meta.uid,
+        uid: edge.node.uid,
       },
     })
     createPage({
       type: "Project",
       match: "/work/:uid",
-      path: `/work/${edge.node._meta.uid}`,
+      path: `/work/${edge.node.uid}`,
       component: projectTemplate,
       context: {
         // Pass the unique ID (uid) through context so the template can filter by it
-        uid: edge.node._meta.uid,
+        uid: edge.node.uid,
       },
     })
   })
@@ -85,10 +66,10 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       type: "Project",
       match: "/blog/:uid",
-      path: `/blog/${edge.node._meta.uid}`,
+      path: `/blog/${edge.node.uid}`,
       component: postTemplate,
       context: {
-        uid: edge.node._meta.uid,
+        uid: edge.node.uid,
       },
     })
   })

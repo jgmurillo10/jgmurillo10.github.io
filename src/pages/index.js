@@ -178,28 +178,28 @@ const RenderBody = ({ home, projects, meta }) => (
       ].concat(meta)}
     />
     <Hero>
-      <HeroImage src={home.hero_image.url} alt="" />
-      <PrismicRichText field={home.hero_title} />
+      <HeroImage src={home.data.hero_image.url} alt="" />
+      <PrismicRichText field={home.data.hero_title.richText} />
       <a
         href="https://drive.google.com/file/d/1AKFJ3tXX50QW-UsGw9WfJy30SUCzGggd/view"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button><PrismicRichText field={home.hero_button_text} /></Button>
+        <Button><PrismicRichText field={home.data.hero_button_text.richText} /></Button>
       </a>
     </Hero>
     <Section>
       {projects
-        .filter(project => project.node.project_is_public)
-        .filter(project => project.node.project_is_featured)
+        .filter(project => project.node.data.project_is_public)
+        .filter(project => project.node.data.project_is_featured)
         .map((project, i) => (
           <ProjectCard
             key={i}
-            category={project.node.project_category}
-            title={project.node.project_title}
-            description={project.node.project_preview_description}
-            thumbnail={project.node.project_preview_thumbnail}
-            uid={project.node._meta.uid}
+            category={project.node.data.project_category}
+            title={project.node.data.project_title}
+            description={project.node.data.project_preview_description}
+            thumbnail={project.node.data.project_preview_thumbnail}
+            uid={project.node.uid}
           />
         ))}
       <WorkAction to={"/work"}>
@@ -207,16 +207,17 @@ const RenderBody = ({ home, projects, meta }) => (
       </WorkAction>
     </Section>
     <Section>
-      <PrismicRichText field={home.about_title} />
-      <About bio={home.about_bio} socialLinks={home.about_links} />
+      <PrismicRichText field={home.data.about_title.richText} />
+      <About bio={home.data.about_bio || ''} socialLinks={home.data.about_links} />
     </Section>
   </>
 )
 
 const Component = ({ data }) => {
+  console.log('>>>> index', {data});
   //Required check for no data being returned
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-  const projects = data.prismic.allProjects.edges
+  const doc = data.allPrismicHomepage.edges.slice(0, 1).pop()
+  const projects = data.allPrismicProject.edges
   const meta = data.site.siteMetadata
 
   if (!doc || !projects) return null
@@ -238,36 +239,63 @@ RenderBody.propTypes = {
 
 export const query = graphql`
   {
-    prismic {
-      allHomepages {
-        edges {
-          node {
-            hero_title
-            hero_image
-            hero_button_text
-            content
-            about_title
-            about_bio
+    allPrismicHomepage {
+      edges {
+        node {
+          data {
+            hero_title {
+              text
+              richText
+            }
+            hero_image {
+              url
+            }
+            hero_button_text {
+              text
+              richText
+            }
+            content {
+              text
+            }
+            about_title {
+              text
+              richText
+            }
+            about_bio {
+              text
+            }
             about_links {
-              about_link
+              about_link {
+                text
+                richText
+              }
             }
           }
         }
       }
-      allProjects {
-        edges {
-          node {
-            project_title
-            project_preview_description
-            project_preview_thumbnail
-            project_category
-            project_post_date
+    }
+    allPrismicProject {
+      edges {
+        node {
+          data {
+            project_title {
+              text
+            }
+            project_preview_description {
+              text
+              richText
+            }
+            project_preview_thumbnail {
+              url
+            }
+            project_category {
+              text
+            }
+            project_post_date(fromNow: true)
             project_is_public
             project_is_featured
-            _meta {
-              uid
-            }
           }
+          uid
         }
       }
     }

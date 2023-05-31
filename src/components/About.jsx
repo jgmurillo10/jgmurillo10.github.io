@@ -83,11 +83,11 @@ const About = ({ bio, socialLinks }) => (
       {socialLinks.map((social, i) => (
         <AboutLink
           key={i}
-          href={social.about_link[0].spans[0].data.url}
+          href={social.about_link.richText[0].spans[0].data.url}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {social.about_link[0].text}
+          {social.about_link.text}
           <span>&#8594;</span>
         </AboutLink>
       ))}
@@ -108,6 +108,6 @@ const About = ({ bio, socialLinks }) => (
 export default About
 
 About.propTypes = {
-  bio: PropTypes.array.isRequired,
+  bio: PropTypes.object.isRequired,
   socialLinks: PropTypes.array.isRequired,
 }

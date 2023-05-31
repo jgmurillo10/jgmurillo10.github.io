@@ -74,15 +74,15 @@ const Work = ({ projects, meta }) => {
         <WorkTitle>Work</WorkTitle>
         <>
           {projects
-            .filter(project => logged || project.node.project_is_public)
+            .filter(project => logged || project.node.data.project_is_public)
             .map((project, i) => (
               <ProjectCard
                 key={i}
-                category={project.node.project_category}
-                title={project.node.project_title}
-                description={project.node.project_preview_description}
-                thumbnail={project.node.project_preview_thumbnail}
-                uid={project.node._meta.uid}
+                category={project.node.data.project_category}
+                title={project.node.data.project_title}
+                description={project.node.data.project_preview_description}
+                thumbnail={project.node.data.project_preview_thumbnail}
+                uid={project.node.uid}
               />
             ))}
         </>
@@ -92,7 +92,7 @@ const Work = ({ projects, meta }) => {
 }
 
 const Component = ({ data }) => {
-  const projects = data.prismic.allProjects.edges
+  const projects = data.allPrismicProject.edges
   const meta = data.site.siteMetadata
   if (!projects) return null
 
@@ -107,20 +107,27 @@ Work.propTypes = {
 
 export const query = graphql`
   {
-    prismic {
-      allProjects {
-        edges {
-          node {
-            project_title
-            project_preview_description
-            project_preview_thumbnail
-            project_category
-            project_post_date
-            project_is_public
-            _meta {
-              uid
+    allPrismicProject {
+      edges {
+        node {
+          data {
+            project_title {
+              text
             }
+            project_preview_description {
+              text
+            }
+            project_preview_thumbnail {
+              url
+            }
+            project_category {
+              text
+            }
+            project_post_date(fromNow: true)
+            project_is_public
+            project_is_featured
           }
+          uid
         }
       }
     }

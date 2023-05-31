@@ -80,12 +80,12 @@ const Blog = ({ posts, meta }) => (
         {posts.map((post, i) => (
           <PostCard
             key={i}
-            author={post.node.post_author}
-            category={post.node.post_category}
-            title={post.node.post_title}
-            date={post.node.post_date}
-            description={post.node.post_preview_description}
-            uid={post.node._meta.uid}
+            author={post.node.data.post_author}
+            category={post.node.data.post_category}
+            title={post.node.data.post_title}
+            date={post.node.data.post_date}
+            description={post.node.data.post_preview_description}
+            uid={post.node.uid}
           />
         ))}
       </BlogGrid>
@@ -94,7 +94,8 @@ const Blog = ({ posts, meta }) => (
 )
 
 const Component = ({ data }) => {
-  const posts = data.prismic.allPosts.edges
+  console.log('>>>', {data});
+  const posts = data.allPrismicPost.edges
   const meta = data.site.siteMetadata
   if (!posts) return null
 
@@ -109,19 +110,25 @@ Blog.propTypes = {
 
 export const query = graphql`
   {
-    prismic {
-      allPosts(sortBy: post_date_DESC) {
-        edges {
-          node {
-            post_title
-            post_date
-            post_category
-            post_preview_description
+    allPrismicPost(sort: {last_publication_date: DESC}) {
+      edges {
+        node {
+          id
+          data {
             post_author
-            _meta {
-              uid
+            post_title {
+              text
+            }
+            post_date(fromNow: true)
+            post_category {
+              text
+            }
+            post_preview_description {
+              text
+              richText
             }
           }
+          uid
         }
       }
     }
