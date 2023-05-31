@@ -129,7 +129,7 @@ const WorkAction = styled(Link)`
   }
 `
 
-const RenderBody = ({ home, projects, meta }) => (
+const Homepage = ({ home, projects, meta }) => (
   <>
     <Helmet
       title={meta.title}
@@ -215,7 +215,7 @@ const RenderBody = ({ home, projects, meta }) => (
 
 const Component = ({ data }) => {
   //Required check for no data being returned
-  const doc = data.allPrismicHomepage.edges.slice(0, 1).pop()
+  const doc = data.prismicHomepage;
   const projects = data.allPrismicProject.edges
   const meta = data.site.siteMetadata
 
@@ -223,52 +223,48 @@ const Component = ({ data }) => {
 
   return (
     <Layout>
-      <RenderBody home={doc.node} projects={projects} meta={meta} />
+      <Homepage home={doc} projects={projects} meta={meta} />
     </Layout>
   )
 }
 
 export default Component;
 
-RenderBody.propTypes = {
+Homepage.propTypes = {
   home: PropTypes.object.isRequired,
   projects: PropTypes.array.isRequired,
   meta: PropTypes.object.isRequired,
 }
 
 export const query = graphql`
-  {
-    allPrismicHomepage {
-      edges {
-        node {
-          data {
-            hero_title {
-              text
-              richText
-            }
-            hero_image {
-              url
-            }
-            hero_button_text {
-              text
-              richText
-            }
-            content {
-              text
-            }
-            about_title {
-              text
-              richText
-            }
-            about_bio {
-              text
-            }
-            about_links {
-              about_link {
-                text
-                richText
-              }
-            }
+  query HomepageQuery($uid: String, $lang: String) {
+    prismicHomepage(uid: { eq: $uid }, lang: { eq: $lang }) {
+      data {
+        hero_title {
+          text
+          richText
+        }
+        hero_image {
+          url
+        }
+        hero_button_text {
+          text
+          richText
+        }
+        content {
+          text
+        }
+        about_title {
+          text
+          richText
+        }
+        about_bio {
+          text
+        }
+        about_links {
+          about_link {
+            text
+            richText
           }
         }
       }

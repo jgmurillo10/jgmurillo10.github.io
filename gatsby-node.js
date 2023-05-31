@@ -13,10 +13,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await wrapper(
     graphql(`
       {
+        allPrismicHomepage {
+          edges {
+            node {
+              uid
+              url
+              lang
+            }
+          }
+        }
         allPrismicProject {
           edges {
             node {
               uid
+              url
             }
           }
         }
@@ -24,6 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               uid
+              url
             }
           }
         }
@@ -31,29 +42,33 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
+  const homepageList = result.data.allPrismicHomepage.edges
   const projectsList = result.data.allPrismicProject.edges
   const postsList = result.data.allPrismicPost.edges
 
+  const homepageTemplate = require.resolve("./src/templates/home.jsx")
   const projectTemplate = require.resolve("./src/templates/project.jsx")
   const postTemplate = require.resolve("./src/templates/post.jsx")
 
-  projectsList.forEach(edge => {
-    // The uid you assigned in Prismic is the slug!
-    console.log("forEach")
-    console.log({
-      type: "Project",
-      match: "/work/:uid",
-      path: `/work/${edge.node.uid}`,
-      component: projectTemplate,
+  homepageList.forEach(edge => {
+    createPage({
+      type: "Homepage",
+      match: "/",
+      path: edge.node.lang === 'en-us' ? '/' : edge.node.url,
+      component: homepageTemplate,
       context: {
-        // Pass the unique ID (uid) through context so the template can filter by it
         uid: edge.node.uid,
+        lang: edge.node.lang
       },
     })
+  })
+
+  projectsList.forEach(edge => {
+    // The uid you assigned in Prismic is the slug!
     createPage({
       type: "Project",
       match: "/work/:uid",
-      path: `/work/${edge.node.uid}`,
+      path: edge.node.url,
       component: projectTemplate,
       context: {
         // Pass the unique ID (uid) through context so the template can filter by it
@@ -64,9 +79,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   postsList.forEach(edge => {
     createPage({
-      type: "Project",
+      type: "Post",
       match: "/blog/:uid",
-      path: `/blog/${edge.node.uid}`,
+      path: edge.node.url,
       component: postTemplate,
       context: {
         uid: edge.node.uid,
