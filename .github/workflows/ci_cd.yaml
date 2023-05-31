@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env.production
       - name: Build
-        run: GATSBY_PRISMIC_REPO_NAME=$repoName PRISMIC_ACCESS_TOKEN=$prismicToken PRISMIC_CUSTOM_TYPES_API_TOKEN=$prismicTypesToken npm run build
+        run: GATSBY_PRISMIC_REPO_NAME=${{ secrets.GATSBY_PRISMIC_REPO_NAME }} PRISMIC_ACCESS_TOKEN=${{ secrets.PRISMIC_ACCESS_TOKEN }} PRISMIC_CUSTOM_TYPES_API_TOKEN=${{ secrets.PRISMIC_CUSTOM_TYPES_API_TOKEN }} npm run build
       - name: Create CNAME
         run: |
           touch public/CNAME
