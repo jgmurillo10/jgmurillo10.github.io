@@ -13,9 +13,6 @@ jobs:
   CI-CD:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Create env file'
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > .env.production
       - name: Check out repository code
         uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -23,6 +20,9 @@ jobs:
           node-version: '18'
       - name: Install packages
         run: npm install
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env.production
       - name: Build
         run: GATSBY_PRISMIC_REPO_NAME=$repoName PRISMIC_ACCESS_TOKEN=$prismicToken PRISMIC_CUSTOM_TYPES_API_TOKEN=$prismicTypesToken npm run build
       - name: Create CNAME
