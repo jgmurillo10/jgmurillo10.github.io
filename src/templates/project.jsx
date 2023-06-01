@@ -67,7 +67,6 @@ const ProjectStack = styled("div")`
 `
 
 const Project = ({ project, meta }) => {
-  console.log('>>>', {project})
   const { formatMessage } = useIntl();
   return (
     <>
@@ -147,7 +146,7 @@ const Component = ({ data, location }) => {
   const { language } = useUpdateLanguage({ location })
   const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
   const meta = data.site.siteMetadata
-  return <Project project={projectContent} meta={meta} />
+  return <Project project={projectContent || data.allPrismicProject.edges[0].node.data} meta={meta} />
 }
 
 export default Component;

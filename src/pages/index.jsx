@@ -216,7 +216,6 @@ const Homepage = ({ home, projects, meta }) => (
 )
 
 const Component = ({ data, location }) => {
-  console.log('>>', {location})
   //Required check for no data being returned
   const { language } = useUpdateLanguage({ location });
   const doc = data.allPrismicHomepage.edges.find(edge => edge.node.lang === language.current);
