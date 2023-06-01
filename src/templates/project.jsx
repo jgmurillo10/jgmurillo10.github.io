@@ -67,6 +67,7 @@ const ProjectStack = styled("div")`
 `
 
 const Project = ({ project, meta }) => {
+  console.log('>>>', {project})
   const { formatMessage } = useIntl();
   return (
     <>
@@ -142,8 +143,8 @@ const Project = ({ project, meta }) => {
   )
 }
 
-const Component = ({ data }) => {
-  const { language } = useUpdateLanguage(data.prismicProject)
+const Component = ({ data, location }) => {
+  const { language } = useUpdateLanguage({ location })
   const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
   const meta = data.site.siteMetadata
   return <Project project={projectContent} meta={meta} />
@@ -172,6 +173,7 @@ export const query = graphql`
           }
           data {
             project_title {
+              text
               richText
             }
             project_preview_description {

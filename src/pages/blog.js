@@ -94,8 +94,8 @@ const Blog = ({ posts, meta }) => (
   </>
 )
 
-const Component = ({ data }) => {
-  const { language } = useUpdateLanguage();
+const Component = ({ data, location }) => {
+  const { language } = useUpdateLanguage({ location });
   const posts = data.allPrismicPost.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata
   if (!posts) return null

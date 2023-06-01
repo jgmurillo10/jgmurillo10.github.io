@@ -215,9 +215,10 @@ const Homepage = ({ home, projects, meta }) => (
   </>
 )
 
-const Component = ({ data }) => {
+const Component = ({ data, location }) => {
+  console.log('>>', {location})
   //Required check for no data being returned
-  const { language } = useUpdateLanguage();
+  const { language } = useUpdateLanguage({ location });
   const doc = data.allPrismicHomepage.edges.find(edge => edge.node.lang === language.current);
   const projects = data.allPrismicProject.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata

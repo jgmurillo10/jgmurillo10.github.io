@@ -170,8 +170,9 @@ const Post = ({ post, meta }) => {
   )
 }
 
-const Component = ({ data }) => {
-  const { language } = useUpdateLanguage(data.prismicPost)
+const Component = ({ data, location }) => {
+  console.log('> from post ', {location})
+  const { language } = useUpdateLanguage({ doc: data.prismicPost, location })
   const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data;
   const meta = data.site.siteMetadata
   return <Post post={postContent} meta={meta} />

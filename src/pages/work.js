@@ -93,8 +93,8 @@ const Work = ({ projects, meta }) => {
   )
 }
 
-const Component = ({ data }) => {
-  const { language } = useUpdateLanguage();
+const Component = ({ data, location }) => {
+  const { language } = useUpdateLanguage({ location });
   const projects = data.allPrismicProject.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata
   if (!projects) return null

@@ -6,21 +6,21 @@ const getLangFromDoc = (doc) => ({
   alternates: doc.alternate_languages.map(alternate => alternate.document.url).map(alternate => alternate.replace('/en-us', '/')),
 })
 
-const getLangFromUrl = (path = window.location.pathname) => path.includes('es-co') ? {
+const getLangFromUrl = (pathname) => pathname.includes('es-co') ? {
   current: 'es-co',
-  alternates: [path].map(a =>a.replace('/es-co', '')),
+  alternates: [pathname].map(a =>a.replace('/es-co', '')),
 } : {
   current: 'en-us',
-  alternates: [`/es-co${path}`],
+  alternates: [`/es-co${pathname}`],
 }
 
-export const useUpdateLanguage = (doc) => {
+export const useUpdateLanguage = (args) => {
   const { setLanguage } = useContext(LanguageContext)
-  const lang = doc ? getLangFromDoc(doc) : getLangFromUrl();
+  const lang = args?.doc ? getLangFromDoc(args.doc) : getLangFromUrl(args?.location?.pathname);
 
   useEffect(() => {
     setLanguage(lang);
-  }, [doc, setLanguage])
+  }, [args.doc, setLanguage])
 
   return { language: lang }
 }
