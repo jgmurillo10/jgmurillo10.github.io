@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { PrismicRichText } from "@prismicio/react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
@@ -10,6 +10,8 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
+import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
+import { Link } from "gatsby-plugin-intl"
 
 const Hero = styled("div")`
   padding-top: 2.5em;
@@ -215,15 +217,16 @@ const Homepage = ({ home, projects, meta }) => (
 
 const Component = ({ data }) => {
   //Required check for no data being returned
-  const doc = data.prismicHomepage;
-  const projects = data.allPrismicProject.edges
+  const { language } = useUpdateLanguage();
+  const doc = data.allPrismicHomepage.edges.find(edge => edge.node.lang === language.current);
+  const projects = data.allPrismicProject.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata
 
   if (!doc || !projects) return null
 
   return (
     <Layout>
-      <Homepage home={doc} projects={projects} meta={meta} />
+      <Homepage home={doc.node} projects={projects} meta={meta} />
     </Layout>
   )
 }
@@ -237,34 +240,47 @@ Homepage.propTypes = {
 }
 
 export const query = graphql`
-  query HomepageQuery($uid: String, $lang: String) {
-    prismicHomepage(uid: { eq: $uid }, lang: { eq: $lang }) {
-      data {
-        hero_title {
-          text
-          richText
-        }
-        hero_image {
-          url
-        }
-        hero_button_text {
-          text
-          richText
-        }
-        content {
-          text
-        }
-        about_title {
-          text
-          richText
-        }
-        about_bio {
-          text
-        }
-        about_links {
-          about_link {
-            text
-            richText
+  query HomepageQuery {
+    allPrismicHomepage {
+      edges {
+        node {
+          lang
+          alternate_languages {
+            lang
+            document {
+              ... on PrismicHomepage {
+                url
+              }
+            }
+          }
+          data {
+            hero_title {
+              text
+              richText
+            }
+            hero_image {
+              url
+            }
+            hero_button_text {
+              text
+              richText
+            }
+            content {
+              text
+            }
+            about_title {
+              text
+              richText
+            }
+            about_bio {
+              text
+            }
+            about_links {
+              about_link {
+                text
+                richText
+              }
+            }
           }
         }
       }
@@ -272,6 +288,7 @@ export const query = graphql`
     allPrismicProject {
       edges {
         node {
+          lang
           data {
             project_title {
               text

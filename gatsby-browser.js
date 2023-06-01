@@ -3,8 +3,9 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+import React from "react"
+import { LanguageProvider } from "./src/context/Language"
 
-// const { registerLinkResolver } = require('gatsby-source-prismic-graphql');
-// const { linkResolver } = require('./src/utils/prismic-configuration');
-
-// registerLinkResolver(linkResolver);
+export const wrapRootElement = ({ element }) => (
+  <LanguageProvider>{element}</LanguageProvider>
+);

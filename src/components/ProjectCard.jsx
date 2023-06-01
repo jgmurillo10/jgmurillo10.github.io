@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
 import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import colors from "styles/colors"
 import PropTypes from "prop-types"
+import { Link, FormattedMessage } from "gatsby-plugin-intl";
 
 const ProjectCardContainer = styled(Link)`
   display: grid;
@@ -164,7 +164,7 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
       <ProjectCardTitle>{title.text}</ProjectCardTitle>
       <ProjectCardBlurb><PrismicRichText field={description.richText} /></ProjectCardBlurb>
       <ProjectCardAction className="ProjectCardAction">
-        Details <span>&#8594;</span>
+        <FormattedMessage id="details" /> <span>&#8594;</span>
       </ProjectCardAction>
     </ProjectCardContent>
     <ProjectCardImageContainer className="ProjectCardImageContainer">

@@ -48,7 +48,7 @@ const Footer = () => (
       target="_blank"
       href="https://www.marguerite.io/?utm_source=prist&utm_medium=footer&utm_campaign=prist_starter"
     >
-      © 2022
+      © 2023
     </FooterAuthor>
   </FooterContainer>
 )

@@ -7,6 +7,8 @@ import styled from "@emotion/styled"
 import colors from "styles/colors"
 import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
+import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
+import { useIntl } from "gatsby-plugin-intl";
 
 const PostHeroContainer = styled("div")`
   max-height: 500px;
@@ -93,6 +95,7 @@ const PostDate = styled("div")`
 `
 
 const Post = ({ post, meta }) => {
+  const { formatMessage } = useIntl();
   return (
     <>
       <Helmet
@@ -160,7 +163,7 @@ const Post = ({ post, meta }) => {
         )}
         <PostBody><PrismicRichText field={post.post_body.richText} /></PostBody>
         <Newsletter
-          body={`Si te gustó este post agrega tu mail aquí abajo y dale "Submit" para mantenerte al tanto`}
+          body={formatMessage({ id: "newsletter" })}
         />
       </Layout>
     </>
@@ -168,7 +171,8 @@ const Post = ({ post, meta }) => {
 }
 
 const Component = ({ data }) => {
-  const postContent = data.prismicPost.data
+  const { language } = useUpdateLanguage(data.prismicPost)
+  const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data;
   const meta = data.site.siteMetadata
   return <Post post={postContent} meta={meta} />
 }
@@ -182,34 +186,47 @@ Post.propTypes = {
 
 export const query = graphql`
   query PostQuery($uid: String) {
-    prismicPost(uid: {eq: $uid}) {
-      id
-      uid
-      data {
-        post_author
-        post_title {
-          richText
-          text
-        }
-        post_hero_annotation {
-          richText
-        }
-        post_hero_image {
-          url
-        }
-        post_meta_image {
-          url
-        }
-        post_date(fromNow: true)
-        post_category {
-          richText
-        }
-        post_preview_description {
-          text
-        }
-        post_body {
-          richText
-          text
+    allPrismicPost(filter: { uid: { eq: $uid } }) {
+      edges {
+        node {
+          id
+          uid
+          lang
+          alternate_languages {
+            lang
+            document {
+              ... on PrismicPost {
+                url
+              }
+            }
+          }
+          data {
+            post_author
+            post_title {
+              richText
+              text
+            }
+            post_hero_annotation {
+              richText
+            }
+            post_hero_image {
+              url
+            }
+            post_meta_image {
+              url
+            }
+            post_date(fromNow: true)
+            post_category {
+              richText
+            }
+            post_preview_description {
+              text
+            }
+            post_body {
+              richText
+              text
+            }
+          }
         }
       }
     }

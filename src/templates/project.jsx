@@ -3,11 +3,13 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { PrismicRichText } from "@prismicio/react"
 import Button from "components/_ui/Button"
 import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
+import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
+import { useIntl, FormattedMessage, Link } from "gatsby-plugin-intl"
 
 const ProjectHeroContainer = styled("div")`
   background: ${colors.grey200};
@@ -65,6 +67,7 @@ const ProjectStack = styled("div")`
 `
 
 const Project = ({ project, meta }) => {
+  const { formatMessage } = useIntl();
   return (
     <>
       <Helmet
@@ -128,11 +131,11 @@ const Project = ({ project, meta }) => {
         <ProjectBody>
           <PrismicRichText field={project.project_description.richText} />
           <WorkLink to={"/work"}>
-            <Button className="Button--secondary">See other work</Button>
+            <Button className="Button--secondary"><FormattedMessage id="moreWork" /></Button>
           </WorkLink>
         </ProjectBody>
         <Newsletter
-          body={`Subscribe here to keep up to date on this or other projects.`}
+          body={formatMessage({ id: "subscribeDescription" })}
         />
       </Layout>
     </>
@@ -140,7 +143,8 @@ const Project = ({ project, meta }) => {
 }
 
 const Component = ({ data }) => {
-  const projectContent = data.prismicProject.data
+  const { language } = useUpdateLanguage(data.prismicProject)
+  const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
   const meta = data.site.siteMetadata
   return <Project project={projectContent} meta={meta} />
 }
@@ -153,33 +157,46 @@ Project.propTypes = {
 
 export const query = graphql`
   query ProjectQuery($uid: String) {
-    prismicProject(uid: {eq: $uid}) {
-      uid
-      data {
-        project_title {
-          richText
-        }
-        project_preview_description {
-          text
-        }
-        project_preview_thumbnail {
-          url
-        }
-        project_category {
-          text
-        }
-        project_post_date(fromNow: true)
-        project_is_public
-        project_is_featured
-        project_hero_image {
-          url
-        }
-        project_description {
-          richText
-        }
-        stack {
-          technology {
-            text
+    allPrismicProject(filter: { uid: { eq: $uid } }) {
+      edges {
+        node {
+          uid
+          lang
+          alternate_languages {
+            lang
+            document {
+              ... on PrismicProject {
+                url
+              }
+            }
+          }
+          data {
+            project_title {
+              richText
+            }
+            project_preview_description {
+              text
+            }
+            project_preview_thumbnail {
+              url
+            }
+            project_category {
+              text
+            }
+            project_post_date(fromNow: true)
+            project_is_public
+            project_is_featured
+            project_hero_image {
+              url
+            }
+            project_description {
+              richText
+            }
+            stack {
+              technology {
+                text
+              }
+            }
           }
         }
       }

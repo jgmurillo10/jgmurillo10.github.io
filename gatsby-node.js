@@ -22,19 +22,21 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        allPrismicProject {
+        allPrismicProject(sort: {lang: ASC}, filter: {lang: {eq: "en-us"}}) {
           edges {
             node {
               uid
               url
+              lang
             }
           }
         }
-        allPrismicPost {
+        allPrismicPost(sort: {lang: ASC}, filter: {lang: {eq: "en-us"}}) {
           edges {
             node {
               uid
               url
+              lang
             }
           }
         }
@@ -42,26 +44,11 @@ exports.createPages = async ({ graphql, actions }) => {
     `)
   )
 
-  const homepageList = result.data.allPrismicHomepage.edges
   const projectsList = result.data.allPrismicProject.edges
   const postsList = result.data.allPrismicPost.edges
 
-  const homepageTemplate = require.resolve("./src/templates/home.jsx")
   const projectTemplate = require.resolve("./src/templates/project.jsx")
   const postTemplate = require.resolve("./src/templates/post.jsx")
-
-  homepageList.forEach(edge => {
-    createPage({
-      type: "Homepage",
-      match: "/",
-      path: edge.node.lang === 'en-us' ? '/' : edge.node.url,
-      component: homepageTemplate,
-      context: {
-        uid: edge.node.uid,
-        lang: edge.node.lang
-      },
-    })
-  })
 
   projectsList.forEach(edge => {
     // The uid you assigned in Prismic is the slug!
@@ -73,6 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         // Pass the unique ID (uid) through context so the template can filter by it
         uid: edge.node.uid,
+        lang: edge.node.lang
       },
     })
   })

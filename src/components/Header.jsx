@@ -1,9 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 import Logo from "components/_ui/Logo"
+import LangSwitcher from "components/_ui/LangSwitcher"
+import { Link } from "gatsby-plugin-intl";
 
 const HeaderContainer = styled("div")`
   padding-top: 3.75em;
@@ -16,8 +17,9 @@ const HeaderContent = styled("div")`
 `
 
 const HeaderLinks = styled("div")`
+  align-items: baseline;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
   grid-gap: 7em;
   justify-content: flex-end;
   width: 100%;
@@ -85,6 +87,7 @@ const Header = () => (
         <Link activeClassName="Link--is-active" to="/blog">
           Blog
         </Link>
+        <LangSwitcher />
       </HeaderLinks>
     </HeaderContent>
   </HeaderContainer>

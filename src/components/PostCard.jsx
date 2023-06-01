@@ -1,9 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
 import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import PropTypes from "prop-types"
+import { Link, FormattedMessage } from "gatsby-plugin-intl"
 
 const PostCardContainer = styled(Link)`
   border: 1px solid ${colors.grey200};
@@ -90,7 +90,7 @@ const PostCard = ({ author, category, date, title, description, uid }) => (
     <PostTitle>{title.text}</PostTitle>
     <PostDescription><PrismicRichText field={description.richText} /></PostDescription>
     <PostCardAction className="PostCardAction">
-      Read more <span>&#8594;</span>
+      <FormattedMessage id="readMore" /> <span>&#8594;</span>
     </PostCardAction>
     <PostMetas>
       <PostAuthor>{author}</PostAuthor>

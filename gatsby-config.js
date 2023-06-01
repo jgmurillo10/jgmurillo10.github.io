@@ -37,6 +37,15 @@ module.exports = {
         linkResolver: require('./src/utils/linkResolver').linkResolver,
       },
     },
+    {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        path: `${__dirname}/src/intl`,
+        languages: [`en-us`, `es-co`],
+        defaultLanguage: `en-us`,
+        redirect: false,
+      },
+    },
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
     {
       resolve: `gatsby-plugin-google-gtag`,

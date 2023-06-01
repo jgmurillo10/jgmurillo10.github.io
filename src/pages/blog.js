@@ -6,6 +6,7 @@ import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import Layout from "components/Layout"
 import PostCard from "components/PostCard"
+import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 
 const BlogTitle = styled("h1")`
   margin-bottom: 1em;
@@ -94,7 +95,8 @@ const Blog = ({ posts, meta }) => (
 )
 
 const Component = ({ data }) => {
-  const posts = data.allPrismicPost.edges
+  const { language } = useUpdateLanguage();
+  const posts = data.allPrismicPost.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata
   if (!posts) return null
 
@@ -112,6 +114,7 @@ export const query = graphql`
     allPrismicPost(sort: {last_publication_date: DESC}) {
       edges {
         node {
+          lang
           id
           data {
             post_author

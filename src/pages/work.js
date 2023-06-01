@@ -6,6 +6,8 @@ import styled from "@emotion/styled"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import Button from "components/_ui/Button"
+import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
+import { FormattedMessage } from "gatsby-plugin-intl"
 
 const WorkTitle = styled("h1")`
   margin-bottom: 1em;
@@ -64,14 +66,7 @@ const Work = ({ projects, meta }) => {
         ].concat(meta)}
       />
       <Layout>
-        <a
-          href="https://forms.gle/x75wbdTKjTZqpywD6"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button>View private projects</Button>
-        </a>
-        <WorkTitle>Work</WorkTitle>
+        <WorkTitle><FormattedMessage id="work" /></WorkTitle>
         <>
           {projects
             .filter(project => logged || project.node.data.project_is_public)
@@ -86,13 +81,21 @@ const Work = ({ projects, meta }) => {
               />
             ))}
         </>
+        <a
+          href="https://forms.gle/x75wbdTKjTZqpywD6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button><FormattedMessage id="projectsCTA" /></Button>
+        </a>
       </Layout>
     </>
   )
 }
 
 const Component = ({ data }) => {
-  const projects = data.allPrismicProject.edges
+  const { language } = useUpdateLanguage();
+  const projects = data.allPrismicProject.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata
   if (!projects) return null
 
@@ -110,6 +113,7 @@ export const query = graphql`
     allPrismicProject {
       edges {
         node {
+          lang
           data {
             project_title {
               text
