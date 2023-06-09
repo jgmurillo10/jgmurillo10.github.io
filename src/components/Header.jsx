@@ -4,7 +4,7 @@ import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 import Logo from "components/_ui/Logo"
 import LangSwitcher from "components/_ui/LangSwitcher"
-import { Link } from "gatsby-plugin-intl";
+import { Link, FormattedMessage } from "gatsby-plugin-intl";
 
 const HeaderContainer = styled("div")`
   padding-top: 3.75em;
@@ -82,10 +82,10 @@ const Header = () => (
       </Link>
       <HeaderLinks>
         <Link activeClassName="Link--is-active" to="/work">
-          Work
+          <FormattedMessage id="work" />
         </Link>
         <Link activeClassName="Link--is-active" to="/blog">
-          Blog
+          <FormattedMessage id="blog" />
         </Link>
         <LangSwitcher />
       </HeaderLinks>
