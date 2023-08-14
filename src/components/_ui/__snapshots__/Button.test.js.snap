@@ -5,10 +5,14 @@ Array [
   <style
     dangerouslySetInnerHTML={
       Object {
-        "__html": ".css-moej36{padding:1em 2em;background:#73abff;font-weight:600;color:white;outline:none;border:none;font-size:1rem;border-radius:2px;position:relative;-webkit-transition:background 100ms ease-in-out;transition:background 100ms ease-in-out;}@media (max-width:600px){.css-moej36{padding:0.8em 1.8em;font-size:1em;}}.css-moej36 p{margin:0;}.css-moej36:before{content:\\"\\";position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient( 135deg, #FFA7FF 0%, #C495FF 100% );z-index:-1;}.css-moej36:hover{cursor:pointer;background:transparent;-webkit-transition:background 100ms ease-in-out;transition:background 100ms ease-in-out;}.css-moej36.Button--secondary{background:#e3efff;color:#4b84e5;padding:0.95em 1.8em;font-size:0.95rem;}.css-moej36.Button--secondary:hover{background:#cbdfff;-webkit-transition:background 100ms ease-in-out;transition:background 100ms ease-in-out;}",
+        "__html": ".css-moej36{padding:1em 2em;background:#73abff;font-weight:600;color:white;outline:none;border:none;font-size:1rem;border-radius:2px;position:relative;-webkit-transition:background 100ms ease-in-out;transition:background 100ms ease-in-out;}@media (max-width: 600px){.css-moej36{padding:0.8em 1.8em;font-size:1em;}}.css-moej36 p{margin:0;}.css-moej36:before{content:\\"\\";position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(
+      135deg,
+      #FFA7FF 0%,
+      #C495FF 100%
+    );z-index:-1;}.css-moej36:hover{cursor:pointer;background:transparent;-webkit-transition:background 100ms ease-in-out;transition:background 100ms ease-in-out;}.css-moej36.Button--secondary{background:#e3efff;color:#4b84e5;padding:0.95em 1.8em;font-size:0.95rem;}.css-moej36.Button--secondary:hover{background:#cbdfff;-webkit-transition:background 100ms ease-in-out;transition:background 100ms ease-in-out;}",
       }
     }
-    data-emotion-css="moej36"
+    data-emotion="css moej36"
   />,
   <button
     className="css-moej36"
