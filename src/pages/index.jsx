@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { PrismicRichText } from "@prismicio/react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
@@ -215,9 +215,10 @@ const Homepage = ({ home, projects, meta }) => (
   </>
 )
 
-const Component = ({ data, location }) => {
+const Component = ({ location }) => {
   //Required check for no data being returned
   const { language } = useUpdateLanguage({ location });
+  const data = useStaticQuery(query);
   const doc = data.allPrismicHomepage.edges.find(edge => edge.node.lang === language.current);
   const projects = data.allPrismicProject.edges.filter(edge => edge.node.lang === language.current);
   const meta = data.site.siteMetadata
@@ -239,7 +240,7 @@ Homepage.propTypes = {
   meta: PropTypes.object.isRequired,
 }
 
-export const query = graphql`
+const query = graphql`
   query HomepageQuery {
     allPrismicHomepage {
       edges {
