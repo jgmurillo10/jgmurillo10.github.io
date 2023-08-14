@@ -52,7 +52,6 @@ const PostCategory = styled("div")`
 `
 
 const PostTitle = styled("div")`
-  max-width: 550px;
   margin: 0 auto;
   text-align: center;
 
@@ -62,7 +61,7 @@ const PostTitle = styled("div")`
 `
 
 const PostBody = styled("div")`
-  max-width: 550px;
+  max-width: 768px;
   margin: 0 auto;
 
   .block-img {
