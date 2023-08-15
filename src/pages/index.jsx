@@ -175,13 +175,12 @@ const Component = ({ location }) => {
   const data = useStaticQuery(query);
   const doc = data.allPrismicHomepage.edges.find(edge => edge.node.lang === language.current);
   const projects = data.allPrismicProject.edges.filter(edge => edge.node.lang === language.current);
-  const meta = data.site.siteMetadata
 
   if (!doc || !projects) return null
 
   return (
     <Layout>
-      <Homepage home={doc.node} projects={projects} meta={meta} />
+      <Homepage home={doc.node} projects={projects} />
     </Layout>
   )
 }
@@ -191,7 +190,6 @@ export default Component;
 Homepage.propTypes = {
   home: PropTypes.object.isRequired,
   projects: PropTypes.array.isRequired,
-  meta: PropTypes.object.isRequired,
 }
 
 const query = graphql`
