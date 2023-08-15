@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
 import { PrismicRichText } from "@prismicio/react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
@@ -12,6 +11,7 @@ import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { Link } from "gatsby-plugin-intl"
+import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 const Hero = styled("div")`
   padding-top: 2.5em;
@@ -131,54 +131,32 @@ const WorkAction = styled(Link)`
   }
 `
 
-const Homepage = ({ home, projects, meta }) => (
+export const Head = () => {
+  const { title, description, author, image } = useSiteMetadata();
+  return (
+    <>
+      <title>{title}</title>
+      <meta name="title" content={title} />
+      <meta name="description" content={description} />
+
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="http://juanmurillo.co/" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+
+      <meta property="twitter:creator" content={author} />
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="http://juanmurillo.co/" />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
+      <meta property="twitter:image" content={image} />
+    </>
+  )
+}
+
+const Homepage = ({ home, projects }) => (
   <>
-    <Helmet
-      title={meta.title}
-      // titleTemplate={`%s | ${meta.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: meta.title,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:image`,
-          content: meta.image,
-        },
-        {
-          property: `twitter:image`,
-          content: meta.image,
-        },
-      ].concat(meta)}
-    />
     <Hero>
       <HeroImage src={home.data.hero_image.url} alt="" />
       <PrismicRichText field={home.data.hero_title.richText} />
