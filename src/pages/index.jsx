@@ -11,7 +11,6 @@ import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { Link } from "gatsby-plugin-intl"
-import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 const Hero = styled("div")`
   padding-top: 2.5em;
@@ -130,30 +129,7 @@ const WorkAction = styled(Link)`
     }
   }
 `
-
-export const Head = () => {
-  const { title, description, author, image } = useSiteMetadata();
-  return (
-    <>
-      <title>{title}</title>
-      <meta name="title" content={title} />
-      <meta name="description" content={description} />
-
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="http://juanmurillo.co/" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-
-      <meta property="twitter:creator" content={author} />
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="http://juanmurillo.co/" />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image} />
-    </>
-  )
-}
+export { Head } from './../components/Head'
 
 const Homepage = ({ home, projects }) => (
   <>
