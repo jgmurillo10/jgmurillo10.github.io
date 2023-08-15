@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import styled from "@emotion/styled"
 import dimensions from "styles/dimensions"
 import Layout from "components/Layout"
 import PostCard from "components/PostCard"
 import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
+import { Head as HeadBase } from "../components/Head"
 
 const BlogTitle = styled("h1")`
   margin-bottom: 1em;
@@ -28,85 +28,38 @@ const BlogGrid = styled("div")`
   }
 `
 
-const Blog = ({ posts, meta }) => (
-  <>
-    <Helmet
-      title={`Blog | Juan Murillo`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: `Blog | Juan Murillo`,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:image`,
-          content: meta.image,
-        },
-        {
-          property: `twitter:image`,
-          content: meta.image,
-        },
-      ].concat(meta)}
-    />
-    <Layout>
-      <BlogTitle>Blog</BlogTitle>
-      <BlogGrid>
-        {posts.map((post, i) => (
-          <PostCard
-            key={i}
-            author={post.node.data.post_author}
-            category={post.node.data.post_category}
-            title={post.node.data.post_title}
-            date={post.node.data.post_date}
-            description={post.node.data.post_preview_description}
-            uid={post.node.uid}
-          />
-        ))}
-      </BlogGrid>
-    </Layout>
-  </>
+export const Head =  () => <HeadBase title="Blog | Juan Murillo" />
+
+const Blog = ({ posts }) => (
+  <Layout>
+    <BlogTitle>Blog</BlogTitle>
+    <BlogGrid>
+      {posts.map((post, i) => (
+        <PostCard
+          key={i}
+          author={post.node.data.post_author}
+          category={post.node.data.post_category}
+          title={post.node.data.post_title}
+          date={post.node.data.post_date}
+          description={post.node.data.post_preview_description}
+          uid={post.node.uid}
+        />
+      ))}
+    </BlogGrid>
+  </Layout>
 )
 
 const Component = ({ data, location }) => {
   const { language } = useUpdateLanguage({ location });
   const posts = data.allPrismicPost.edges.filter(edge => edge.node.lang === language.current);
-  const meta = data.site.siteMetadata
   if (!posts) return null
 
-  return <Blog posts={posts} meta={meta} />
+  return <Blog posts={posts} />
 }
 export default Component;
 
 Blog.propTypes = {
   posts: PropTypes.array.isRequired,
-  meta: PropTypes.object.isRequired,
 }
 
 export const query = graphql`
@@ -132,14 +85,6 @@ export const query = graphql`
           }
           uid
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        image
       }
     }
   }

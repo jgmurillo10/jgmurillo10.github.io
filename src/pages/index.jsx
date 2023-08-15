@@ -266,13 +266,5 @@ const query = graphql`
         }
       }
     }
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        image
-      }
-    }
   }
 `

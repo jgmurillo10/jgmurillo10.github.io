@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import styled from "@emotion/styled"
 import Layout from "components/Layout"
@@ -8,88 +7,43 @@ import ProjectCard from "components/ProjectCard"
 import Button from "components/_ui/Button"
 import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { FormattedMessage } from "gatsby-plugin-intl"
+import { Head as HeadBase } from "../components/Head"
 
 const WorkTitle = styled("h1")`
   margin-bottom: 1em;
 `
+
+export const Head =  () => <HeadBase title="Work | Juan Murillo" />
 
 const Work = ({ projects, meta }) => {
   // TODO(jgmurillo10): Implement this.
   const [logged] = useState(false)
 
   return (
-    <>
-      <Helmet
-        title={`Work | Juan Murillo`}
-        // titleTemplate={`%s | Work | Juan Murillo`}
-        meta={[
-          {
-            name: `description`,
-            content: meta.description,
-          },
-          {
-            property: `og:title`,
-            content: `Work | Juan Murillo`,
-          },
-          {
-            property: `og:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: meta.author,
-          },
-          {
-            name: `twitter:title`,
-            content: meta.title,
-          },
-          {
-            name: `twitter:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:image`,
-            content: meta.image,
-          },
-          {
-            property: `twitter:image`,
-            content: meta.image,
-          },
-        ].concat(meta)}
-      />
-      <Layout>
-        <WorkTitle><FormattedMessage id="work" /></WorkTitle>
-        <>
-          {projects
-            .filter(project => logged || project.node.data.project_is_public)
-            .map((project, i) => (
-              <ProjectCard
-                key={i}
-                category={project.node.data.project_category}
-                title={project.node.data.project_title}
-                description={project.node.data.project_preview_description}
-                thumbnail={project.node.data.project_preview_thumbnail}
-                uid={project.node.uid}
-              />
-            ))}
-        </>
-        <a
-          href="https://forms.gle/x75wbdTKjTZqpywD6"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button><FormattedMessage id="projectsCTA" /></Button>
-        </a>
-      </Layout>
-    </>
+    <Layout>
+      <WorkTitle><FormattedMessage id="work" /></WorkTitle>
+      <>
+        {projects
+          .filter(project => logged || project.node.data.project_is_public)
+          .map((project, i) => (
+            <ProjectCard
+              key={i}
+              category={project.node.data.project_category}
+              title={project.node.data.project_title}
+              description={project.node.data.project_preview_description}
+              thumbnail={project.node.data.project_preview_thumbnail}
+              uid={project.node.uid}
+            />
+          ))}
+      </>
+      <a
+        href="https://forms.gle/x75wbdTKjTZqpywD6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button><FormattedMessage id="projectsCTA" /></Button>
+      </a>
+    </Layout>
   )
 }
 

@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import { PrismicRichText } from "@prismicio/react"
 import styled from "@emotion/styled"
@@ -9,6 +8,7 @@ import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
 import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { useIntl } from "gatsby-plugin-intl";
+import { Head as HeadBase } from "../components/Head";
 
 const PostHeroContainer = styled("div")`
   max-height: 500px;
@@ -93,94 +93,58 @@ const PostDate = styled("div")`
   margin: 0;
 `
 
-const Post = ({ post, meta }) => {
+export const Head = ({ data, location }) => {
+  const { language } = useUpdateLanguage({ doc: data.prismicPost, location })
+  const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data;
+
+  return (
+    <HeadBase
+      title={postContent.post_title.text + ' | Blog | Juan Murillo'}
+      description={postContent.post_preview_description.text}
+      image={postContent.post_meta_image.url}
+    />
+  )
+}
+
+const Post = ({ post }) => {
   const { formatMessage } = useIntl();
   return (
-    <>
-      <Helmet
-        title={`${post.post_title.text} | Blog`}
-        titleTemplate={`%s | ${meta.title}`}
-        meta={[
-          {
-            name: `description`,
-            content: meta.description,
-          },
-          {
-            property: `og:title`,
-            content: `${post.post_title.text} | Blog`,
-          },
-          {
-            property: `og:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: meta.author,
-          },
-          {
-            name: `twitter:title`,
-            content: meta.title,
-          },
-          {
-            name: `twitter:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:image`,
-            content: post.post_meta_image.url || meta.image,
-          },
-          {
-            property: `twitter:image`,
-            content: post.post_meta_image.url || meta.image,
-          },
-        ].concat(meta)}
+    <Layout>
+      <PostCategory><PrismicRichText field={post.post_category.richText} /></PostCategory>
+      <PostTitle><PrismicRichText field={post.post_title.richText} /></PostTitle>
+      <PostMetas>
+        <PostAuthor>{post.post_author}</PostAuthor>
+        <PostDate>
+          {post.post_date}
+        </PostDate>
+      </PostMetas>
+      {post.post_hero_image && (
+        <PostHeroContainer>
+          <img src={post.post_hero_image.url} alt="bees" />
+          <PostHeroAnnotation>
+            <PrismicRichText field={post.post_hero_annotation.richText} />
+          </PostHeroAnnotation>
+        </PostHeroContainer>
+      )}
+      <PostBody><PrismicRichText field={post.post_body.richText} /></PostBody>
+      <Newsletter
+        body={formatMessage({ id: "newsletter" })}
       />
-      <Layout>
-        <PostCategory><PrismicRichText field={post.post_category.richText} /></PostCategory>
-        <PostTitle><PrismicRichText field={post.post_title.richText} /></PostTitle>
-        <PostMetas>
-          <PostAuthor>{post.post_author}</PostAuthor>
-          <PostDate>
-            {post.post_date}
-          </PostDate>
-        </PostMetas>
-        {post.post_hero_image && (
-          <PostHeroContainer>
-            <img src={post.post_hero_image.url} alt="bees" />
-            <PostHeroAnnotation>
-              <PrismicRichText field={post.post_hero_annotation.richText} />
-            </PostHeroAnnotation>
-          </PostHeroContainer>
-        )}
-        <PostBody><PrismicRichText field={post.post_body.richText} /></PostBody>
-        <Newsletter
-          body={formatMessage({ id: "newsletter" })}
-        />
-      </Layout>
-    </>
+    </Layout>
   )
 }
 
 const Component = ({ data, location }) => {
   const { language } = useUpdateLanguage({ doc: data.prismicPost, location })
   const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data;
-  const meta = data.site.siteMetadata
-  return <Post post={postContent || data.allPrismicPost.edges[0].node.data} meta={meta} />
+
+  return <Post post={postContent || data.allPrismicPost.edges[0].node.data} />
 }
 
 export default Component;
 
 Post.propTypes = {
   post: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired,
 }
 
 export const query = graphql`
@@ -227,14 +191,6 @@ export const query = graphql`
             }
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        image
       }
     }
   }

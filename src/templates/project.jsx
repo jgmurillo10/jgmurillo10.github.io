@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import { graphql } from "gatsby"
@@ -10,6 +9,7 @@ import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
 import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { useIntl, FormattedMessage, Link } from "gatsby-plugin-intl"
+import { Head as HeadBase } from "../components/Head";
 
 const ProjectHeroContainer = styled("div")`
   background: ${colors.grey200};
@@ -66,87 +66,53 @@ const ProjectStack = styled("div")`
   justify-content: center;
 `
 
-const Project = ({ project, meta }) => {
-  const { formatMessage } = useIntl();
+export const Head = ({ data, location }) => {
+  const { language } = useUpdateLanguage({ doc: data.prismicProject, location })
+  const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
+
   return (
-    <>
-      <Helmet
-        title={`${project.project_title.text} | Projects`}
-        titleTemplate={`%s | ${meta.title}`}
-        meta={[
-          {
-            name: `description`,
-            content: meta.description,
-          },
-          {
-            property: `og:title`,
-            content: `${project.project_title.text} | Projects`,
-          },
-          {
-            property: `og:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: meta.author,
-          },
-          {
-            name: `twitter:title`,
-            content: meta.title,
-          },
-          {
-            name: `twitter:description`,
-            content: meta.description,
-          },
-          {
-            property: `og:image`,
-            content: meta.image,
-          },
-          {
-            property: `twitter:image`,
-            content: meta.image,
-          },
-        ].concat(meta)}
+    <HeadBase
+      title={projectContent.project_title.text + ' | Projects | Juan Murillo'}
+      description={projectContent.project_preview_description.text}
+      image={projectContent.project_preview_thumbnail.url}
+    />
+  )
+}
+
+const Project = ({ project }) => {
+  const { formatMessage } = useIntl();
+
+  return (
+    <Layout>
+      <ProjectTitle><PrismicRichText field={project.project_title.richText} /></ProjectTitle>
+      <ProjectStack>
+        {project.stack.map(({ technology }) => (
+          <StackPill key={technology.text}>{technology.text}</StackPill>
+        ))}
+      </ProjectStack>
+      {project.project_hero_image && (
+        <ProjectHeroContainer>
+          <img src={project.project_hero_image.url} alt="bees" />
+        </ProjectHeroContainer>
+      )}
+      <ProjectBody>
+        <PrismicRichText field={project.project_description.richText} />
+        <WorkLink to={"/work"}>
+          <Button className="Button--secondary"><FormattedMessage id="moreWork" /></Button>
+        </WorkLink>
+      </ProjectBody>
+      <Newsletter
+        body={formatMessage({ id: "subscribeDescription" })}
       />
-      <Layout>
-        <ProjectTitle><PrismicRichText field={project.project_title.richText} /></ProjectTitle>
-        <ProjectStack>
-          {project.stack.map(({ technology }) => (
-            <StackPill key={technology.text}>{technology.text}</StackPill>
-          ))}
-        </ProjectStack>
-        {project.project_hero_image && (
-          <ProjectHeroContainer>
-            <img src={project.project_hero_image.url} alt="bees" />
-          </ProjectHeroContainer>
-        )}
-        <ProjectBody>
-          <PrismicRichText field={project.project_description.richText} />
-          <WorkLink to={"/work"}>
-            <Button className="Button--secondary"><FormattedMessage id="moreWork" /></Button>
-          </WorkLink>
-        </ProjectBody>
-        <Newsletter
-          body={formatMessage({ id: "subscribeDescription" })}
-        />
-      </Layout>
-    </>
+    </Layout>
   )
 }
 
 const Component = ({ data, location }) => {
   const { language } = useUpdateLanguage({ location })
   const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
-  const meta = data.site.siteMetadata
-  return <Project project={projectContent || data.allPrismicProject.edges[0].node.data} meta={meta} />
+
+  return <Project project={projectContent || data.allPrismicProject.edges[0].node.data} />
 }
 
 export default Component;
@@ -200,14 +166,6 @@ export const query = graphql`
             }
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        image
       }
     }
   }
