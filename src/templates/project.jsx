@@ -7,9 +7,9 @@ import { PrismicRichText } from "@prismicio/react"
 import Button from "components/_ui/Button"
 import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
-import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { useIntl, FormattedMessage, Link } from "gatsby-plugin-intl"
 import { Head as HeadBase } from "../components/Head";
+import { useProject } from "../hooks/useGetEntity"
 
 const ProjectHeroContainer = styled("div")`
   background: ${colors.grey200};
@@ -67,15 +67,13 @@ const ProjectStack = styled("div")`
 `
 
 export const Head = ({ data, location }) => {
-  const { language } = useUpdateLanguage({ doc: data.prismicProject, location })
-  const fallbackProject = data.allPrismicProject.edges[0].node.data
-  const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data || fallbackProject
+  const { project } = useProject({ data, location })
 
   return (
     <HeadBase
-      title={projectContent.project_title.text + ' | Projects | Juan Murillo'}
-      description={projectContent.project_preview_description.text}
-      image={projectContent.project_preview_thumbnail.url}
+      title={project.project_title.text + ' | Projects | Juan Murillo'}
+      description={project.project_preview_description.text}
+      image={project.project_preview_thumbnail.url}
     />
   )
 }
@@ -110,10 +108,9 @@ const Project = ({ project }) => {
 }
 
 const Component = ({ data, location }) => {
-  const { language } = useUpdateLanguage({ location })
-  const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
+  const { project } = useProject({ data, location })
 
-  return <Project project={projectContent || data.allPrismicProject.edges[0].node.data} />
+  return <Project project={project} />
 }
 
 export default Component;

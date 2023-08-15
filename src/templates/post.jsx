@@ -6,9 +6,9 @@ import styled from "@emotion/styled"
 import colors from "styles/colors"
 import Layout from "components/Layout"
 import Newsletter from "../components/_ui/Newsletter"
-import { useUpdateLanguage } from "../hooks/useUpdateLanguage"
 import { useIntl } from "gatsby-plugin-intl";
 import { Head as HeadBase } from "../components/Head";
+import { usePost } from "../hooks/useGetEntity"
 
 const PostHeroContainer = styled("div")`
   max-height: 500px;
@@ -94,15 +94,13 @@ const PostDate = styled("div")`
 `
 
 export const Head = ({ data, location }) => {
-  const { language } = useUpdateLanguage({ doc: data.prismicPost, location })
-  const fallbackPost = data.allPrismicPost.edges[0].node.data
-  const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data || fallbackPost;
+  const { post } = usePost({ data, location });
 
   return (
     <HeadBase
-      title={postContent.post_title.text + ' | Blog | Juan Murillo'}
-      description={postContent.post_preview_description.text}
-      image={postContent.post_meta_image.url}
+      title={post.post_title.text + ' | Blog | Juan Murillo'}
+      description={post.post_preview_description.text}
+      image={post.post_meta_image.url}
     />
   )
 }
@@ -136,10 +134,9 @@ const Post = ({ post }) => {
 }
 
 const Component = ({ data, location }) => {
-  const { language } = useUpdateLanguage({ doc: data.prismicPost, location })
-  const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data;
+  const { post } = usePost({ data, location })
 
-  return <Post post={postContent || data.allPrismicPost.edges[0].node.data} />
+  return <Post post={post} />
 }
 
 export default Component;
