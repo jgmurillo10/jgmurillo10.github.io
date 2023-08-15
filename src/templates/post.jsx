@@ -95,7 +95,8 @@ const PostDate = styled("div")`
 
 export const Head = ({ data, location }) => {
   const { language } = useUpdateLanguage({ doc: data.prismicPost, location })
-  const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data;
+  const fallbackPost = data.allPrismicPost.edges[0].node.data
+  const postContent = data.allPrismicPost.edges.find(edge => edge.node.lang === language.current)?.node.data || fallbackPost;
 
   return (
     <HeadBase

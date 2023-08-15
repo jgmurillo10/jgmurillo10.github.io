@@ -68,7 +68,8 @@ const ProjectStack = styled("div")`
 
 export const Head = ({ data, location }) => {
   const { language } = useUpdateLanguage({ doc: data.prismicProject, location })
-  const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data;
+  const fallbackProject = data.allPrismicProject.edges[0].node.data
+  const projectContent = data.allPrismicProject.edges.find(edge => edge.node.lang === language.current)?.node.data || fallbackProject
 
   return (
     <HeadBase
