@@ -9,6 +9,7 @@ import Newsletter from "../components/_ui/Newsletter"
 import { useIntl } from "gatsby-plugin-intl";
 import { Head as HeadBase } from "../components/Head";
 import { usePost } from "../hooks/useGetEntity"
+import { getReadingTime } from "../utils/blog"
 
 const PostHeroContainer = styled("div")`
   max-height: 500px;
@@ -107,6 +108,8 @@ export const Head = ({ data, location }) => {
 
 const Post = ({ post }) => {
   const { formatMessage } = useIntl();
+  const { minutes } = getReadingTime(post.post_body.text);
+
   return (
     <Layout>
       <PostCategory><PrismicRichText field={post.post_category.richText} /></PostCategory>
@@ -116,6 +119,7 @@ const Post = ({ post }) => {
         <PostDate>
           {post.post_date}
         </PostDate>
+        <p>{minutes} min</p>
       </PostMetas>
       {post.post_hero_image && (
         <PostHeroContainer>
