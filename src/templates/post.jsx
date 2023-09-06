@@ -73,6 +73,14 @@ const PostBody = styled("div")`
       width: 100%;
     }
   }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
 
 const PostMetas = styled("div")`
