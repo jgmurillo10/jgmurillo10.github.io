@@ -76,6 +76,9 @@ const PostBody = styled("div")`
 
   a {
     text-decoration: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 
     &:hover {
       text-decoration: underline;
