@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0e14;
+  --foreground: #ecedf6;
+  --surface: #0b0e14;
+  --surface-container-low: #10131a;
+  --surface-container: #161a21;
+  --surface-container-high: #1c2028;
+  --surface-container-highest: #22262f;
+  --surface-bright: #282c36;
+  --surface-variant: #22262f;
+  --primary: #aca3ff;
+  --primary-dim: #6f5fea;
+  --primary-container: #9e93ff;
+  --secondary: #00d2ff;
+  --secondary-dim: #00c3ed;
+  --secondary-container: #00677f;
+  --tertiary: #b0aaff;
+  --on-surface: #ecedf6;
+  --on-surface-variant: #a9abb3;
+  --outline: #73757d;
+  --outline-variant: #45484f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-low: var(--surface-container-low);
+  --color-surface-mid: var(--surface-container);
+  --color-surface-high: var(--surface-container-high);
+  --color-surface-highest: var(--surface-container-highest);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-variant: var(--surface-variant);
+  --color-primary: var(--primary);
+  --color-primary-dim: var(--primary-dim);
+  --color-secondary: var(--secondary);
+  --color-secondary-dim: var(--secondary-dim);
+  --color-tertiary: var(--tertiary);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --font-sans: var(--font-manrope);
+  --font-body: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient button */
+.gradient-btn {
+  background: linear-gradient(135deg, var(--primary-dim) 0%, var(--secondary) 100%);
+}
+
+/* Ghost border */
+.ghost-border {
+  border: 1px solid rgba(69, 72, 79, 0.2);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(34, 38, 47, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ambient glow */
+.glow-primary {
+  box-shadow: 0 0 48px -12px rgba(108, 92, 231, 0.15);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 48px -12px rgba(0, 210, 255, 0.15);
+}
+
+/* Hero aurora effect */
+@keyframes aurora {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(60px, -40px) rotate(45deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 30px) rotate(90deg) scale(0.95);
+  }
+  75% {
+    transform: translate(40px, 20px) rotate(135deg) scale(1.05);
+  }
+}
+
+.aurora-blob {
+  animation: aurora 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.aurora-blob-2 {
+  animation: aurora 25s ease-in-out infinite reverse;
+  will-change: transform;
+}
+
+.aurora-blob-3 {
+  animation: aurora 18s ease-in-out infinite;
+  animation-delay: -7s;
+  will-change: transform;
+}
+
+/* Animated gradient border on hero photo */
+@keyframes border-rotate {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.rotating-border {
+  position: relative;
+}
+
+.rotating-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 1rem;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 40%,
+    var(--primary-dim) 50%,
+    var(--secondary) 60%,
+    transparent 70%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  animation: border-rotate 4s linear infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(108, 92, 231, 0.3);
+  color: #ecedf6;
+}
