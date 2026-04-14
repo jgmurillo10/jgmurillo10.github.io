@@ -1,0 +1,174 @@
+{
+  "Navbar": {
+    "work": "Work",
+    "services": "Services",
+    "experience": "Experience",
+    "about": "About",
+    "contact": "Contact",
+    "letsTalk": "Let's Talk"
+  },
+  "Hero": {
+    "greeting": "Hey, I'm",
+    "name": "Juan Murillo",
+    "basedIn": "based in Bogotá, working globally.",
+    "roles": {
+      "0": "product-minded engineer",
+      "1": "technical lead",
+      "2": "founder",
+      "3": "AI enthusiast",
+      "4": "coffee enthusiast"
+    },
+    "headlineLine1": "I love complex problems,",
+    "headlineLine2": "cutting-edge tech,",
+    "headlineLine3": "and",
+    "headlineHighlight": "AI.",
+    "bodyParagraph1Start": "At",
+    "bodyAtlassian": "Atlassian",
+    "bodyAtlassianText": ", I built the entire UI for managing custom domains and was a key contributor to closing",
+    "bodyAtlassianTicket": "CLOUD-6999",
+    "bodyAtlassianAfterTicket": ", a ticket open for over a decade. At",
+    "bodySnappr": "Snappr",
+    "bodySnapprText": ", I led the AI automation effort that took food image production from fully manual to 56% automated. At",
+    "bodyGoogle": "Google",
+    "bodyGoogleText": ", I helped optimize the Play Store marketing website.",
+    "bodyParagraph2Start": "Before all that, I co-founded a",
+    "bodyCoffeeStartup": "coffee startup",
+    "bodyParagraph2End": "and earned a Y Combinator interview in under a month.",
+    "ctaWork": "See how I work",
+    "ctaHello": "Say hello"
+  },
+  "FeaturedWork": {
+    "sectionLabel": "Selected Work",
+    "heading": "A few projects I'm proud of.",
+    "subheading": "Not just what shipped, but the context, the approach, and what I actually contributed.",
+    "theProblem": "The Problem",
+    "myRole": "My Role",
+    "studies": {
+      "0": {
+        "company": "Snappr",
+        "period": "2024 - Present",
+        "title": "Leading AI automation for food imagery",
+        "problem": "Worldwide delivery apps needed thousands of food images. Every image was manually shot, edited, and reviewed. The process didn't scale with demand.",
+        "approach": "As technical lead for the AI Food and AI Core teams, I led the automation pipeline: orchestrating image generation, labeling, and review through Temporal workflows on AWS. I stabilized and maintained the Next.js app that the ops team relies on daily, and coordinated across timezones with Ops and AI engineers.",
+        "result": "The team went from 0% to 56% automation. I didn't build every piece, but I led the pipeline, kept the system stable, and made sure the parts fit together.",
+        "resultLabel": "automated"
+      },
+      "1": {
+        "company": "Atlassian",
+        "period": "2022 - 2024",
+        "title": "Helping close a decade-old ticket",
+        "problem": "Custom domains for Atlassian products needed a full admin UI, secure input handling, and a real-time threat detection system before the feature could ship. The ticket (CLOUD-6999) had been open for over 10 years.",
+        "approach": "I architected the React UI for managing custom domains, with XSS protection and WCAG 2.1 AA accessibility, and led cross-team integration across Atlassian products. I also built the Certificate Transparency Logs monitoring component, an event-driven system in Node.js and Go on AWS Lambda, to detect man-in-the-middle attacks.",
+        "result": "My contributions were key parts of what it took to finally close this ticket. It was a team effort spanning multiple groups. I'm proud of the pieces I owned.",
+        "resultLabel": "ticket closed",
+        "linkLabel": "See the ticket"
+      },
+      "2": {
+        "company": "Arjé Coffee",
+        "period": "2019 - 2021",
+        "title": "From bean to browser in under a month",
+        "problem": "We wanted to build a subscription coffee marketplace connecting Colombian farms to global consumers. No team, no product, tight timeline.",
+        "approach": "We built the entire tech stack: React frontend, Node.js backend, payment integrations, order management APIs. Automated 66% of manual order review. Launched both the marketplace and the physical product from zero.",
+        "result": "We shipped the MVP in under a month and earned a Y Combinator interview. Building both the product and the tech taught me more about shipping than any job before it.",
+        "resultLabel": "to launch"
+      }
+    }
+  },
+  "Services": {
+    "sectionLabel": "What I Do",
+    "heading": "I go deep on three things.",
+    "capabilities": {
+      "0": {
+        "title": "Full-stack products",
+        "description": "Frontend to backend to infra. React, TypeScript, Node.js, Python, PostgreSQL, deployed on AWS or GCP. I like owning the full picture, from the UI someone sees to the pipeline running behind it."
+      },
+      "1": {
+        "title": "AI & automation",
+        "description": "Production AI agents, fine-tuned models with GRPO, and Temporal workflows that replaced manual pipelines. I enjoy the messy middle: figuring out where AI actually helps vs. where it just adds complexity."
+      },
+      "2": {
+        "title": "Leading engineering teams",
+        "description": "I've led teams of 3-8 engineers, run architecture reviews, and mentored across timezones. I care about code quality, but I care more about the team shipping the right thing together."
+      }
+    }
+  },
+  "Experience": {
+    "sectionLabel": "Experience",
+    "heading": "The short version.",
+    "timeline": {
+      "0": {
+        "company": "Snappr",
+        "role": "Senior Full-Stack Engineer II",
+        "period": "2024 - Present",
+        "description": "Technical lead for AI Food and AI Core teams. Leading the automation pipeline from 0% to 56%. Coordinating cross-timezone collaboration with Ops and AI teams on AWS."
+      },
+      "1": {
+        "company": "EPAM @ Atlassian",
+        "role": "Technical Lead",
+        "period": "2022 - 2024",
+        "description": "Key contributor to closing CLOUD-6999. Built the custom domains UI and threat detection monitoring. Managed and mentored a team of 3 engineers."
+      },
+      "2": {
+        "company": "Huge @ Google",
+        "role": "Senior Engineer",
+        "period": "2019 - 2022",
+        "description": "Optimized the Google Play marketing website performance. Built CI/CD pipelines. Created a Chrome Extension that reduced missing localizations in production by 30%."
+      },
+      "3": {
+        "company": "Arjé Coffee",
+        "role": "CTO & Co-founder",
+        "period": "2019 - 2021",
+        "description": "Built the subscription marketplace from scratch. Automated payments, launched in under a month, earned a Y Combinator interview."
+
+      }
+    }
+  },
+  "Lately": {
+    "sectionLabel": "Right Now",
+    "heading": "What I'm thinking about",
+    "subheading": "A few things I'm exploring, building, or just can't stop talking about.",
+    "thoughts": {
+      "0": {
+        "emoji": "\ud83e\udde0",
+        "title": "Bridging the technical gap",
+        "description": "Thinking a lot about how the best technology feels invisible. The real challenge isn't building powerful AI tools, it's making them so intuitive that non-technical teams adopt them without a second thought. That's where the biggest impact lives."
+      },
+      "1": {
+        "emoji": "\u26a1",
+        "title": "Vibe coding with Claude & Cursor",
+        "description": "I've been using AI coding tools daily, not as autocomplete, but as a thinking partner. Codex, Claude CLI, Cursor, Devin. The workflow is changing fast."
+      },
+      "2": {
+        "emoji": "\u2615",
+        "title": "Still obsessed with coffee",
+        "description": "Arjé Coffee taught me more about building products than any job. When you have to ship both the code and the physical product, you learn what actually matters to users."
+      }
+    }
+  },
+  "About": {
+    "sectionLabel": "About",
+    "heading": "A bit more context.",
+    "paragraph1": "I studied Systems & Computing Engineering at <strong>Universidad de los Andes</strong> in Bogotá. My first real project was Shipyard, an open-source React app built on top of <strong>navio.dev</strong> to help people explore large network visualizations without writing code. That's when I realized the projects I enjoy most are the ones that remove friction for others.",
+    "paragraph2": "That principle stuck. Whether I was building Google Play features used by millions, a security system protecting Atlassian's cloud infrastructure, or an AI pipeline replacing manual workflows at Snappr, I keep coming back to the same question: does this actually make someone's day easier?",
+    "paragraph3": "I've spoken at <strong>JSConf Colombia</strong> twice (2018 & 2023), mentored at Code Your Future, and I still build side projects for fun. I speak English and Spanish natively, and I work best with teams that move fast and care about craft."
+  },
+  "Contact": {
+    "sectionLabel": "Contact",
+    "heading": "I'm always up for a good conversation.",
+    "subheading": "Whether it's about technical advisory, speaking at your event, collaborating on something interesting, or just nerding out about coffee and code, just reach out.",
+    "basedIn": "Based in Colombia. Working remotely with global teams"
+  },
+  "Footer": {
+    "copyright": "Juan Murillo. Crafted with purpose."
+  },
+  "LanguageSwitcher": {
+    "en": "EN",
+    "es": "ES"
+  },
+  "Metadata": {
+    "title": "Juan Murillo | Senior Full-Stack Engineer & Technical Lead",
+    "description": "Senior Full-Stack Engineer with 7+ years at Google, Atlassian, and Snappr. I build scalable web apps, AI automation pipelines, and lead engineering teams. React, TypeScript, Python, AWS.",
+    "ogTitle": "Juan Murillo | Senior Full-Stack Engineer & Technical Lead",
+    "ogDescription": "Senior Full-Stack Engineer with 7+ years building at Google, Atlassian, and Snappr. AI automation, cloud architecture, and technical leadership."
+  }
+}
