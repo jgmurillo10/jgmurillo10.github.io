@@ -49,6 +49,8 @@ export default function Hero() {
         <div className="aurora-blob absolute top-[15%] left-[10%] w-[500px] h-[500px] bg-primary-dim/8 rounded-full blur-[100px]" />
         <div className="aurora-blob-2 absolute top-[40%] right-[5%] w-[400px] h-[350px] bg-secondary/5 rounded-full blur-[120px]" />
         <div className="aurora-blob-3 absolute bottom-[10%] left-[30%] w-[350px] h-[300px] bg-primary/4 rounded-full blur-[100px]" />
+        {/* Fade to background at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-background" />
       </div>
 
       {/* Mouse-follow spotlight */}
