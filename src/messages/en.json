@@ -1,172 +1,223 @@
 {
   "Navbar": {
-    "work": "Work",
-    "services": "Services",
-    "experience": "Experience",
-    "about": "About",
-    "contact": "Contact",
-    "letsTalk": "Let's Talk"
+    "work": "work",
+    "services": "services",
+    "experience": "experience",
+    "about": "about",
+    "contact": "contact",
+    "letsTalk": "let's talk"
+  },
+  "StatusBar": {
+    "deployed": "deployed",
+    "location": "Bogota · -05 UTC",
+    "status": "open to connect"
   },
   "Hero": {
-    "greeting": "Hey, I'm",
-    "name": "Juan Murillo",
-    "basedIn": "based in Bogotá, working globally.",
-    "roles": {
-      "0": "product-minded engineer",
-      "1": "technical lead",
-      "2": "founder",
-      "3": "AI enthusiast",
-      "4": "coffee enthusiast"
+    "statusTag": "open to connect · Q2 2026",
+    "roleTag": "senior full-stack · technical lead",
+    "line1": "Hey, I'm",
+    "firstName": "Juan",
+    "line2": "I build",
+    "underlined": "complex\u00a0things",
+    "line3": "with AI, code &",
+    "coffeeWord": "coffee",
+    "basedIn": "Bogota, working globally",
+    "typingItems": {
+      "0": "leading AI at Snappr",
+      "1": "pairing with Claude at 7am",
+      "2": "shipping Temporal workflows",
+      "3": "brewing the {n} cup",
+      "4": "trying new dev tools"
     },
-    "headlineLine1": "I love complex problems,",
-    "headlineLine2": "cutting-edge tech,",
-    "headlineLine3": "and",
-    "headlineHighlight": "AI.",
-    "bodyParagraph1Start": "At",
-    "bodyAtlassian": "Atlassian",
-    "bodyAtlassianText": ", I built the entire UI for managing custom domains and was a key contributor to closing",
-    "bodyAtlassianTicket": "CLOUD-6999",
-    "bodyAtlassianAfterTicket": ", a ticket open for over a decade. At",
-    "bodySnappr": "Snappr",
-    "bodySnapprText": ", I led the AI automation effort that took food image production from fully manual to 56% automated. At",
-    "bodyGoogle": "Google",
-    "bodyGoogleText": ", I helped optimize the Play Store marketing website.",
-    "bodyParagraph2Start": "Before all that, I co-founded a",
-    "bodyCoffeeStartup": "coffee startup",
-    "bodyParagraph2End": "and earned a Y Combinator interview in under a month.",
-    "ctaWork": "See how I work",
-    "ctaHello": "Say hello"
+    "ctaWork": "see selected work",
+    "ctaHello": "say hello",
+    "termTitle": "Senior Full-Stack Engineer & Technical Lead",
+    "termTeams": "led 3-8 engineers, 3 timezones",
+    "achievement1": "CLOUD-6999 closed after 10+ years",
+    "achievement2": "Food imagery automated 0% \u2192 56%",
+    "achievement3": "YC interview in under 30 days"
   },
   "FeaturedWork": {
-    "sectionLabel": "Selected Work",
-    "heading": "A few projects I'm proud of.",
-    "subheading": "Not just what shipped, but the context, the approach, and what I actually contributed.",
-    "theProblem": "The Problem",
-    "myRole": "My Role",
+    "headingStart": "A few projects I'm",
+    "headingAccent": "proud of",
+    "subheading": "Not just what shipped. The context, the approach, and what I actually contributed. I care about owning my slice honestly.",
+    "theProblem": "problem",
+    "myRole": "my role",
     "studies": {
       "0": {
         "company": "Snappr",
-        "period": "2024 - Present",
-        "title": "Leading AI automation for food imagery",
+        "period": "2024 \u2192 present",
+        "role": "technical lead",
+        "team": "AI Food · AI Core",
+        "statusValue": "\u25CF shipping",
+        "titleStart": "Leading AI automation for",
+        "titleAccent": "food imagery",
         "problem": "Worldwide delivery apps needed thousands of food images. Every image was manually shot, edited, and reviewed. The process didn't scale with demand.",
-        "approach": "As technical lead for the AI Food and AI Core teams, I led the automation pipeline: orchestrating image generation, labeling, and review through Temporal workflows on AWS. I stabilized and maintained the Next.js app that the ops team relies on daily, and coordinated across timezones with Ops and AI engineers.",
+        "approach": "As technical lead for AI Food and AI Core, I led the automation pipeline. Orchestrating image generation, labeling, and review through Temporal workflows on AWS. I stabilized the Next.js app Ops relies on daily, and coordinated across timezones with Ops and AI engineers.",
         "result": "The team went from 0% to 56% automation. I didn't build every piece, but I led the pipeline, kept the system stable, and made sure the parts fit together.",
         "resultLabel": "automated"
       },
       "1": {
         "company": "Atlassian",
-        "period": "2022 - 2024",
-        "title": "Helping close a decade-old ticket",
-        "problem": "Custom domains for Atlassian products needed a full admin UI, secure input handling, and a real-time threat detection system before the feature could ship. The ticket (CLOUD-6999) had been open for over 10 years.",
-        "approach": "I architected the React UI for managing custom domains, with XSS protection and WCAG 2.1 AA accessibility, and led cross-team integration across Atlassian products. I also built the Certificate Transparency Logs monitoring component, an event-driven system in Node.js and Go on AWS Lambda, to detect man-in-the-middle attacks.",
-        "result": "My contributions were key parts of what it took to finally close this ticket. It was a team effort spanning multiple groups. I'm proud of the pieces I owned.",
-        "resultLabel": "ticket closed",
-        "linkLabel": "See the ticket"
+        "period": "2022 \u2192 2024",
+        "role": "technical lead (via EPAM)",
+        "team": "Custom Domains",
+        "statusValue": "CLOUD-6999 · 10+ yrs",
+        "titleStart": "Helping close a",
+        "titleAccent": "decade-old ticket",
+        "problem": "Custom domains for Atlassian products needed a full admin UI, secure input handling, and real-time threat detection before the feature could ship. The ticket had been open for over ten years.",
+        "approach": "I architected the React UI for managing custom domains, with XSS protection and WCAG 2.1 AA accessibility, and led cross-team integration. I also built the Certificate Transparency Logs monitoring component: an event-driven system in Node.js and Go on AWS Lambda, to detect man-in-the-middle attacks.",
+        "result": "My contributions were key parts of what it took to finally close it. A team effort spanning multiple groups. I'm proud of the pieces I owned.",
+        "resultLabel": "ticket \u2192 closed",
+        "linkLabel": "see the ticket"
       },
       "2": {
-        "company": "Arjé Coffee",
-        "period": "2019 - 2021",
-        "title": "From bean to browser in under a month",
+        "company": "Arje Coffee",
+        "period": "2019 \u2192 2021",
+        "role": "CTO · co-founder",
+        "team": "2 founders · 0 \u2192 1",
+        "statusValue": "YC interview",
+        "titleStart": "From",
+        "titleAccent": "bean to browser",
         "problem": "We wanted to build a subscription coffee marketplace connecting Colombian farms to global consumers. No team, no product, tight timeline.",
         "approach": "We built the entire tech stack: React frontend, Node.js backend, payment integrations, order management APIs. Automated 66% of manual order review. Launched both the marketplace and the physical product from zero.",
-        "result": "We shipped the MVP in under a month and earned a Y Combinator interview. Building both the product and the tech taught me more about shipping than any job before it.",
+        "result": "Shipped the MVP in under a month and earned a Y Combinator interview. Building both the product and the tech taught me more about shipping than any job before.",
         "resultLabel": "to launch"
       }
     }
   },
   "Services": {
-    "sectionLabel": "What I Do",
-    "heading": "I go deep on three things.",
+    "headingStart": "I go",
+    "headingAccent": "deep",
+    "headingEnd": " on three things.",
+    "subheading": "I'd rather be great at a few things than passable at many. Here's where I tend to make the most impact.",
     "capabilities": {
       "0": {
-        "title": "Full-stack products",
+        "titleStart": "Full-stack ",
+        "titleAccent": "products",
+        "titleEnd": ", end-to-end.",
         "description": "Frontend to backend to infra. React, TypeScript, Node.js, Python, PostgreSQL, deployed on AWS or GCP. I like owning the full picture, from the UI someone sees to the pipeline running behind it."
       },
       "1": {
-        "title": "AI & automation",
-        "description": "Production AI agents, fine-tuned models with GRPO, and Temporal workflows that replaced manual pipelines. I enjoy the messy middle: figuring out where AI actually helps vs. where it just adds complexity."
+        "titleStart": "AI & automation that ",
+        "titleAccent": "actually ships",
+        "titleEnd": ".",
+        "description": "Production AI agents, fine-tuned models with GRPO, Temporal workflows replacing manual pipelines. I enjoy the messy middle: figuring out where AI actually helps vs. where it just adds complexity."
       },
       "2": {
-        "title": "Leading engineering teams",
-        "description": "I've led teams of 3-8 engineers, run architecture reviews, and mentored across timezones. I care about code quality, but I care more about the team shipping the right thing together."
+        "titleStart": "Leading engineering ",
+        "titleAccent": "teams",
+        "titleEnd": ".",
+        "description": "I've led teams of 3-8 engineers, run architecture reviews, and mentored across timezones. I care about code quality, but I care more about the team shipping the right thing, together."
       }
     }
   },
   "Experience": {
-    "sectionLabel": "Experience",
-    "heading": "The short version.",
+    "headingStart": "The",
+    "headingAccent": "short",
+    "headingEnd": "version.",
+    "subheading": "A condensed history.",
     "timeline": {
       "0": {
         "company": "Snappr",
         "role": "Senior Full-Stack Engineer II",
-        "period": "2024 - Present",
-        "description": "Technical lead for AI Food and AI Core teams. Leading the automation pipeline from 0% to 56%. Coordinating cross-timezone collaboration with Ops and AI teams on AWS."
+        "period": "2024 \u2192 now",
+        "description": "Technical lead for AI Food and AI Core. Leading the automation pipeline from 0% to 56%. Coordinating cross-timezone collaboration with Ops and AI teams on AWS."
       },
       "1": {
         "company": "EPAM @ Atlassian",
         "role": "Technical Lead",
-        "period": "2022 - 2024",
+        "period": "2022 \u2192 2024",
         "description": "Key contributor to closing CLOUD-6999. Built the custom domains UI and threat detection monitoring. Managed and mentored a team of 3 engineers."
       },
       "2": {
         "company": "Huge @ Google",
         "role": "Senior Engineer",
-        "period": "2019 - 2022",
-        "description": "Optimized the Google Play marketing website performance. Built CI/CD pipelines. Created a Chrome Extension that reduced missing localizations in production by 30%."
+        "period": "2019 \u2192 2022",
+        "description": "Optimized the Google Play marketing website performance. Built CI/CD pipelines. Shipped a Chrome Extension that reduced missing localizations in production by 30%."
       },
       "3": {
-        "company": "Arjé Coffee",
+        "company": "Arje Coffee",
         "role": "CTO & Co-founder",
-        "period": "2019 - 2021",
+        "period": "2019 \u2192 2021",
         "description": "Built the subscription marketplace from scratch. Automated payments, launched in under a month, earned a Y Combinator interview."
-
       }
     }
   },
   "Lately": {
-    "sectionLabel": "Right Now",
-    "heading": "What I'm thinking about",
+    "headingStart": "What I'm",
+    "headingAccent": "thinking",
+    "headingEnd": " about.",
     "subheading": "A few things I'm exploring, building, or just can't stop talking about.",
     "thoughts": {
       "0": {
-        "emoji": "\ud83e\udde0",
-        "title": "Bridging the technical gap",
-        "description": "Thinking a lot about how the best technology feels invisible. The real challenge isn't building powerful AI tools, it's making them so intuitive that non-technical teams adopt them without a second thought. That's where the biggest impact lives."
+        "titleStart": "Bridging the ",
+        "titleAccent": "technical gap",
+        "titleEnd": ".",
+        "description": "The best technology feels invisible. The real challenge isn't building powerful AI tools. It's making them so intuitive that non-technical teams adopt them without a second thought. That's where the biggest impact lives."
       },
       "1": {
-        "emoji": "\u26a1",
-        "title": "Vibe coding with Claude & Cursor",
-        "description": "I've been using AI coding tools daily, not as autocomplete, but as a thinking partner. Codex, Claude CLI, Cursor, Devin. The workflow is changing fast."
+        "titleStart": "Vibe coding with ",
+        "titleAccent": "Claude & Cursor",
+        "titleEnd": ".",
+        "description": "I've been using AI coding tools daily, not as autocomplete, but as a thinking partner. Codex, Claude CLI, Cursor, Devin. The workflow is changing fast, and I want to be early."
       },
       "2": {
-        "emoji": "\u2615",
-        "title": "Still obsessed with coffee",
-        "description": "Arjé Coffee taught me more about building products than any job. When you have to ship both the code and the physical product, you learn what actually matters to users."
+        "titleStart": "Still ",
+        "titleAccent": "obsessed",
+        "titleEnd": " with coffee.",
+        "description": "Arje taught me more about building products than any job. When you have to ship both the code and the physical product, you learn what actually matters to users."
       }
     }
   },
   "About": {
-    "sectionLabel": "About",
-    "heading": "A bit more context.",
-    "paragraph1": "I studied Systems & Computing Engineering at <strong>Universidad de los Andes</strong> in Bogotá. My first real project was Shipyard, an open-source React app built on top of <strong>navio.dev</strong> to help people explore large network visualizations without writing code. That's when I realized the projects I enjoy most are the ones that remove friction for others.",
-    "paragraph2": "That principle stuck. Whether I was building Google Play features used by millions, a security system protecting Atlassian's cloud infrastructure, or an AI pipeline replacing manual workflows at Snappr, I keep coming back to the same question: does this actually make someone's day easier?",
+    "headingStart": "A bit more",
+    "headingAccent": "context",
+    "location": "Bogota, CO · working globally",
+    "paragraph1": "I studied <em>Systems & Computing Engineering</em> at Universidad de los Andes in Bogota. My first real project was Shipyard, an open-source React app built on top of navio.dev, to help people explore large network visualizations without writing code. That's when I realized the projects I enjoy most are the ones that remove friction for others.",
+    "paragraph2": "That principle stuck. Whether I was building Google Play features used by millions, a security system protecting cloud infrastructure, or an AI pipeline replacing manual workflows, I keep coming back to the same question: <em>does this actually make someone's day easier?</em>",
     "paragraph3": "I've spoken at <strong>JSConf Colombia</strong> twice (2018 & 2023), mentored at Code Your Future, and I still build side projects for fun. I speak English and Spanish natively, and I work best with teams that move fast and care about craft."
   },
   "Contact": {
-    "sectionLabel": "Contact",
-    "heading": "I'm always up for a good conversation.",
-    "subheading": "Whether it's about technical advisory, speaking at your event, collaborating on something interesting, or just nerding out about coffee and code, just reach out.",
-    "basedIn": "Based in Colombia. Working remotely with global teams"
+    "headingStart": "I'm always up for a",
+    "headingAccent": "good conversation",
+    "subheading": "Whether it's about technical advisory, speaking at your event, collaborating on something interesting, or just nerding out about coffee and code. Reach out.",
+    "jsconfLabel": "JSConf Colombia 2023 talk"
   },
   "Footer": {
-    "copyright": "Juan Murillo. Crafted with purpose."
+    "basedIn": "Based in Colombia · working remotely with global teams",
+    "copyright": "\u00a9 2026 Juan Murillo · crafted with purpose & caffeine"
+  },
+  "CommandPalette": {
+    "placeholder": "Jump to section, toggle theme, copy email\u2026",
+    "noMatches": "No matches. Try \"work\", \"email\", or \"theme\".",
+    "groupNav": "navigate",
+    "groupActions": "actions",
+    "groupFun": "fun",
+    "goToTop": "Go to top",
+    "goToWork": "Work / selected projects",
+    "goToServices": "What I do",
+    "goToExperience": "Experience",
+    "goToNow": "Right now",
+    "goToAbout": "About",
+    "goToContact": "Contact",
+    "copyMarkdown": "Copy page as Markdown",
+    "copyEmail": "Copy email / juanchomurcas@gmail.com",
+    "openLinkedIn": "Open LinkedIn",
+    "openGitHub": "Open GitHub",
+    "sendEmail": "Send an email",
+    "viewCV": "View CV / resume",
+    "pourCoffee": "Pour another coffee",
+    "footerNav": "navigate",
+    "footerSelect": "select",
+    "footerClose": "close"
   },
   "LanguageSwitcher": {
     "en": "EN",
     "es": "ES"
   },
   "Metadata": {
-    "title": "Juan Murillo | Senior Full-Stack Engineer & Technical Lead",
+    "title": "Juan Murillo \u00b7 Senior Full-Stack Engineer & Technical Lead",
     "description": "Senior Full-Stack Engineer with 7+ years at Google, Atlassian, and Snappr. I build scalable web apps, AI automation pipelines, and lead engineering teams. React, TypeScript, Python, AWS.",
     "ogTitle": "Juan Murillo | Senior Full-Stack Engineer & Technical Lead",
     "ogDescription": "Senior Full-Stack Engineer with 7+ years building at Google, Atlassian, and Snappr. AI automation, cloud architecture, and technical leadership."
