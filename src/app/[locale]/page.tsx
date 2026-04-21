@@ -1,4 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
+import StatusBar from "@/components/StatusBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeaturedWork from "@/components/FeaturedWork";
@@ -8,6 +9,7 @@ import Lately from "@/components/Lately";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import CommandPalette from "@/components/CommandPalette";
 
 export default async function Home({
   params,
@@ -19,8 +21,9 @@ export default async function Home({
 
   return (
     <>
+      <StatusBar />
       <Navbar />
-      <main>
+      <main className="pt-[90px]">
         <Hero />
         <FeaturedWork />
         <Services />
@@ -30,6 +33,7 @@ export default async function Home({
         <Contact />
       </main>
       <Footer />
+      <CommandPalette />
     </>
   );
 }

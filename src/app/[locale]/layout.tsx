@@ -1,4 +1,4 @@
-import { Manrope, Inter } from "next/font/google";
+import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { NextIntlClientProvider } from "next-intl";
@@ -6,16 +6,23 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export function generateStaticParams() {
@@ -54,9 +61,7 @@ export async function generateMetadata({
     creator: "Juan Murillo",
     metadataBase: new URL("https://juanmurillo.co"),
     icons: {
-      icon: [
-        { url: "/icon.svg", type: "image/svg+xml" },
-      ],
+      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
       apple: "/icon.svg",
     },
     robots: {
@@ -122,7 +127,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${manrope.variable} ${inter.variable} h-full antialiased`}
+      className={`${jetbrainsMono.variable} ${instrumentSerif.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -141,7 +146,7 @@ export default async function LocaleLayout({
           href="https://juanmurillo.co/en"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="grain min-h-full flex flex-col">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -2,45 +2,90 @@
 
 import { useTranslations } from "next-intl";
 import FadeIn from "./FadeIn";
+import SectionHeader from "./SectionHeader";
 
-const thoughtKeys = [0, 1, 2];
+const glyphs = ["◐", "⌘", "☕"];
 
 export default function Lately() {
   const t = useTranslations("Lately");
 
   return (
-    <section className="relative py-32">
-      <div className="max-w-4xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-xs font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase text-on-surface-variant mb-4">
-            {t("sectionLabel")}
-          </p>
-          <h2 className="font-[family-name:var(--font-manrope)] text-3xl sm:text-4xl font-bold mb-4">
-            {t("heading")}
-          </h2>
-          <p className="font-[family-name:var(--font-inter)] text-on-surface-variant mb-16 max-w-lg">
-            {t("subheading")}
-          </p>
-        </FadeIn>
+    <section id="now">
+      <SectionHeader
+        idx="04"
+        file="right_now.md"
+        title={t("heading")}
+        lede={t("subheading")}
+      />
 
-        <div className="space-y-6">
-          {thoughtKeys.map((i) => (
-            <FadeIn key={i} delay={i * 120}>
-              <div className="group flex gap-5 p-6 rounded-xl bg-surface-low/50 ghost-border hover:bg-surface-highest/30 transition-colors duration-300">
-                <span className="text-2xl shrink-0 mt-0.5">{t(`thoughts.${i}.emoji`)}</span>
-                <div>
-                  <h3 className="font-[family-name:var(--font-manrope)] text-base font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {t(`thoughts.${i}.title`)}
-                  </h3>
-                  <p className="font-[family-name:var(--font-inter)] text-sm text-on-surface-variant leading-relaxed">
-                    {t(`thoughts.${i}.description`)}
-                  </p>
-                </div>
+      <FadeIn>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[18px] px-[28px] pb-[56px]">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="relative overflow-hidden rounded-[4px] p-[26px] pb-[28px] transition-all duration-200 hover:border-line-strong hover:-translate-y-[2px]"
+              style={{
+                background: "var(--bg-2)",
+                border: "1px solid var(--line)",
+              }}
+            >
+              <div
+                className="absolute top-[16px] right-[18px]"
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: "20px",
+                  color: "var(--accent)",
+                  opacity: 0.6,
+                }}
+              >
+                {glyphs[i]}
               </div>
-            </FadeIn>
+              <div
+                className="flex items-center gap-[10px] mb-[20px]"
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: "11px",
+                  color: "var(--fg-faint)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                <span
+                  className="w-[7px] h-[7px] rounded-full"
+                  style={{
+                    background: "var(--green)",
+                    boxShadow: "0 0 8px rgba(143,182,123,0.5)",
+                  }}
+                />
+                thread · {String(i + 1).padStart(3, "0")}
+              </div>
+              <h4
+                className="mb-[14px]"
+                style={{
+                  fontFamily: "var(--serif)",
+                  fontSize: "26px",
+                  fontWeight: 400,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.15,
+                  textWrap: "balance",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: t.raw(`thoughts.${i}.title`),
+                }}
+              />
+              <p
+                style={{
+                  color: "var(--fg-dim)",
+                  fontSize: "14px",
+                  lineHeight: 1.6,
+                }}
+              >
+                {t(`thoughts.${i}.description`)}
+              </p>
+            </div>
           ))}
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

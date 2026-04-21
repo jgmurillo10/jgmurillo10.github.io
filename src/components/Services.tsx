@@ -2,39 +2,89 @@
 
 import { useTranslations } from "next-intl";
 import FadeIn from "./FadeIn";
+import SectionHeader from "./SectionHeader";
 
-const capabilityKeys = [0, 1, 2];
+const serviceData = [
+  { ascii: "{ }", num: "01 / full-stack" },
+  { ascii: "</>", num: "02 / ai & automation" },
+  { ascii: "[ ]", num: "03 / leadership" },
+];
 
 export default function Services() {
   const t = useTranslations("Services");
 
   return (
-    <section id="services" className="relative py-32 bg-surface-low">
-      <div className="max-w-4xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-xs font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase text-on-surface-variant mb-4">
-            {t("sectionLabel")}
-          </p>
-          <h2 className="font-[family-name:var(--font-manrope)] text-3xl sm:text-4xl font-bold mb-16">
-            {t("heading")}
-          </h2>
-        </FadeIn>
+    <section id="services">
+      <SectionHeader
+        idx="02"
+        file="what_i_do.md"
+        title={t("heading")}
+        lede={t("subheading")}
+      />
 
-        <div className="space-y-12">
-          {capabilityKeys.map((i) => (
-            <FadeIn key={i} delay={i * 100}>
-              <div className="grid sm:grid-cols-[200px_1fr] gap-4 sm:gap-8">
-                <h3 className="font-[family-name:var(--font-manrope)] text-lg font-bold text-primary">
-                  {t(`capabilities.${i}.title`)}
-                </h3>
-                <p className="font-[family-name:var(--font-inter)] text-sm text-on-surface-variant leading-relaxed">
-                  {t(`capabilities.${i}.description`)}
-                </p>
+      <FadeIn>
+        <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-b border-line">
+          {serviceData.map((svc, i) => (
+            <div
+              key={i}
+              className="px-[28px] py-[36px] pb-[44px] relative transition-colors duration-200 hover:bg-accent/[0.03] border-b lg:border-b-0 lg:border-r border-line last:border-r-0 last:border-b-0"
+            >
+              <div
+                className="mb-[20px]"
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: "10px",
+                  color: "var(--accent)",
+                  opacity: 0.5,
+                  whiteSpace: "pre",
+                  lineHeight: 1.1,
+                  letterSpacing: 0,
+                }}
+              >
+                {svc.ascii}
               </div>
-            </FadeIn>
+              <div
+                className="flex items-center gap-[10px] mb-[28px]"
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: "11px",
+                  color: "var(--fg-faint)",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                <span
+                  className="inline-block w-[16px] h-[1px]"
+                  style={{ background: "var(--accent)" }}
+                />
+                {svc.num}
+              </div>
+              <h3
+                className="mb-[16px]"
+                style={{
+                  fontFamily: "var(--serif)",
+                  fontSize: "32px",
+                  fontWeight: 400,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.1,
+                  textWrap: "balance",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: t.raw(`capabilities.${i}.title`),
+                }}
+              />
+              <p
+                style={{
+                  color: "var(--fg-dim)",
+                  fontSize: "14.5px",
+                  lineHeight: 1.65,
+                }}
+              >
+                {t(`capabilities.${i}.description`)}
+              </p>
+            </div>
           ))}
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

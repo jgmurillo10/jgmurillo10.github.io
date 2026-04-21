@@ -3,82 +3,161 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import FadeIn from "./FadeIn";
+import SectionHeader from "./SectionHeader";
 
 const techStack = [
-  "TypeScript",
-  "React",
-  "Node.js",
-  "Python",
-  "Go",
-  "GraphQL",
-  "PostgreSQL",
-  "AWS",
-  "GCP",
-  "Docker",
-  "Temporal",
-  "PyTorch",
+  { label: "TypeScript", accent: true },
+  { label: "React", accent: true },
+  { label: "Node.js", accent: false },
+  { label: "Python", accent: false },
+  { label: "Go", accent: false },
+  { label: "GraphQL", accent: false },
+  { label: "PostgreSQL", accent: false },
+  { label: "AWS", accent: false },
+  { label: "GCP", accent: false },
+  { label: "Docker", accent: false },
+  { label: "Temporal", accent: false },
+  { label: "PyTorch", accent: false },
 ];
 
 export default function About() {
   const t = useTranslations("About");
 
   return (
-    <section id="about" className="relative py-32">
-      <div className="max-w-4xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-xs font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase text-on-surface-variant mb-4">
-            {t("sectionLabel")}
-          </p>
-          <h2 className="font-[family-name:var(--font-manrope)] text-3xl sm:text-4xl font-bold mb-16">
-            {t("heading")}
-          </h2>
-        </FadeIn>
+    <section id="about">
+      <SectionHeader
+        idx="05"
+        file="about.md"
+        title={t("heading")}
+      />
 
-        <div className="grid md:grid-cols-[280px_1fr] gap-12 items-start">
-          <FadeIn>
-            <div className="aspect-[3/4] rounded-2xl bg-surface-low ghost-border overflow-hidden">
+      <FadeIn>
+        <div
+          className="grid gap-[64px] px-[28px] pb-[56px] items-start"
+          style={{ gridTemplateColumns: "1fr 1.4fr" }}
+        >
+          {/* Portrait */}
+          <aside className="sticky top-[120px]">
+            <div
+              className="w-full aspect-[3/4] rounded-[4px] border relative overflow-hidden flex items-end justify-start p-[18px]"
+              style={{
+                borderColor: "var(--line-strong)",
+                background: `repeating-linear-gradient(45deg, rgba(232,162,83,0.08) 0, rgba(232,162,83,0.08) 1px, transparent 1px, transparent 12px), linear-gradient(180deg, var(--bg-3), var(--bg-2))`,
+              }}
+            >
               <Image
                 src="/juan-murillo.jpg"
                 alt="Juan Murillo"
-                width={280}
-                height={373}
-                className="object-cover w-full h-full"
+                fill
+                className="object-cover"
+              />
+              <div className="relative z-10">
+                <div
+                  style={{
+                    fontFamily: "var(--serif)",
+                    fontSize: "48px",
+                    lineHeight: 0.95,
+                    letterSpacing: "-0.02em",
+                    color: "var(--fg)",
+                    textShadow: "0 2px 12px rgba(0,0,0,0.7)",
+                  }}
+                >
+                  Juan
+                  <br />
+                  Murillo
+                  <span
+                    className="block mt-[8px]"
+                    style={{
+                      fontFamily: "var(--mono)",
+                      fontSize: "11px",
+                      color: "var(--fg-faint)",
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                      textShadow: "0 1px 8px rgba(0,0,0,0.9)",
+                    }}
+                  >
+                    {t("location")}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* Body */}
+          <div>
+            <div className="space-y-[24px]">
+              <p
+                style={{
+                  fontFamily: "var(--serif)",
+                  fontSize: "22px",
+                  lineHeight: 1.45,
+                  color: "var(--fg)",
+                  textWrap: "pretty",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: t.raw("paragraph1"),
+                }}
+              />
+              <p
+                style={{
+                  fontFamily: "var(--serif)",
+                  fontSize: "22px",
+                  lineHeight: 1.45,
+                  color: "var(--fg-dim)",
+                  textWrap: "pretty",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: t.raw("paragraph2"),
+                }}
+              />
+              <p
+                style={{
+                  fontFamily: "var(--serif)",
+                  fontSize: "22px",
+                  lineHeight: 1.45,
+                  color: "var(--fg-dim)",
+                  textWrap: "pretty",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: t.raw("paragraph3"),
+                }}
               />
             </div>
-          </FadeIn>
 
-          <FadeIn delay={150}>
-            <div className="font-[family-name:var(--font-inter)] text-on-surface-variant leading-relaxed space-y-4">
-              <p>
-                {t.rich("paragraph1", {
-                  strong: (chunks) => (
-                    <strong className="text-on-surface">{chunks}</strong>
-                  ),
-                })}
-              </p>
-              <p>{t("paragraph2")}</p>
-              <p>
-                {t.rich("paragraph3", {
-                  strong: (chunks) => (
-                    <strong className="text-on-surface">{chunks}</strong>
-                  ),
-                })}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mt-8">
+            <div className="flex flex-wrap gap-[6px] mt-[40px]">
               {techStack.map((tech) => (
                 <span
-                  key={tech}
-                  className="text-xs font-[family-name:var(--font-inter)] px-3 py-1.5 rounded-md bg-surface-low ghost-border text-on-surface-variant/70"
+                  key={tech.label}
+                  className="rounded-[2px] px-[10px] py-[5px]"
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "11px",
+                    color: tech.accent
+                      ? "var(--accent)"
+                      : "var(--fg)",
+                    border: `1px solid ${
+                      tech.accent
+                        ? "rgba(232,162,83,0.35)"
+                        : "var(--line-strong)"
+                    }`,
+                    background: "var(--bg-2)",
+                  }}
                 >
-                  {tech}
+                  {tech.label}
                 </span>
               ))}
             </div>
-          </FadeIn>
+          </div>
         </div>
-      </div>
+      </FadeIn>
+
+      <style jsx>{`
+        @media (max-width: 1080px) {
+          div[style*="grid-template-columns: 1fr 1.4fr"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
