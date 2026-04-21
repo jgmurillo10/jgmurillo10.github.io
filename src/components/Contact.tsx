@@ -103,7 +103,8 @@ export default function Contact() {
           {[
             { label: "LinkedIn", href: "https://linkedin.com/in/juan-murillo", arrow: "\u2197" },
             { label: "GitHub", href: "https://github.com/jgmurillo10", arrow: "\u2197" },
-            { label: t("jsconfLabel"), href: "https://www.youtube.com/@nicobytes/search?query=murillo", arrow: "\u2197" },
+            { label: "JSConf Colombia 2023", href: "https://www.youtube.com/live/CjGA5ba5aCc?t=22251s", arrow: "\u2197" },
+            { label: "JSConf Colombia 2018", href: "https://drive.google.com/file/d/1zou7OT7AHurXpfN7dH9SJyR67ogab7CB/view", arrow: "\u2197" },
             { label: "/cv \u00b7 PDF", href: "https://drive.google.com/file/d/1O-TsAG3UZaLjudiIri6yREADs8PftpP0/view?usp=sharing", arrow: "\u2193" },
           ].map((link) => (
             <a
