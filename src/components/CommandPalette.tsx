@@ -48,10 +48,12 @@ export default function CommandPalette() {
       { group: t("groupNav"), label: t("goToNow"), hint: "04", icon: "04", action: () => jump("#now") },
       { group: t("groupNav"), label: t("goToAbout"), hint: "05", icon: "05", action: () => jump("#about") },
       { group: t("groupNav"), label: t("goToContact"), hint: "06", icon: "06", action: () => jump("#contact") },
+      { group: t("groupActions"), label: t("copyMarkdown"), hint: "\u2318\u21e7C", icon: "MD", action: () => document.querySelector<HTMLButtonElement>("[title='Copy this page as Markdown']")?.click() },
       { group: t("groupActions"), label: t("copyEmail"), hint: "copy", icon: "@", action: copyEmail },
       { group: t("groupActions"), label: t("openLinkedIn"), hint: "external", icon: "in", action: () => window.open("https://linkedin.com/in/juan-murillo", "_blank") },
       { group: t("groupActions"), label: t("openGitHub"), hint: "external", icon: "{ }", action: () => window.open("https://github.com/jgmurillo10", "_blank") },
       { group: t("groupActions"), label: t("sendEmail"), hint: "mailto", icon: "\u2709", action: () => { window.location.href = "mailto:juanchomurcas@gmail.com" } },
+      { group: t("groupActions"), label: t("viewCV"), hint: "pdf", icon: "\u2193", action: () => window.open("https://drive.google.com/file/d/1O-TsAG3UZaLjudiIri6yREADs8PftpP0/view?usp=sharing", "_blank") },
       { group: t("groupFun"), label: t("pourCoffee"), hint: "+1", icon: "\u2615", action: bumpCoffee },
     ],
     [t, jump, copyEmail, bumpCoffee]

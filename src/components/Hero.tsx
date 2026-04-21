@@ -1,13 +1,14 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
 const serif = "'Instrument Serif', 'Times New Roman', serif"
 
 export default function Hero() {
   const t = useTranslations("Hero")
+  const locale = useLocale()
   const [typedText, setTypedText] = useState("")
   const coffeeRef = useRef(2)
 
@@ -21,12 +22,20 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
+    const ordinal = (n: number) => {
+      if (locale === "es") return String(n)
+      if (n === 1) return "1st"
+      if (n === 2) return "2nd"
+      if (n === 3) return "3rd"
+      return n + "th"
+    }
+
     // Build items dynamically so the coffee line reads the live count
     const getItems = () => [
       t("typingItems.0"),
       t("typingItems.1"),
       t("typingItems.2"),
-      t("typingItems.3").replace("{n}", String(coffeeRef.current)),
+      t("typingItems.3").replace("{n}", ordinal(coffeeRef.current)),
       t("typingItems.4"),
     ]
 
