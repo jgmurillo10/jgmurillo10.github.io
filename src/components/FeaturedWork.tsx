@@ -44,7 +44,7 @@ export default function FeaturedWork() {
         lede={t("subheading")}
       />
 
-      <div className="border-t border-line">
+      <div className="wrap border-t border-line">
         {caseStudyData.map((study, i) => (
           <FadeIn key={study.index}>
             <article className="project-grid border-b border-line relative transition-colors duration-200 hover:bg-accent/[0.02]">

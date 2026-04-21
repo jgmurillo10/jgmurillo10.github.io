@@ -79,6 +79,18 @@ export default function CommandPalette() {
     },
     {
       group: t("actions"),
+      label: t("copyMarkdown"),
+      hint: "⌘⇧C",
+      icon: "MD",
+      action: () => {
+        const btn = document.querySelector(
+          "button[title*='Markdown']"
+        ) as HTMLButtonElement;
+        btn?.click();
+      },
+    },
+    {
+      group: t("actions"),
       label: t("copyEmail"),
       hint: "copy",
       icon: "@",

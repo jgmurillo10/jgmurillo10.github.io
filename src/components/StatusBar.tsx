@@ -81,6 +81,32 @@ export default function StatusBar() {
           <span style={{ color: "var(--fg-faint)" }}>{t("status")}</span>&nbsp;
           <span style={{ color: "var(--green)" }}>{t("statusValue")}</span>
         </div>
+        <span style={{ color: "var(--fg-faint)" }}>│</span>
+        <div className="flex items-center">
+          <span style={{ color: "var(--fg-faint)" }}>{t("press")}</span>&nbsp;
+          <kbd
+            className="cursor-pointer"
+            style={{
+              fontFamily: "inherit",
+              background: "var(--bg-3)",
+              border: "1px solid var(--line-strong)",
+              padding: "1px 6px",
+              borderRadius: "2px",
+              color: "var(--fg)",
+            }}
+            onClick={() => {
+              window.dispatchEvent(
+                new KeyboardEvent("keydown", {
+                  key: "k",
+                  metaKey: true,
+                  bubbles: true,
+                })
+              );
+            }}
+          >
+            ⌘K
+          </kbd>
+        </div>
       </div>
     </div>
   );

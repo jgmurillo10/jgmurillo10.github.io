@@ -10,6 +10,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CommandPalette from "@/components/CommandPalette";
+import CopyMarkdown from "@/components/CopyMarkdown";
 
 export default async function Home({
   params,
@@ -33,6 +34,7 @@ export default async function Home({
         <Contact />
       </main>
       <Footer />
+      <CopyMarkdown />
       <CommandPalette />
     </>
   );

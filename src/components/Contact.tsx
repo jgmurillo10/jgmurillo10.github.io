@@ -32,8 +32,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative border-t border-line px-7 py-[70px] pb-20"
+      className="relative border-t border-line"
     >
+      <div className="wrap" style={{ paddingTop: "70px", paddingBottom: "80px" }}>
       <div
         className="flex items-baseline gap-4 mb-3 flex-wrap"
         style={{
@@ -135,6 +136,7 @@ export default function Contact() {
           </div>
         </div>
       </FadeIn>
+      </div>
     </section>
   );
 }

@@ -18,8 +18,8 @@ export default function SectionHeader({
   return (
     <FadeIn>
       <div
-        className="border-t border-line flex items-baseline gap-[24px] flex-wrap"
-        style={{ padding: "56px 28px 24px" }}
+        className="wrap border-t border-line flex items-baseline gap-6 flex-wrap"
+        style={{ paddingTop: "56px", paddingBottom: "24px" }}
       >
         <span
           style={{
@@ -52,7 +52,7 @@ export default function SectionHeader({
           {file}
         </span>
         <h2
-          className="w-full mt-[8px]"
+          className="w-full mt-2"
           style={{
             fontFamily: "var(--serif)",
             fontWeight: 400,
@@ -66,7 +66,7 @@ export default function SectionHeader({
         />
         {lede && (
           <p
-            className="w-full max-w-[640px] mt-[10px]"
+            className="w-full max-w-[640px] mt-2.5"
             style={{
               color: "var(--fg-dim)",
               fontSize: "15.5px",

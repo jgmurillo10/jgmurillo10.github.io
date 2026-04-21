@@ -20,7 +20,7 @@ export default function Experience() {
       />
 
       <FadeIn>
-        <div className="border-t border-line">
+        <div className="wrap border-t border-line" style={{ padding: 0 }}>
           {timelineKeys.map((i) => (
             <div
               key={i}

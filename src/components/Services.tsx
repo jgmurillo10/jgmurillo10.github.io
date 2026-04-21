@@ -23,7 +23,7 @@ export default function Services() {
       />
 
       <FadeIn>
-        <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-b border-line">
+        <div className="wrap grid grid-cols-1 lg:grid-cols-3 border-t border-b border-line" style={{ padding: 0 }}>
           {serviceData.map((svc, i) => (
             <div
               key={i}

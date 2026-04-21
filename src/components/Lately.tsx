@@ -19,7 +19,7 @@ export default function Lately() {
       />
 
       <FadeIn>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[18px] px-[28px] pb-[56px]">
+        <div className="wrap grid grid-cols-1 lg:grid-cols-3 gap-[18px] pb-[56px]">
           {[0, 1, 2].map((i) => (
             <div
               key={i}

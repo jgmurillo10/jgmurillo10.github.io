@@ -8,7 +8,8 @@
     "coffee": "coffee",
     "cups": "cups",
     "status": "status",
-    "statusValue": "open to connect"
+    "statusValue": "open to connect",
+    "press": "press"
   },
   "Navbar": {
     "work": "work",
@@ -191,6 +192,7 @@
     "goToNow": "Right now",
     "goToAbout": "About",
     "goToContact": "Contact",
+    "copyMarkdown": "Copy page as Markdown",
     "copyEmail": "Copy email / juanchomurcas@gmail.com",
     "openLinkedIn": "Open LinkedIn",
     "openGitHub": "Open GitHub",

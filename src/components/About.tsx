@@ -28,7 +28,7 @@ export default function About() {
       <SectionHeader idx="05" file="about.md" title={t.raw("heading")} />
 
       <FadeIn>
-        <div className="about-grid px-7 pb-14">
+        <div className="wrap about-grid pb-14">
           {/* Portrait */}
           <aside className="sticky top-[120px]">
             <div
