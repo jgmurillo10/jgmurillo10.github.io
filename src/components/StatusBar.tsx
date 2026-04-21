@@ -27,6 +27,7 @@ export default function StatusBar() {
     const id = setInterval(() => {
       if (Math.random() > 0.85) {
         setCups((n) => Math.min(n + 1, 9))
+        window.dispatchEvent(new CustomEvent("coffee-changed"))
       }
     }, 9000)
     return () => clearInterval(id)
@@ -42,6 +43,7 @@ export default function StatusBar() {
     const handler = () => {
       setCups((n) => Math.min(n + 1, 12))
       flashCoffee()
+      window.dispatchEvent(new CustomEvent("coffee-changed"))
     }
     window.addEventListener("bump-coffee", handler)
     return () => window.removeEventListener("bump-coffee", handler)

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useTranslations } from "next-intl"
 
 const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
@@ -9,19 +9,32 @@ const serif = "'Instrument Serif', 'Times New Roman', serif"
 export default function Hero() {
   const t = useTranslations("Hero")
   const [typedText, setTypedText] = useState("")
+  const coffeeRef = useRef(2)
+
+  // Sync coffee count from StatusBar
+  useEffect(() => {
+    const handler = () => {
+      coffeeRef.current = Math.min(coffeeRef.current + 1, 12)
+    }
+    window.addEventListener("coffee-changed", handler)
+    return () => window.removeEventListener("coffee-changed", handler)
+  }, [])
 
   useEffect(() => {
-    const items = [
+    // Build items dynamically so the coffee line reads the live count
+    const getItems = () => [
       t("typingItems.0"),
       t("typingItems.1"),
       t("typingItems.2"),
-      t("typingItems.3"),
+      t("typingItems.3").replace("{n}", String(coffeeRef.current)),
       t("typingItems.4"),
     ]
+
     let idx = 0
     let charIdx = 0
     let dir: 1 | -1 = 1
     let timeout: ReturnType<typeof setTimeout>
+    let items = getItems()
 
     // Start with the first item fully typed
     setTypedText(items[0])
@@ -44,6 +57,8 @@ export default function Hero() {
         if (charIdx <= 0) {
           dir = 1
           idx = (idx + 1) % items.length
+          // Refresh items so coffee count is up to date for the next cycle
+          items = getItems()
         }
       }
       timeout = setTimeout(tick, dir === 1 ? 55 : 28)

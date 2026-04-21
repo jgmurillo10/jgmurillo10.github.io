@@ -26,7 +26,7 @@
       "0": "liderando automatizacion con IA en Snappr",
       "1": "programando con Claude a las 7am",
       "2": "lanzando workflows en Temporal",
-      "3": "preparando la 3ra taza",
+      "3": "preparando la {n}a taza",
       "4": "ajustando modelos con GRPO"
     },
     "ctaWork": "ver trabajo seleccionado",
