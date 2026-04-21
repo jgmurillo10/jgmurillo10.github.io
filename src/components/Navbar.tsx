@@ -156,6 +156,7 @@ export default function Navbar() {
       </ul>
 
       <div
+        className="responsive-nav-links"
         style={{
           marginLeft: "auto",
           display: "flex",

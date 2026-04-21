@@ -46,7 +46,7 @@ export default function About() {
         }}
       >
         {/* Portrait aside */}
-        <aside style={{ position: "sticky", top: 120 }}>
+        <aside className="about-aside">
           <div
             style={{
               width: "100%",

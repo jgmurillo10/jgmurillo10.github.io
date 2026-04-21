@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import { useTranslations } from "next-intl"
 
+const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
+
 export default function StatusBar() {
   const t = useTranslations("StatusBar")
   const [uptime, setUptime] = useState("00:00:00")
@@ -38,7 +40,6 @@ export default function StatusBar() {
     setTimeout(() => setCoffeeFlash(false), 600)
   }
 
-  // Listen for "pour another coffee" from command palette
   useEffect(() => {
     const handler = () => {
       setCups((n) => Math.min(n + 1, 12))
@@ -48,6 +49,8 @@ export default function StatusBar() {
     window.addEventListener("bump-coffee", handler)
     return () => window.removeEventListener("bump-coffee", handler)
   }, [])
+
+  const sep = <span className="statusbar-verbose" style={{ color: "var(--fg-faint)", alignItems: "center" }}>{"\u2502"}</span>
 
   return (
     <div
@@ -67,13 +70,14 @@ export default function StatusBar() {
         display: "flex",
         alignItems: "center",
         padding: "0 18px",
-        fontFamily: "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+        fontFamily: mono,
         fontSize: "11.5px",
         color: "var(--fg-dim)",
         letterSpacing: "0.01em",
         gap: 18,
       }}
     >
+      {/* Always visible: green dot + deployed */}
       <div style={{ display: "flex", alignItems: "center" }}>
         <span
           style={{
@@ -89,32 +93,46 @@ export default function StatusBar() {
         />
         {t("deployed")}
       </div>
-      <span style={{ color: "var(--fg-faint)" }}>{"\u2502"}</span>
-      <div style={{ display: "flex", alignItems: "center" }}>
+
+      {/* Desktop-only verbose segments */}
+      {sep}
+      <div className="statusbar-verbose" style={{ alignItems: "center" }}>
         <span style={{ color: "var(--fg-faint)" }}>branch</span>&nbsp;
         <span style={{ color: "var(--fg)" }}>main</span>
       </div>
-      <span style={{ color: "var(--fg-faint)" }}>{"\u2502"}</span>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      {sep}
+      <div className="statusbar-verbose" style={{ alignItems: "center" }}>
         <span style={{ color: "var(--fg-faint)" }}>uptime</span>&nbsp;
         <span style={{ color: "var(--fg)" }}>{uptime}</span>
       </div>
-      <span style={{ color: "var(--fg-faint)" }}>{"\u2502"}</span>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      {sep}
+      <div className="statusbar-verbose" style={{ alignItems: "center" }}>
         <span style={{ color: "var(--fg-faint)" }}>loc</span>&nbsp;
         <span style={{ color: "var(--fg)" }}>{t("location")}</span>
       </div>
-      <div style={{ marginLeft: "auto", display: "flex", gap: 18 }}>
+
+      {/* Right side */}
+      <div style={{ marginLeft: "auto", display: "flex", gap: 18, alignItems: "center" }}>
+        {/* Coffee — always visible */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <span style={{ color: "var(--fg-faint)" }}>coffee</span>&nbsp;
-          <span style={{ color: coffeeFlash ? "var(--accent)" : "var(--fg)", transition: "color 0.3s" }}>{cups} cups</span>
+          <span
+            style={{
+              color: coffeeFlash ? "var(--accent)" : "var(--fg)",
+              transition: "color 0.3s",
+            }}
+          >
+            {cups} cups
+          </span>
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+
+        {/* Desktop-only: status + cmd+k */}
+        <div className="statusbar-verbose" style={{ alignItems: "center" }}>
           <span style={{ color: "var(--fg-faint)" }}>status</span>&nbsp;
           <span style={{ color: "var(--green)" }}>{t("status")}</span>
         </div>
-        <span style={{ color: "var(--fg-faint)" }}>{"\u2502"}</span>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <span className="statusbar-verbose" style={{ color: "var(--fg-faint)", alignItems: "center" }}>{"\u2502"}</span>
+        <div className="statusbar-verbose" style={{ alignItems: "center" }}>
           <span style={{ color: "var(--fg-faint)" }}>press</span>&nbsp;
           <kbd
             style={{
@@ -126,13 +144,30 @@ export default function StatusBar() {
               color: "var(--fg)",
               cursor: "pointer",
             }}
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent("open-cmdk"))
-            }}
+            onClick={() => window.dispatchEvent(new CustomEvent("open-cmdk"))}
           >
             {"\u2318"}K
           </kbd>
         </div>
+
+        {/* Mobile-only: hamburger menu */}
+        <button
+          className="statusbar-mobile-menu"
+          onClick={() => window.dispatchEvent(new CustomEvent("toggle-mobile-nav"))}
+          style={{
+            background: "transparent",
+            border: 0,
+            color: "var(--fg)",
+            fontFamily: mono,
+            fontSize: 16,
+            cursor: "pointer",
+            padding: "2px 0",
+            alignItems: "center",
+          }}
+          aria-label="Open menu"
+        >
+          {"\u2261"}
+        </button>
       </div>
     </div>
   )

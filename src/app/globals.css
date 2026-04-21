@@ -75,8 +75,29 @@ body.grain::before {
 
 .blink { animation: blink 1.05s steps(1) infinite; }
 
+/* About portrait — sticky on desktop, static on mobile */
+.about-aside {
+  position: sticky;
+  top: 120px;
+}
+
+/* StatusBar — hide verbose segments on mobile */
+.statusbar-verbose { display: flex; }
+.statusbar-mobile-menu { display: none; }
+
+/* Mobile nav drawer */
+.mobile-drawer-overlay {
+  display: none;
+}
+.mobile-drawer-overlay.open {
+  display: flex;
+}
+
 /* Responsive */
 @media (max-width: 1080px) {
+  .about-aside { position: static; }
+  .statusbar-verbose { display: none !important; }
+  .statusbar-mobile-menu { display: flex !important; }
   .responsive-services { grid-template-columns: 1fr !important; }
   .responsive-services > div:last-child { border-right: 0; }
   .responsive-services > div { border-right: 0 !important; border-bottom: 1px solid var(--line); }

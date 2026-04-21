@@ -11,6 +11,7 @@ import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
 import CommandPalette from "@/components/CommandPalette"
 import CopyMarkdown from "@/components/CopyMarkdown"
+import MobileNav from "@/components/MobileNav"
 
 export default async function Home({
   params,
@@ -35,6 +36,7 @@ export default async function Home({
       </main>
       <Footer />
       <CopyMarkdown />
+      <MobileNav />
       <CommandPalette />
     </>
   )
