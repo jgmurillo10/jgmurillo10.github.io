@@ -45,7 +45,7 @@ export default function CommandPalette() {
     { group: t("groupActions"), label: t("openLinkedIn"), hint: "external", icon: "in", action: () => window.open("https://linkedin.com/in/juan-murillo", "_blank") },
     { group: t("groupActions"), label: t("openGitHub"), hint: "external", icon: "{ }", action: () => window.open("https://github.com/jgmurillo10", "_blank") },
     { group: t("groupActions"), label: t("sendEmail"), hint: "mailto", icon: "\u2709", action: () => { window.location.href = "mailto:juanchomurcas@gmail.com" } },
-    { group: t("groupFun"), label: t("pourCoffee"), hint: "+1", icon: "\u2615", action: () => {} },
+    { group: t("groupFun"), label: t("pourCoffee"), hint: "+1", icon: "\u2615", action: () => window.dispatchEvent(new CustomEvent("bump-coffee")) },
   ]
 
   const filtered = query

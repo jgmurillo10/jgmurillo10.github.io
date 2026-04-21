@@ -7,6 +7,7 @@ export default function StatusBar() {
   const t = useTranslations("StatusBar")
   const [uptime, setUptime] = useState("00:00:00")
   const [cups, setCups] = useState(2)
+  const [coffeeFlash, setCoffeeFlash] = useState(false)
 
   useEffect(() => {
     const start = Date.now() - (7 * 3600 + 23 * 60) * 1000
@@ -29,6 +30,21 @@ export default function StatusBar() {
       }
     }, 9000)
     return () => clearInterval(id)
+  }, [])
+
+  const flashCoffee = () => {
+    setCoffeeFlash(true)
+    setTimeout(() => setCoffeeFlash(false), 600)
+  }
+
+  // Listen for "pour another coffee" from command palette
+  useEffect(() => {
+    const handler = () => {
+      setCups((n) => Math.min(n + 1, 12))
+      flashCoffee()
+    }
+    window.addEventListener("bump-coffee", handler)
+    return () => window.removeEventListener("bump-coffee", handler)
   }, [])
 
   return (
@@ -87,7 +103,7 @@ export default function StatusBar() {
       <div style={{ marginLeft: "auto", display: "flex", gap: 18 }}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <span style={{ color: "var(--fg-faint)" }}>coffee</span>&nbsp;
-          <span style={{ color: "var(--fg)" }}>{cups} cups</span>
+          <span style={{ color: coffeeFlash ? "var(--accent)" : "var(--fg)", transition: "color 0.3s" }}>{cups} cups</span>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <span style={{ color: "var(--fg-faint)" }}>status</span>&nbsp;

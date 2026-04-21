@@ -38,9 +38,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+/* JS handles smooth scrolling via scrollIntoView — no CSS smooth scroll
+   which causes competing/laggy scroll on anchor clicks */
 
 body {
   background: var(--bg);
