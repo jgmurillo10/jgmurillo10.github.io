@@ -14,7 +14,7 @@ export default function Lately() {
       <SectionHeader
         idx="04"
         file="right_now.md"
-        title={t("heading")}
+        title={t.raw("heading")}
         lede={t("subheading")}
       />
 

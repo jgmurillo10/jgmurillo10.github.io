@@ -50,10 +50,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[calc(100vh-90px)] px-[28px] py-[48px] pb-[64px] grid gap-[48px] items-end"
-      style={{
-        gridTemplateColumns: "1fr 420px",
-      }}
+      className="hero-grid relative min-h-[calc(100vh-90px)] px-[28px] py-[48px] pb-[64px]"
     >
       {/* Grid background */}
       <div
@@ -71,7 +68,7 @@ export default function Hero() {
       {/* Left content */}
       <div className="relative z-[2]">
         <div
-          className="mb-[28px] flex items-center gap-[10px]"
+          className="mb-7 flex items-center gap-2.5 flex-wrap"
           style={{
             fontFamily: "var(--mono)",
             fontSize: "12px",
@@ -79,7 +76,7 @@ export default function Hero() {
           }}
         >
           <span
-            className="border rounded-[3px] px-[8px] py-[3px]"
+            className="border rounded px-2 py-0.5"
             style={{
               borderColor: "var(--line-strong)",
               color: "var(--fg-dim)",
@@ -96,11 +93,10 @@ export default function Hero() {
           style={{
             fontFamily: "var(--serif)",
             fontWeight: 400,
-            fontSize: "clamp(48px, 7.4vw, 112px)",
+            fontSize: "clamp(42px, 7.4vw, 112px)",
             lineHeight: 0.98,
             letterSpacing: "-0.025em",
             maxWidth: "18ch",
-            textWrap: "balance",
           }}
         >
           {t("headlinePre")}{" "}
@@ -126,10 +122,10 @@ export default function Hero() {
 
         {/* Code block */}
         <div
-          className="mt-[36px] max-w-[52ch]"
+          className="mt-9 max-w-[52ch]"
           style={{
             fontFamily: "var(--mono)",
-            fontSize: "14px",
+            fontSize: "clamp(11px, 1.4vw, 14px)",
             color: "var(--fg-dim)",
             lineHeight: 1.7,
           }}
@@ -162,17 +158,17 @@ export default function Hero() {
             &nbsp;&nbsp;currently:{" "}
             <span style={{ color: "var(--green)" }}>{typedText}</span>
             <span
-              className="inline-block w-[8px] h-[16px] align-text-bottom ml-[2px] blink"
+              className="inline-block w-2 h-4 align-text-bottom ml-0.5 blink"
               style={{ background: "var(--accent)" }}
             />
           </div>
           <div>{"}"}</div>
         </div>
 
-        <div className="mt-[42px] flex gap-[14px] items-center flex-wrap">
+        <div className="mt-10 flex gap-3.5 items-center flex-wrap">
           <a
             href="#work"
-            className="inline-flex items-center gap-[10px] rounded-[3px] no-underline transition-transform duration-150 hover:-translate-y-px"
+            className="inline-flex items-center gap-2.5 rounded no-underline transition-transform duration-150 hover:-translate-y-px"
             style={{
               background: "var(--fg)",
               color: "var(--bg)",
@@ -186,7 +182,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-[10px] rounded-[3px] border no-underline transition-all duration-150 hover:-translate-y-px"
+            className="inline-flex items-center gap-2.5 rounded border no-underline transition-all duration-150 hover:-translate-y-px"
             style={{
               background: "transparent",
               borderColor: "var(--line-strong)",
@@ -203,7 +199,7 @@ export default function Hero() {
 
       {/* Terminal card */}
       <div
-        className="relative z-[2] rounded-[6px] overflow-hidden hidden xl:block"
+        className="relative z-[2] rounded-md overflow-hidden hidden xl:block"
         style={{
           background: "var(--bg-2)",
           border: "1px solid var(--line-strong)",
@@ -215,15 +211,15 @@ export default function Hero() {
         aria-hidden="true"
       >
         <div
-          className="flex items-center gap-[8px] px-[14px] py-[10px] border-b"
+          className="flex items-center gap-2 px-3.5 py-2.5 border-b"
           style={{
             borderColor: "var(--line)",
             background: "rgba(255,255,255,0.015)",
           }}
         >
-          <span className="w-[10px] h-[10px] rounded-full bg-[#E5564E]" />
-          <span className="w-[10px] h-[10px] rounded-full bg-[#E0B13F]" />
-          <span className="w-[10px] h-[10px] rounded-full bg-[#5EC37A]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E5564E]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E0B13F]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#5EC37A]" />
           <span
             className="ml-auto"
             style={{ color: "var(--fg-faint)", fontSize: "11px" }}
@@ -231,7 +227,7 @@ export default function Hero() {
             ~/juan · whoami
           </span>
         </div>
-        <div className="p-[18px] pb-[20px]">
+        <div className="p-4 pb-5">
           <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
             <span style={{ color: "var(--accent)", marginRight: "8px" }}>
               ❯
@@ -242,7 +238,7 @@ export default function Hero() {
             # {t("termTitle")}
           </div>
           <hr
-            className="border-0 border-t border-dashed my-[10px]"
+            className="border-0 border-t border-dashed my-2.5"
             style={{ borderColor: "var(--line)" }}
           />
           <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
@@ -265,12 +261,10 @@ export default function Hero() {
           </div>
           <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
             <span style={{ color: "var(--blue)" }}>teams</span>:{" "}
-            <span style={{ color: "var(--fg)" }}>
-              {t("termTeams")}
-            </span>
+            <span style={{ color: "var(--fg)" }}>{t("termTeams")}</span>
           </div>
           <hr
-            className="border-0 border-t border-dashed my-[10px]"
+            className="border-0 border-t border-dashed my-2.5"
             style={{ borderColor: "var(--line)" }}
           />
           <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
@@ -289,7 +283,7 @@ export default function Hero() {
             ✓ YC interview in under 30 days
           </div>
           <hr
-            className="border-0 border-t border-dashed my-[10px]"
+            className="border-0 border-t border-dashed my-2.5"
             style={{ borderColor: "var(--line)" }}
           />
           <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
@@ -300,20 +294,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Responsive: hide terminal card on smaller screens */}
-      <style jsx>{`
-        @media (max-width: 1080px) {
-          section {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @media (max-width: 640px) {
-          section h1 {
-            font-size: 52px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

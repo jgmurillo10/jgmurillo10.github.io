@@ -18,7 +18,7 @@ export default function Services() {
       <SectionHeader
         idx="02"
         file="what_i_do.md"
-        title={t("heading")}
+        title={t.raw("heading")}
         lede={t("subheading")}
       />
 

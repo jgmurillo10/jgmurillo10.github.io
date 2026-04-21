@@ -43,11 +43,13 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg) !important;
+  color: var(--fg) !important;
 }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--bg) !important;
+  color: var(--fg) !important;
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.55;
@@ -71,9 +73,127 @@ body.grain::before {
 
 ::selection { background: var(--accent); color: var(--bg); }
 
+/* Italic accent emphasis (used in headings via dangerouslySetInnerHTML) */
+em {
+  font-style: italic;
+  color: var(--accent);
+}
+
 /* Blink animation */
 @keyframes blink { 50% { opacity: 0; } }
 .blink { animation: blink 1.05s steps(1) infinite; }
 
 /* Pulse animation */
 @keyframes pulse { 50% { opacity: 0.4; } }
+
+/* ============ Hero responsive ============ */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
+  align-items: end;
+}
+@media (max-width: 1080px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .hero-grid h1 {
+    font-size: 42px !important;
+  }
+}
+
+/* ============ Project body responsive ============ */
+.project-body {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+  padding: 36px 28px 40px;
+}
+@media (max-width: 1080px) {
+  .project-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 20px 32px;
+  }
+}
+
+/* ============ Project grid responsive ============ */
+.project-grid {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+}
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 36px 1fr;
+  }
+}
+
+/* ============ Experience row responsive ============ */
+.exp-row {
+  display: grid;
+  grid-template-columns: 56px 160px 1fr 1fr;
+  gap: 32px;
+  padding: 28px;
+  align-items: start;
+}
+@media (max-width: 1080px) {
+  .exp-row {
+    grid-template-columns: 40px 110px 1fr;
+  }
+  .exp-row .exp-desc {
+    grid-column: 3 / 4;
+    grid-row: 2;
+    margin-top: 8px;
+  }
+}
+@media (max-width: 640px) {
+  .exp-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px 18px;
+  }
+}
+
+/* ============ About grid responsive ============ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 1080px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ Contact grid responsive ============ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: end;
+}
+@media (max-width: 1080px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ Outcome grid ============ */
+.outcome-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: center;
+}
+
+/* ============ Project meta kv grid ============ */
+.meta-kv {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  row-gap: 6px;
+  column-gap: 14px;
+}

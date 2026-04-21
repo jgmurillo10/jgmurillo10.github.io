@@ -40,26 +40,17 @@ export default function FeaturedWork() {
       <SectionHeader
         idx="01"
         file="selected_work.md"
-        title={t("heading")}
+        title={t.raw("heading")}
         lede={t("subheading")}
       />
 
       <div className="border-t border-line">
         {caseStudyData.map((study, i) => (
           <FadeIn key={study.index}>
-            <article
-              className="grid border-b border-line relative transition-colors duration-200 hover:bg-accent/[0.02] group"
-              style={{ gridTemplateColumns: "56px 1fr" }}
-            >
-              {/* Year tick */}
-              <div
-                className="absolute left-[-1px] top-[36px] w-[2px] bg-accent transition-all duration-300"
-                style={{ height: 0 }}
-              />
-
+            <article className="project-grid border-b border-line relative transition-colors duration-200 hover:bg-accent/[0.02]">
               {/* Line numbers */}
               <div
-                className="text-right py-[36px] px-[12px] select-none border-r border-line"
+                className="text-right py-9 px-3 select-none border-r border-line"
                 style={{
                   fontFamily: "var(--mono)",
                   fontSize: "11px",
@@ -70,16 +61,13 @@ export default function FeaturedWork() {
               </div>
 
               {/* Body */}
-              <div
-                className="p-[36px] pb-[40px] grid gap-[48px]"
-                style={{ gridTemplateColumns: "1fr 1.3fr" }}
-              >
+              <div className="project-body">
                 {/* Meta */}
-                <div className="flex flex-col gap-[16px]">
+                <div className="flex flex-col gap-4">
                   <div
                     style={{
                       fontFamily: "var(--serif)",
-                      fontSize: "48px",
+                      fontSize: "clamp(32px, 4vw, 48px)",
                       letterSpacing: "-0.02em",
                       lineHeight: 1,
                     }}
@@ -87,12 +75,11 @@ export default function FeaturedWork() {
                     {t(`studies.${i}.company`)}
                   </div>
                   <div
-                    className="grid gap-y-[6px] gap-x-[14px]"
+                    className="meta-kv"
                     style={{
                       fontFamily: "var(--mono)",
                       fontSize: "12px",
                       color: "var(--fg-dim)",
-                      gridTemplateColumns: "80px 1fr",
                     }}
                   >
                     <span style={{ color: "var(--fg-faint)" }}>
@@ -120,11 +107,11 @@ export default function FeaturedWork() {
                       {t(`studies.${i}.metaValue`)}
                     </span>
                   </div>
-                  <div className="flex flex-wrap gap-[6px] mt-[6px]">
+                  <div className="flex flex-wrap gap-1.5 mt-1.5">
                     {study.pills.map((pill) => (
                       <span
                         key={pill}
-                        className="border rounded-[2px] px-[8px] py-[3px]"
+                        className="border rounded-sm px-2 py-0.5"
                         style={{
                           fontFamily: "var(--mono)",
                           fontSize: "10.5px",
@@ -139,11 +126,11 @@ export default function FeaturedWork() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col gap-[22px]">
+                <div className="flex flex-col gap-5">
                   <h3
                     style={{
                       fontFamily: "var(--serif)",
-                      fontSize: "30px",
+                      fontSize: "clamp(22px, 3vw, 30px)",
                       fontWeight: 400,
                       letterSpacing: "-0.01em",
                       lineHeight: 1.15,
@@ -157,7 +144,7 @@ export default function FeaturedWork() {
 
                   <div>
                     <div
-                      className="flex items-center gap-[8px] mb-[6px]"
+                      className="flex items-center gap-2 mb-1.5"
                       style={{
                         fontFamily: "var(--mono)",
                         fontSize: "11px",
@@ -182,7 +169,7 @@ export default function FeaturedWork() {
 
                   <div>
                     <div
-                      className="flex items-center gap-[8px] mb-[6px]"
+                      className="flex items-center gap-2 mb-1.5"
                       style={{
                         fontFamily: "var(--mono)",
                         fontSize: "11px",
@@ -206,9 +193,8 @@ export default function FeaturedWork() {
                   </div>
 
                   <div
-                    className="grid gap-[22px] items-center rounded-[4px] p-[18px] pr-[20px]"
+                    className="outcome-grid rounded p-4"
                     style={{
-                      gridTemplateColumns: "auto 1fr",
                       background: "var(--bg-2)",
                       border: "1px solid var(--line)",
                     }}
@@ -217,7 +203,7 @@ export default function FeaturedWork() {
                       <div
                         style={{
                           fontFamily: "var(--serif)",
-                          fontSize: "64px",
+                          fontSize: "clamp(40px, 5vw, 64px)",
                           lineHeight: 0.9,
                           color: "var(--accent)",
                           letterSpacing: "-0.03em",
@@ -229,7 +215,7 @@ export default function FeaturedWork() {
                         />
                       </div>
                       <div
-                        className="mt-[4px]"
+                        className="mt-1"
                         style={{
                           fontFamily: "var(--mono)",
                           fontSize: "11px",
@@ -257,7 +243,7 @@ export default function FeaturedWork() {
                       href={study.link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-[6px] self-start no-underline hover:border-solid"
+                      className="inline-flex items-center gap-1.5 self-start no-underline"
                       style={{
                         fontFamily: "var(--mono)",
                         fontSize: "12px",
@@ -270,16 +256,6 @@ export default function FeaturedWork() {
                   )}
                 </div>
               </div>
-
-              <style jsx>{`
-                @media (max-width: 1080px) {
-                  article > div:last-child {
-                    grid-template-columns: 1fr !important;
-                    gap: 24px !important;
-                    padding: 28px 20px 32px !important;
-                  }
-                }
-              `}</style>
             </article>
           </FadeIn>
         ))}

@@ -15,7 +15,7 @@ export default function Experience() {
       <SectionHeader
         idx="03"
         file="experience.md"
-        title={t("heading")}
+        title={t.raw("heading")}
         lede={t("subheading")}
       />
 
@@ -24,10 +24,7 @@ export default function Experience() {
           {timelineKeys.map((i) => (
             <div
               key={i}
-              className="grid gap-[32px] px-[28px] py-[28px] border-b border-line items-start transition-colors duration-200 hover:bg-accent/[0.02] cursor-default"
-              style={{
-                gridTemplateColumns: "56px 160px 1fr 1fr",
-              }}
+              className="exp-row border-b border-line transition-colors duration-200 hover:bg-accent/[0.02] cursor-default"
             >
               <div
                 className="text-right"
@@ -40,7 +37,7 @@ export default function Experience() {
                 {lineNumbers[i]}
               </div>
               <div
-                className="pt-[4px]"
+                className="pt-1"
                 style={{
                   fontFamily: "var(--mono)",
                   fontSize: "12px",
@@ -63,7 +60,7 @@ export default function Experience() {
                   {t(`timeline.${i}.company`)}
                 </h4>
                 <div
-                  className="mt-[6px]"
+                  className="mt-1.5"
                   style={{
                     fontFamily: "var(--mono)",
                     fontSize: "12px",
@@ -74,6 +71,7 @@ export default function Experience() {
                 </div>
               </div>
               <div
+                className="exp-desc"
                 style={{
                   color: "var(--fg-dim)",
                   fontSize: "14.5px",
@@ -86,21 +84,6 @@ export default function Experience() {
           ))}
         </div>
       </FadeIn>
-
-      <style jsx>{`
-        @media (max-width: 1080px) {
-          div[style*="grid-template-columns: 56px 160px"] {
-            grid-template-columns: 40px 110px 1fr !important;
-          }
-        }
-        @media (max-width: 640px) {
-          div[style*="grid-template-columns: 56px 160px"] {
-            grid-template-columns: 1fr !important;
-            gap: 8px !important;
-            padding: 20px 18px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

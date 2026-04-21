@@ -32,11 +32,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative border-t border-line"
-      style={{ padding: "70px 28px 80px" }}
+      className="relative border-t border-line px-7 py-[70px] pb-20"
     >
       <div
-        className="flex items-baseline gap-[18px] mb-[12px]"
+        className="flex items-baseline gap-4 mb-3 flex-wrap"
         style={{
           fontFamily: "var(--mono)",
           fontSize: "11px",
@@ -52,21 +51,20 @@ export default function Contact() {
 
       <FadeIn>
         <h2
-          className="mb-[32px]"
+          className="mb-8"
           style={{
             fontFamily: "var(--serif)",
             fontWeight: 400,
-            fontSize: "clamp(48px, 7vw, 96px)",
+            fontSize: "clamp(36px, 7vw, 96px)",
             letterSpacing: "-0.025em",
             lineHeight: 1,
             maxWidth: "16ch",
-            textWrap: "balance",
           }}
           dangerouslySetInnerHTML={{ __html: t.raw("heading") }}
         />
 
         <p
-          className="max-w-[56ch] mb-[36px]"
+          className="max-w-[56ch] mb-9"
           style={{
             color: "var(--fg-dim)",
             fontSize: "17px",
@@ -76,26 +74,31 @@ export default function Contact() {
           {t("subheading")}
         </p>
 
-        <div
-          className="grid gap-[48px] items-end"
-          style={{ gridTemplateColumns: "1.3fr 1fr" }}
-        >
+        <div className="contact-grid">
           <a
             href="mailto:juanchomurcas@gmail.com"
-            className="inline-block no-underline border-b pb-[10px] transition-colors duration-200 hover:text-accent hover:border-accent"
+            className="inline-block no-underline border-b pb-2.5 transition-colors duration-200"
             style={{
               fontFamily: "var(--serif)",
-              fontSize: "clamp(26px, 3.2vw, 42px)",
+              fontSize: "clamp(20px, 3.2vw, 42px)",
               letterSpacing: "-0.01em",
               color: "var(--fg)",
               borderColor: "var(--line-strong)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--accent)";
+              e.currentTarget.style.borderColor = "var(--accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "var(--fg)";
+              e.currentTarget.style.borderColor = "var(--line-strong)";
             }}
           >
             juanchomurcas@gmail.com →
           </a>
 
           <div
-            className="flex flex-col gap-[12px]"
+            className="flex flex-col gap-3"
             style={{
               fontFamily: "var(--mono)",
               fontSize: "13px",
@@ -111,10 +114,16 @@ export default function Contact() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="flex justify-between items-center py-[12px] border-b no-underline transition-all duration-200 hover:text-accent hover:pl-[8px]"
+                className="flex justify-between items-center py-3 border-b no-underline transition-all duration-200 hover:pl-2"
                 style={{
                   color: "var(--fg)",
                   borderColor: "var(--line)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--accent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--fg)";
                 }}
               >
                 <span>{link.label}</span>
@@ -126,14 +135,6 @@ export default function Contact() {
           </div>
         </div>
       </FadeIn>
-
-      <style jsx>{`
-        @media (max-width: 1080px) {
-          div[style*="grid-template-columns: 1.3fr 1fr"] {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

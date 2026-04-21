@@ -25,21 +25,14 @@ export default function About() {
 
   return (
     <section id="about">
-      <SectionHeader
-        idx="05"
-        file="about.md"
-        title={t("heading")}
-      />
+      <SectionHeader idx="05" file="about.md" title={t.raw("heading")} />
 
       <FadeIn>
-        <div
-          className="grid gap-[64px] px-[28px] pb-[56px] items-start"
-          style={{ gridTemplateColumns: "1fr 1.4fr" }}
-        >
+        <div className="about-grid px-7 pb-14">
           {/* Portrait */}
           <aside className="sticky top-[120px]">
             <div
-              className="w-full aspect-[3/4] rounded-[4px] border relative overflow-hidden flex items-end justify-start p-[18px]"
+              className="w-full aspect-[3/4] rounded border relative overflow-hidden flex items-end justify-start p-4"
               style={{
                 borderColor: "var(--line-strong)",
                 background: `repeating-linear-gradient(45deg, rgba(232,162,83,0.08) 0, rgba(232,162,83,0.08) 1px, transparent 1px, transparent 12px), linear-gradient(180deg, var(--bg-3), var(--bg-2))`,
@@ -55,7 +48,7 @@ export default function About() {
                 <div
                   style={{
                     fontFamily: "var(--serif)",
-                    fontSize: "48px",
+                    fontSize: "clamp(32px, 4vw, 48px)",
                     lineHeight: 0.95,
                     letterSpacing: "-0.02em",
                     color: "var(--fg)",
@@ -66,7 +59,7 @@ export default function About() {
                   <br />
                   Murillo
                   <span
-                    className="block mt-[8px]"
+                    className="block mt-2"
                     style={{
                       fontFamily: "var(--mono)",
                       fontSize: "11px",
@@ -85,56 +78,45 @@ export default function About() {
 
           {/* Body */}
           <div>
-            <div className="space-y-[24px]">
+            <div className="space-y-6">
               <p
                 style={{
                   fontFamily: "var(--serif)",
-                  fontSize: "22px",
+                  fontSize: "clamp(18px, 2vw, 22px)",
                   lineHeight: 1.45,
                   color: "var(--fg)",
-                  textWrap: "pretty",
                 }}
-                dangerouslySetInnerHTML={{
-                  __html: t.raw("paragraph1"),
-                }}
+                dangerouslySetInnerHTML={{ __html: t.raw("paragraph1") }}
               />
               <p
                 style={{
                   fontFamily: "var(--serif)",
-                  fontSize: "22px",
+                  fontSize: "clamp(18px, 2vw, 22px)",
                   lineHeight: 1.45,
                   color: "var(--fg-dim)",
-                  textWrap: "pretty",
                 }}
-                dangerouslySetInnerHTML={{
-                  __html: t.raw("paragraph2"),
-                }}
+                dangerouslySetInnerHTML={{ __html: t.raw("paragraph2") }}
               />
               <p
                 style={{
                   fontFamily: "var(--serif)",
-                  fontSize: "22px",
+                  fontSize: "clamp(18px, 2vw, 22px)",
                   lineHeight: 1.45,
                   color: "var(--fg-dim)",
-                  textWrap: "pretty",
                 }}
-                dangerouslySetInnerHTML={{
-                  __html: t.raw("paragraph3"),
-                }}
+                dangerouslySetInnerHTML={{ __html: t.raw("paragraph3") }}
               />
             </div>
 
-            <div className="flex flex-wrap gap-[6px] mt-[40px]">
+            <div className="flex flex-wrap gap-1.5 mt-10">
               {techStack.map((tech) => (
                 <span
                   key={tech.label}
-                  className="rounded-[2px] px-[10px] py-[5px]"
+                  className="rounded-sm px-2.5 py-1"
                   style={{
                     fontFamily: "var(--mono)",
                     fontSize: "11px",
-                    color: tech.accent
-                      ? "var(--accent)"
-                      : "var(--fg)",
+                    color: tech.accent ? "var(--accent)" : "var(--fg)",
                     border: `1px solid ${
                       tech.accent
                         ? "rgba(232,162,83,0.35)"
@@ -150,14 +132,6 @@ export default function About() {
           </div>
         </div>
       </FadeIn>
-
-      <style jsx>{`
-        @media (max-width: 1080px) {
-          div[style*="grid-template-columns: 1fr 1.4fr"] {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
