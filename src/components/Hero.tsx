@@ -85,6 +85,7 @@ export default function Hero() {
           WebkitMaskImage:
             "radial-gradient(ellipse at center, black 30%, transparent 75%)",
           pointerEvents: "none",
+          willChange: "transform",
         }}
       />
 

@@ -60,6 +60,8 @@ export default function StatusBar() {
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
         borderBottom: "1px solid var(--line)",
+        willChange: "transform",
+        contain: "layout style paint",
         display: "flex",
         alignItems: "center",
         padding: "0 18px",

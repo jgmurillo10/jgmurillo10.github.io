@@ -65,6 +65,8 @@ export default function Navbar() {
         gap: 28,
         background:
           "linear-gradient(to bottom, rgba(var(--bg-rgb), 0.92), rgba(var(--bg-rgb), 0.6) 70%, transparent)",
+        willChange: "transform",
+        contain: "layout style paint",
       }}
     >
       <a

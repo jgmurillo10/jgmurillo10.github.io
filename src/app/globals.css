@@ -38,9 +38,6 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* JS handles smooth scrolling via scrollIntoView — no CSS smooth scroll
-   which causes competing/laggy scroll on anchor clicks */
-
 body {
   background: var(--bg);
   color: var(--fg);
@@ -53,16 +50,18 @@ body {
   position: relative;
 }
 
-/* Grain overlay */
+/* Grain overlay — uses a static PNG-encoded noise on its own GPU layer.
+   will-change: transform promotes it once; pointer-events: none keeps it
+   inert. No mix-blend-mode (expensive recomposite on every scroll frame). */
 body.grain::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.8'/></svg>");
+  will-change: transform;
 }
 
 /* Selection */
@@ -71,18 +70,10 @@ body.grain::before {
 /* Animations */
 @keyframes pulse { 50% { opacity: 0.4; } }
 @keyframes blink { 50% { opacity: 0; } }
+@keyframes cmdkFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cmdkPop { from { transform: translateY(8px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
 .blink { animation: blink 1.05s steps(1) infinite; }
-
-/* Section header */
-.sec-head {
-  padding: 56px 28px 24px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  align-items: baseline;
-  gap: 24px;
-  flex-wrap: wrap;
-}
 
 /* Responsive */
 @media (max-width: 1080px) {

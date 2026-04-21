@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useTranslations } from "next-intl"
 
 const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
@@ -23,6 +23,7 @@ export default function CommandPalette() {
   const listRef = useRef<HTMLDivElement>(null)
   const keyboardLock = useRef(false)
   const lockTimeout = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const dialogRef = useRef<HTMLDivElement>(null)
 
   const jump = useCallback((id: string) => {
     const el = document.querySelector(id)
@@ -33,29 +34,39 @@ export default function CommandPalette() {
     navigator.clipboard?.writeText("juanchomurcas@gmail.com")
   }, [])
 
-  const commands: Command[] = [
-    { group: t("groupNav"), label: t("goToTop"), hint: "home", icon: "\u2191", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-    { group: t("groupNav"), label: t("goToWork"), hint: "01", icon: "01", action: () => jump("#work") },
-    { group: t("groupNav"), label: t("goToServices"), hint: "02", icon: "02", action: () => jump("#services") },
-    { group: t("groupNav"), label: t("goToExperience"), hint: "03", icon: "03", action: () => jump("#experience") },
-    { group: t("groupNav"), label: t("goToNow"), hint: "04", icon: "04", action: () => jump("#now") },
-    { group: t("groupNav"), label: t("goToAbout"), hint: "05", icon: "05", action: () => jump("#about") },
-    { group: t("groupNav"), label: t("goToContact"), hint: "06", icon: "06", action: () => jump("#contact") },
-    { group: t("groupActions"), label: t("copyEmail"), hint: "copy", icon: "@", action: copyEmail },
-    { group: t("groupActions"), label: t("openLinkedIn"), hint: "external", icon: "in", action: () => window.open("https://linkedin.com/in/juan-murillo", "_blank") },
-    { group: t("groupActions"), label: t("openGitHub"), hint: "external", icon: "{ }", action: () => window.open("https://github.com/jgmurillo10", "_blank") },
-    { group: t("groupActions"), label: t("sendEmail"), hint: "mailto", icon: "\u2709", action: () => { window.location.href = "mailto:juanchomurcas@gmail.com" } },
-    { group: t("groupFun"), label: t("pourCoffee"), hint: "+1", icon: "\u2615", action: () => window.dispatchEvent(new CustomEvent("bump-coffee")) },
-  ]
+  const bumpCoffee = useCallback(() => {
+    window.dispatchEvent(new CustomEvent("bump-coffee"))
+  }, [])
 
-  const filtered = query
-    ? commands.filter(
-        (c) =>
-          c.label.toLowerCase().includes(query.toLowerCase()) ||
-          c.group.toLowerCase().includes(query.toLowerCase()) ||
-          c.hint.toLowerCase().includes(query.toLowerCase())
-      )
-    : commands
+  // Memoize commands so they aren't rebuilt every render
+  const commands: Command[] = useMemo(
+    () => [
+      { group: t("groupNav"), label: t("goToTop"), hint: "home", icon: "\u2191", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+      { group: t("groupNav"), label: t("goToWork"), hint: "01", icon: "01", action: () => jump("#work") },
+      { group: t("groupNav"), label: t("goToServices"), hint: "02", icon: "02", action: () => jump("#services") },
+      { group: t("groupNav"), label: t("goToExperience"), hint: "03", icon: "03", action: () => jump("#experience") },
+      { group: t("groupNav"), label: t("goToNow"), hint: "04", icon: "04", action: () => jump("#now") },
+      { group: t("groupNav"), label: t("goToAbout"), hint: "05", icon: "05", action: () => jump("#about") },
+      { group: t("groupNav"), label: t("goToContact"), hint: "06", icon: "06", action: () => jump("#contact") },
+      { group: t("groupActions"), label: t("copyEmail"), hint: "copy", icon: "@", action: copyEmail },
+      { group: t("groupActions"), label: t("openLinkedIn"), hint: "external", icon: "in", action: () => window.open("https://linkedin.com/in/juan-murillo", "_blank") },
+      { group: t("groupActions"), label: t("openGitHub"), hint: "external", icon: "{ }", action: () => window.open("https://github.com/jgmurillo10", "_blank") },
+      { group: t("groupActions"), label: t("sendEmail"), hint: "mailto", icon: "\u2709", action: () => { window.location.href = "mailto:juanchomurcas@gmail.com" } },
+      { group: t("groupFun"), label: t("pourCoffee"), hint: "+1", icon: "\u2615", action: bumpCoffee },
+    ],
+    [t, jump, copyEmail, bumpCoffee]
+  )
+
+  const filtered = useMemo(() => {
+    if (!query) return commands
+    const q = query.toLowerCase()
+    return commands.filter(
+      (c) =>
+        c.label.toLowerCase().includes(q) ||
+        c.group.toLowerCase().includes(q) ||
+        c.hint.toLowerCase().includes(q)
+    )
+  }, [commands, query])
 
   const doOpen = useCallback(() => {
     setOpen(true)
@@ -85,7 +96,7 @@ export default function CommandPalette() {
       } else if (
         e.key === "/" &&
         !open &&
-        !/input|textarea/i.test((document.activeElement?.tagName) || "")
+        !/input|textarea/i.test(document.activeElement?.tagName || "")
       ) {
         e.preventDefault()
         doOpen()
@@ -140,15 +151,26 @@ export default function CommandPalette() {
     }
   }
 
+  // Click-outside: close if click lands anywhere outside the dialog box
+  const handleBackdropClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (
+        dialogRef.current &&
+        !dialogRef.current.contains(e.target as Node)
+      ) {
+        doClose()
+      }
+    },
+    [doClose]
+  )
+
   if (!open) return null
 
   let lastGroup = ""
 
   return (
     <div
-      onClick={(e) => {
-        if (e.target === e.currentTarget) doClose()
-      }}
+      onClick={handleBackdropClick}
       style={{
         position: "fixed",
         inset: 0,
@@ -163,11 +185,9 @@ export default function CommandPalette() {
         animation: "cmdkFade 0.15s ease",
       }}
     >
-      <style>{`
-        @keyframes cmdkFade { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes cmdkPop { from { transform: translateY(8px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
-      `}</style>
+      {/* keyframes now live in globals.css — no <style> tag per render */}
       <div
+        ref={dialogRef}
         role="dialog"
         aria-label="Command palette"
         style={{
@@ -308,7 +328,7 @@ export default function CommandPalette() {
                     >
                       {cmd.icon}
                     </span>
-                    <span style={{ color: i === sel ? "var(--fg)" : "var(--fg)" }}>
+                    <span style={{ color: "var(--fg)" }}>
                       {cmd.label}
                     </span>
                     <span
