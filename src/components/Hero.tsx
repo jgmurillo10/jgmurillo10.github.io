@@ -1,165 +1,346 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react"
+import { useTranslations } from "next-intl"
+
+const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
+const serif = "'Instrument Serif', 'Times New Roman', serif"
 
 export default function Hero() {
-  const t = useTranslations("Hero");
-  const roles = [t("roles.0"), t("roles.1"), t("roles.2"), t("roles.3"), t("roles.4")];
-
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  }, []);
-
-  const handleMouseEnter = useCallback(() => setIsHovering(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovering(false), []);
+  const t = useTranslations("Hero")
+  const [typedText, setTypedText] = useState("")
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-        setFade(true);
-      }, 300);
-    }, 2800);
-    return () => clearInterval(interval);
-  }, [roles.length]);
+    const items = [
+      t("typingItems.0"),
+      t("typingItems.1"),
+      t("typingItems.2"),
+      t("typingItems.3"),
+      t("typingItems.4"),
+    ]
+    let idx = 0
+    let charIdx = 0
+    let dir: 1 | -1 = 1
+    let timeout: ReturnType<typeof setTimeout>
+
+    // Start with the first item fully typed
+    setTypedText(items[0])
+    charIdx = items[0].length
+    dir = -1
+
+    const tick = () => {
+      const full = items[idx]
+      if (dir === 1) {
+        charIdx++
+        setTypedText(full.slice(0, charIdx))
+        if (charIdx >= full.length) {
+          dir = -1
+          timeout = setTimeout(tick, 2200)
+          return
+        }
+      } else {
+        charIdx--
+        setTypedText(full.slice(0, charIdx))
+        if (charIdx <= 0) {
+          dir = 1
+          idx = (idx + 1) % items.length
+        }
+      }
+      timeout = setTimeout(tick, dir === 1 ? 55 : 28)
+    }
+
+    timeout = setTimeout(tick, 2200)
+    return () => clearTimeout(timeout)
+  }, [t])
+
+  const scrollTo = (id: string) => {
+    const el = document.querySelector(id)
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
 
   return (
     <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex items-center pt-16 overflow-hidden"
+      id="top"
+      className="responsive-hero"
+      style={{
+        position: "relative",
+        minHeight: "calc(100vh - 90px)",
+        padding: "48px 28px 64px",
+        display: "grid",
+        gridTemplateColumns: "1fr 420px",
+        gap: 48,
+        alignItems: "end",
+      }}
     >
-      {/* Aurora background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="aurora-blob absolute top-[15%] left-[10%] w-[500px] h-[500px] bg-primary-dim/8 rounded-full blur-[100px]" />
-        <div className="aurora-blob-2 absolute top-[40%] right-[5%] w-[400px] h-[350px] bg-secondary/5 rounded-full blur-[120px]" />
-        <div className="aurora-blob-3 absolute bottom-[10%] left-[30%] w-[350px] h-[300px] bg-primary/4 rounded-full blur-[100px]" />
-        {/* Fade to background at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-background" />
-      </div>
-
-      {/* Mouse-follow spotlight */}
+      {/* Grid background */}
       <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
-          opacity: isHovering ? 0.08 : 0,
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, var(--color-primary-dim), transparent 60%)`,
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          pointerEvents: "none",
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
-        {/* Mobile photo - shown above copy on small screens */}
-        <div className="md:hidden flex justify-center mb-10">
-          <div className="rotating-border w-40 aspect-square rounded-2xl overflow-hidden bg-surface-low">
-            <Image
-              src="/juan-murillo.jpg"
-              alt="Juan Murillo"
-              width={160}
-              height={160}
-              className="object-cover w-full h-full"
-              priority
-            />
-          </div>
+      {/* Left */}
+      <div style={{ position: "relative", zIndex: 2 }}>
+        <div
+          style={{
+            fontFamily: mono,
+            fontSize: 12,
+            color: "var(--fg-faint)",
+            marginBottom: 28,
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <span
+            style={{
+              border: "1px solid var(--line-strong)",
+              padding: "3px 8px",
+              borderRadius: 3,
+              color: "var(--fg-dim)",
+            }}
+          >
+            <span style={{ color: "var(--green)" }}>{"\u25CF"}</span>{" "}
+            {t("statusTag")}
+          </span>
+          <span>/</span>
+          <span>{t("roleTag")}</span>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
+        <h1
+          style={{
+            fontFamily: serif,
+            fontWeight: 400,
+            fontSize: "clamp(48px, 7.4vw, 112px)",
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            maxWidth: "18ch",
+          }}
+        >
+          {t("line1")}{" "}
+          <span style={{ fontStyle: "italic", color: "var(--accent)" }}>
+            {t("firstName")}
+          </span>
+          .<br />
+          {t("line2")}{" "}
+          <span style={{ position: "relative", display: "inline-block" }}>
+            {t("underlined")}
+            <span
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: "0.08em",
+                height: "0.06em",
+                background: "var(--accent)",
+                opacity: 0.5,
+              }}
+            />
+          </span>
+          <br />
+          {t("line3")}{" "}
+          <span style={{ fontStyle: "italic", color: "var(--accent)" }}>
+            {t("coffeeWord")}
+          </span>
+          .
+        </h1>
+
+        <div
+          style={{
+            marginTop: 36,
+            fontFamily: mono,
+            fontSize: 14,
+            color: "var(--fg-dim)",
+            maxWidth: "52ch",
+            lineHeight: 1.7,
+          }}
+        >
           <div>
-            <p className="font-[family-name:var(--font-inter)] text-on-surface-variant mb-6 leading-relaxed">
-              {t("greeting")} <strong className="text-on-surface">{t("name")}</strong>,{" "}
-              <span
-                className="text-primary inline-block min-w-[200px] transition-all duration-300"
-                style={{
-                  opacity: fade ? 1 : 0,
-                  transform: fade ? "translateY(0)" : "translateY(6px)",
-                }}
-              >
-                {roles[roleIndex]}
-              </span>
-              <br className="hidden sm:block" />
-              {t("basedIn")}
-            </p>
-
-            <h1 className="font-[family-name:var(--font-manrope)] text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] mb-8 tracking-tight">
-              {t("headlineLine1")}
-              <br className="hidden sm:block" />
-              {t("headlineLine2")}
-              <br className="hidden sm:block" />
-              {t("headlineLine3")} <span className="text-primary">{t("headlineHighlight")}</span>
-            </h1>
-
-            <div className="font-[family-name:var(--font-inter)] text-base text-on-surface-variant max-w-xl leading-relaxed space-y-4 mb-10">
-              <p>
-                {t("bodyParagraph1Start")}{" "}
-                <strong className="text-on-surface">{t("bodyAtlassian")}</strong>
-                {t("bodyAtlassianText")}{" "}
-                <a
-                  href="https://jira.atlassian.com/browse/AX-662"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-secondary transition-colors underline underline-offset-2"
-                >
-                  {t("bodyAtlassianTicket")}
-                </a>
-                {t("bodyAtlassianAfterTicket")}{" "}
-                <strong className="text-on-surface">{t("bodySnappr")}</strong>
-                {t("bodySnapprText")}{" "}
-                <strong className="text-on-surface">{t("bodyGoogle")}</strong>
-                {t("bodyGoogleText")}
-              </p>
-              <p>
-                {t("bodyParagraph2Start")}{" "}
-                <strong className="text-on-surface">{t("bodyCoffeeStartup")}</strong>{" "}
-                {t("bodyParagraph2End")}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#work"
-                className="gradient-btn text-black font-medium font-[family-name:var(--font-inter)] px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-sm"
-              >
-                {t("ctaWork")}
-              </a>
-              <a
-                href="#contact"
-                className="ghost-border text-on-surface-variant font-medium font-[family-name:var(--font-inter)] px-6 py-3 rounded-lg hover:text-on-surface hover:bg-surface-highest/40 transition-colors text-sm"
-              >
-                {t("ctaHello")}
-              </a>
-            </div>
+            <span style={{ color: "var(--accent)", marginRight: 8 }}>
+              {"\u276F"}
+            </span>
+            <span style={{ color: "var(--blue)" }}>const</span>{" "}
+            <span style={{ color: "var(--fg)" }}>engineer</span> = {"{"}
           </div>
+          <div>
+            &nbsp;&nbsp;based_in:{" "}
+            <span style={{ color: "var(--green)" }}>
+              &apos;{t("basedIn")}&apos;
+            </span>
+            ,
+          </div>
+          <div>
+            &nbsp;&nbsp;obsessions: [
+            <span style={{ color: "var(--green)" }}>&apos;AI&apos;</span>,{" "}
+            <span style={{ color: "var(--green)" }}>
+              &apos;complex problems&apos;
+            </span>
+            , <span style={{ color: "var(--green)" }}>&apos;coffee&apos;</span>
+            ],
+          </div>
+          <div>
+            &nbsp;&nbsp;currently:{" "}
+            <span style={{ color: "var(--green)" }}>
+              &apos;{typedText}&apos;
+            </span>
+            <span
+              style={{
+                display: "inline-block",
+                width: 8,
+                height: 16,
+                background: "var(--accent)",
+                verticalAlign: "text-bottom",
+                marginLeft: 2,
+                animation: "blink 1s steps(1) infinite",
+              }}
+            />
+          </div>
+          <div>{"}"}</div>
+        </div>
 
-          {/* Desktop photo with rotating gradient border */}
-          <div className="hidden md:block relative">
-            <div className="rotating-border w-72 lg:w-80 aspect-[3/4] rounded-2xl overflow-hidden bg-surface-low">
-              <Image
-                src="/juan-murillo.jpg"
-                alt="Juan Murillo"
-                width={320}
-                height={427}
-                className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
-                priority
-              />
-            </div>
-            <div className="aurora-blob absolute -inset-8 -z-10 bg-primary-dim/10 rounded-3xl blur-3xl" />
+        <div
+          style={{
+            marginTop: 42,
+            display: "flex",
+            gap: 14,
+            alignItems: "center",
+          }}
+        >
+          <a
+            href="#work"
+            onClick={(e) => {
+              e.preventDefault()
+              scrollTo("#work")
+            }}
+            style={{
+              background: "var(--fg)",
+              color: "var(--bg)",
+              border: 0,
+              fontFamily: mono,
+              fontSize: 12,
+              fontWeight: 600,
+              padding: "11px 18px",
+              borderRadius: 3,
+              cursor: "pointer",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              transition: "transform 0.15s",
+            }}
+          >
+            {t("ctaWork")} <span>{"\u2192"}</span>
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              scrollTo("#contact")
+            }}
+            style={{
+              background: "transparent",
+              border: "1px solid var(--line-strong)",
+              color: "var(--fg)",
+              fontFamily: mono,
+              fontSize: 12,
+              padding: "11px 18px",
+              borderRadius: 3,
+              cursor: "pointer",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              transition:
+                "border-color 0.15s, background 0.15s, transform 0.15s",
+            }}
+          >
+            {t("ctaHello")} <span>{"\u2197"}</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Terminal card */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          background: "var(--bg-2)",
+          border: "1px solid var(--line-strong)",
+          borderRadius: 6,
+          overflow: "hidden",
+          fontFamily: mono,
+          fontSize: "12.5px",
+          boxShadow:
+            "0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(232, 162, 83, 0.03)",
+        }}
+        aria-hidden="true"
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "10px 14px",
+            borderBottom: "1px solid var(--line)",
+            background: "rgba(255,255,255,0.015)",
+          }}
+        >
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#E5564E" }} />
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#E0B13F" }} />
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#5EC37A" }} />
+          <span style={{ marginLeft: "auto", color: "var(--fg-faint)", fontSize: 11 }}>
+            ~/juan &middot; whoami
+          </span>
+        </div>
+        <div style={{ padding: "18px 16px 20px" }}>
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--accent)", marginRight: 8 }}>{"\u276F"}</span>
+            whoami --verbose
+          </div>
+          <div style={{ color: "var(--fg-faint)", lineHeight: 1.75 }}>
+            # {t("termTitle")}
+          </div>
+          <hr style={{ border: 0, borderTop: "1px dashed var(--line)", margin: "10px 0" }} />
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--blue)" }}>stack</span>:{"   "}
+            <span style={{ color: "var(--fg)" }}>react &middot; node &middot; python &middot; go</span>
+          </div>
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--blue)" }}>infra</span>:{"   "}
+            <span style={{ color: "var(--fg)" }}>aws &middot; gcp &middot; temporal &middot; docker</span>
+          </div>
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--blue)" }}>ai</span>:{"      "}
+            <span style={{ color: "var(--fg)" }}>pytorch &middot; grpo &middot; llm agents</span>
+          </div>
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--blue)" }}>teams</span>:{"  "}
+            <span style={{ color: "var(--fg)" }}>{t("termTeams")}</span>
+          </div>
+          <hr style={{ border: 0, borderTop: "1px dashed var(--line)", margin: "10px 0" }} />
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--accent)", marginRight: 8 }}>{"\u276F"}</span>
+            cat achievements.md | tail -3
+          </div>
+          <div style={{ color: "var(--green)", lineHeight: 1.75 }}>{"\u2713"} {t("achievement1")}</div>
+          <div style={{ color: "var(--green)", lineHeight: 1.75 }}>{"\u2713"} {t("achievement2")}</div>
+          <div style={{ color: "var(--green)", lineHeight: 1.75 }}>{"\u2713"} {t("achievement3")}</div>
+          <hr style={{ border: 0, borderTop: "1px dashed var(--line)", margin: "10px 0" }} />
+          <div style={{ color: "var(--fg-dim)", lineHeight: 1.75 }}>
+            <span style={{ color: "var(--accent)", marginRight: 8 }}>{"\u276F"}</span>
+            <span className="blink">_</span>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

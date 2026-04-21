@@ -1,63 +1,133 @@
-"use client";
+"use client"
 
-import { useTranslations } from "next-intl";
-import FadeIn from "./FadeIn";
+import { useTranslations } from "next-intl"
+
+const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
+const serif = "'Instrument Serif', 'Times New Roman', serif"
 
 export default function Contact() {
-  const t = useTranslations("Contact");
+  const t = useTranslations("Contact")
 
   return (
-    <section id="contact" className="relative py-32 bg-surface-low">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary-dim/5 rounded-full blur-[100px]" />
+    <section
+      id="contact"
+      style={{
+        padding: "70px 28px 80px",
+        borderTop: "1px solid var(--line)",
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: 18,
+          marginBottom: 12,
+          fontFamily: mono,
+          fontSize: 11,
+          color: "var(--fg-faint)",
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+        }}
+      >
+        <span>// 06</span>
+        <span>{"\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"}</span>
+        <span>contact.md</span>
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-xs font-[family-name:var(--font-inter)] tracking-[0.2em] uppercase text-on-surface-variant mb-4">
-            {t("sectionLabel")}
-          </p>
-          <h2 className="font-[family-name:var(--font-manrope)] text-3xl sm:text-4xl font-bold mb-4">
-            {t("heading")}
-          </h2>
-          <p className="font-[family-name:var(--font-inter)] text-on-surface-variant max-w-lg leading-relaxed mb-12">
-            {t("subheading")}
-          </p>
-        </FadeIn>
+      <h2
+        style={{
+          fontFamily: serif,
+          fontWeight: 400,
+          fontSize: "clamp(48px, 7vw, 96px)",
+          letterSpacing: "-0.025em",
+          lineHeight: 1,
+          maxWidth: "16ch",
+          marginBottom: 32,
+        }}
+      >
+        {t("headingStart")}{" "}
+        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>
+          {t("headingAccent")}
+        </em>
+        .
+      </h2>
 
-        <FadeIn delay={150}>
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <a
-              href="mailto:juanchomurcas@gmail.com"
-              className="gradient-btn text-black font-medium font-[family-name:var(--font-inter)] px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-sm text-center"
-            >
-              juanchomurcas@gmail.com
-            </a>
-            <a
-              href="https://linkedin.com/in/juan-murillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ghost-border text-on-surface-variant font-medium font-[family-name:var(--font-inter)] px-6 py-3 rounded-lg hover:text-on-surface hover:bg-surface-highest/40 transition-colors text-sm text-center"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/jgmurillo10"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ghost-border text-on-surface-variant font-medium font-[family-name:var(--font-inter)] px-6 py-3 rounded-lg hover:text-on-surface hover:bg-surface-highest/40 transition-colors text-sm text-center"
-            >
-              GitHub
-            </a>
-          </div>
-        </FadeIn>
+      <p
+        style={{
+          maxWidth: "56ch",
+          color: "var(--fg-dim)",
+          fontSize: 17,
+          lineHeight: 1.6,
+          marginBottom: 36,
+        }}
+      >
+        {t("subheading")}
+      </p>
 
-        <FadeIn delay={250}>
-          <p className="font-[family-name:var(--font-inter)] text-sm text-on-surface-variant/40">
-            {t("basedIn")}
-          </p>
-        </FadeIn>
+      <div
+        className="responsive-contact-row"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1.3fr 1fr",
+          gap: 48,
+          alignItems: "end",
+        }}
+      >
+        <a
+          href="mailto:juanchomurcas@gmail.com"
+          style={{
+            fontFamily: serif,
+            fontSize: "clamp(26px, 3.2vw, 42px)",
+            letterSpacing: "-0.01em",
+            color: "var(--fg)",
+            textDecoration: "none",
+            borderBottom: "1px solid var(--line-strong)",
+            paddingBottom: 10,
+            display: "inline-block",
+            transition: "color 0.2s, border-color 0.2s",
+          }}
+        >
+          juanchomurcas@gmail.com {"\u2192"}
+        </a>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+            fontFamily: mono,
+            fontSize: 13,
+          }}
+        >
+          {[
+            { label: "LinkedIn", href: "https://linkedin.com/in/juan-murillo", arrow: "\u2197" },
+            { label: "GitHub", href: "https://github.com/jgmurillo10", arrow: "\u2197" },
+            { label: t("jsconfLabel"), href: "https://www.youtube.com/@nicobytes/search?query=murillo", arrow: "\u2197" },
+            { label: "/cv \u00b7 PDF", href: "#", arrow: "\u2193" },
+          ].map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                color: "var(--fg)",
+                textDecoration: "none",
+                padding: "12px 0",
+                borderBottom: "1px solid var(--line)",
+                transition: "color 0.15s, padding 0.2s",
+              }}
+            >
+              <span>{link.label}</span>
+              <span style={{ color: "var(--fg-faint)" }}>{link.arrow}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
-  );
+  )
 }

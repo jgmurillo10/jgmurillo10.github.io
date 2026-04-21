@@ -1,35 +1,29 @@
-import { Manrope, Inter } from "next/font/google";
-import { notFound } from "next/navigation";
-import { hasLocale } from "next-intl";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
-import { routing } from "@/i18n/routing";
-import "../globals.css";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
+import { Inter } from "next/font/google"
+import { notFound } from "next/navigation"
+import { hasLocale } from "next-intl"
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages, setRequestLocale } from "next-intl/server"
+import { routing } from "@/i18n/routing"
+import "../globals.css"
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+  weight: ["300", "400", "500", "600", "700"],
+})
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params;
-  const messages = (await import(`@/messages/${locale}.json`)).default;
-  const meta = messages.Metadata;
+  const { locale } = await params
+  const messages = (await import(`@/messages/${locale}.json`)).default
+  const meta = messages.Metadata
 
   return {
     title: meta.title,
@@ -54,9 +48,7 @@ export async function generateMetadata({
     creator: "Juan Murillo",
     metadataBase: new URL("https://juanmurillo.co"),
     icons: {
-      icon: [
-        { url: "/icon.svg", type: "image/svg+xml" },
-      ],
+      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
       apple: "/icon.svg",
     },
     robots: {
@@ -99,32 +91,42 @@ export async function generateMetadata({
       description: meta.ogDescription,
       images: ["/juan-murillo.jpg"],
     },
-  };
+  }
 }
 
 export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params;
+  const { locale } = await params
 
   if (!hasLocale(routing.locales, locale)) {
-    notFound();
+    notFound()
   }
 
-  setRequestLocale(locale);
+  setRequestLocale(locale)
 
-  const messages = await getMessages();
+  const messages = await getMessages()
 
   return (
     <html
       lang={locale}
-      className={`${manrope.variable} ${inter.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap"
+          rel="stylesheet"
+        />
         <link
           rel="alternate"
           hrefLang="en"
@@ -141,7 +143,7 @@ export default async function LocaleLayout({
           href="https://juanmurillo.co/en"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col grain">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -179,5 +181,5 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
       </body>
     </html>
-  );
+  )
 }

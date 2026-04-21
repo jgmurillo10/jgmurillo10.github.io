@@ -1,125 +1,232 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { useTranslations } from "next-intl"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+
+const navItems = [
+  { href: "#work", n: "01", key: "work" },
+  { href: "#services", n: "02", key: "services" },
+  { href: "#experience", n: "03", key: "experience" },
+  { href: "#about", n: "04", key: "about" },
+  { href: "#contact", n: "05", key: "contact" },
+] as const
+
+const mono = "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace"
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const t = useTranslations("Navbar");
-  const locale = useLocale();
+  const t = useTranslations("Navbar")
+  const pathname = usePathname()
+  const router = useRouter()
+  const [activeSection, setActiveSection] = useState("")
+  const [hoverBrand, setHoverBrand] = useState(false)
 
-  const navLinks = [
-    { label: t("work"), href: "#work" },
-    { label: t("services"), href: "#services" },
-    { label: t("experience"), href: "#experience" },
-    { label: t("about"), href: "#about" },
-    { label: t("contact"), href: "#contact" },
-  ];
+  const currentLocale = pathname.startsWith("/es") ? "es" : "en"
 
-  const otherLocale = locale === "en" ? "es" : "en";
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => ({
+        id: item.href.slice(1),
+        el: document.querySelector(item.href),
+      }))
+      .filter((s) => s.el)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection("#" + entry.target.id)
+          }
+        })
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    )
+
+    sections.forEach((s) => s.el && observer.observe(s.el))
+    return () => observer.disconnect()
+  }, [])
+
+  const scrollTo = (id: string) => {
+    const el = document.querySelector(id)
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md ghost-border border-t-0 border-l-0 border-r-0">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="text-xl font-bold font-[family-name:var(--font-manrope)]">
-          <span className="gradient-text">JM</span>
-        </a>
-
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-[family-name:var(--font-inter)] text-on-surface-variant hover:text-primary transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-3">
-          {/* Language switcher */}
-          <div className="flex items-center gap-1 text-xs font-[family-name:var(--font-inter)]">
-            {routing.locales.map((loc) => (
-              <a
-                key={loc}
-                href={`/${loc}`}
-                className={`px-2 py-1 rounded transition-colors duration-200 ${
-                  loc === locale
-                    ? "text-primary font-semibold"
-                    : "text-on-surface-variant/50 hover:text-on-surface-variant"
-                }`}
-              >
-                {loc.toUpperCase()}
-              </a>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <a
-            href="#contact"
-            className="gradient-btn text-black text-sm font-semibold font-[family-name:var(--font-inter)] px-5 py-2 rounded-lg hover:opacity-90 transition-opacity"
-          >
-            {t("letsTalk")}
-          </a>
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-on-surface-variant"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+    <nav
+      style={{
+        position: "fixed",
+        top: 34,
+        left: 0,
+        right: 0,
+        zIndex: 49,
+        padding: "16px 28px",
+        display: "flex",
+        alignItems: "center",
+        gap: 28,
+        background:
+          "linear-gradient(to bottom, rgba(var(--bg-rgb), 0.92), rgba(var(--bg-rgb), 0.6) 70%, transparent)",
+      }}
+    >
+      <a
+        href="#top"
+        onClick={(e) => {
+          e.preventDefault()
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }}
+        onMouseEnter={() => setHoverBrand(true)}
+        onMouseLeave={() => setHoverBrand(false)}
+        style={{
+          fontFamily: mono,
+          fontWeight: 600,
+          fontSize: 13,
+          letterSpacing: "0.02em",
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          color: "var(--fg)",
+          textDecoration: "none",
+          transition: "opacity 0.15s",
+          opacity: hoverBrand ? 0.8 : 1,
+        }}
+      >
+        <span
+          style={{
+            width: 22,
+            height: 22,
+            border: "1px solid var(--accent)",
+            color: hoverBrand ? "var(--bg)" : "var(--accent)",
+            background: hoverBrand ? "var(--accent)" : "transparent",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: 0,
+            transition: "background 0.15s, color 0.15s",
+          }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {mobileOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path d="M3 12h18M3 6h18M3 18h18" />
-            )}
-          </svg>
+          JM
+        </span>
+        juan murillo
+        <span style={{ color: "var(--accent)" }}>_</span>
+      </a>
+
+      <ul
+        className="responsive-nav-links"
+        style={{
+          display: "flex",
+          listStyle: "none",
+          gap: 4,
+          marginLeft: 18,
+        }}
+      >
+        {navItems.map((item) => (
+          <li key={item.key}>
+            <a
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault()
+                scrollTo(item.href)
+              }}
+              style={{
+                fontFamily: mono,
+                fontSize: 12,
+                color:
+                  activeSection === item.href
+                    ? "var(--accent)"
+                    : "var(--fg-dim)",
+                textDecoration: "none",
+                padding: "6px 10px",
+                borderRadius: 3,
+                transition: "color 0.15s, background 0.15s",
+                display: "flex",
+                gap: 6,
+                alignItems: "baseline",
+              }}
+            >
+              <span style={{ color: "var(--fg-faint)", fontSize: "10.5px" }}>
+                {item.n}
+              </span>
+              {t(item.key)}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div
+        style={{
+          marginLeft: "auto",
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+        }}
+      >
+        <div
+          style={{
+            display: "inline-flex",
+            fontFamily: mono,
+            fontSize: 11,
+            border: "1px solid var(--line-strong)",
+            borderRadius: 3,
+            overflow: "hidden",
+          }}
+        >
+          <button
+            onClick={() => {
+              if (currentLocale !== "en") router.push("/en")
+            }}
+            style={{
+              background: currentLocale === "en" ? "var(--fg)" : "transparent",
+              border: 0,
+              color: currentLocale === "en" ? "var(--bg)" : "var(--fg-dim)",
+              padding: "5px 9px",
+              fontFamily: "inherit",
+              fontSize: "inherit",
+              cursor: "pointer",
+            }}
+          >
+            EN
+          </button>
+          <button
+            onClick={() => {
+              if (currentLocale !== "es") router.push("/es")
+            }}
+            style={{
+              background: currentLocale === "es" ? "var(--fg)" : "transparent",
+              border: 0,
+              color: currentLocale === "es" ? "var(--bg)" : "var(--fg-dim)",
+              padding: "5px 9px",
+              fontFamily: "inherit",
+              fontSize: "inherit",
+              cursor: "pointer",
+            }}
+          >
+            ES
+          </button>
+        </div>
+
+        <button
+          onClick={() => scrollTo("#contact")}
+          style={{
+            background: "var(--accent)",
+            color: "var(--bg)",
+            fontFamily: mono,
+            fontWeight: 600,
+            fontSize: 12,
+            padding: "8px 14px",
+            border: 0,
+            borderRadius: 3,
+            cursor: "pointer",
+            transition: "transform 0.15s, box-shadow 0.15s",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ color: "rgba(14,12,10,0.5)" }}>$</span>
+          {t("letsTalk")}
         </button>
       </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden glass border-t border-outline-variant/20 px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="block text-sm font-[family-name:var(--font-inter)] text-on-surface-variant hover:text-primary transition-colors"
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="flex items-center gap-2 py-1">
-            {routing.locales.map((loc) => (
-              <a
-                key={loc}
-                href={`/${loc}`}
-                className={`text-xs font-[family-name:var(--font-inter)] px-2 py-1 rounded transition-colors ${
-                  loc === locale
-                    ? "text-primary font-semibold"
-                    : "text-on-surface-variant/50 hover:text-on-surface-variant"
-                }`}
-              >
-                {loc.toUpperCase()}
-              </a>
-            ))}
-          </div>
-          <a
-            href="#contact"
-            className="block gradient-btn text-black text-sm font-semibold text-center px-5 py-2 rounded-lg"
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("letsTalk")}
-          </a>
-        </div>
-      )}
     </nav>
-  );
+  )
 }
