@@ -15,7 +15,7 @@ export default function Hero() {
   // Sync coffee count from StatusBar
   useEffect(() => {
     const handler = () => {
-      coffeeRef.current = Math.min(coffeeRef.current + 1, 12)
+      coffeeRef.current = Math.min(coffeeRef.current + 1, 9)
     }
     window.addEventListener("coffee-changed", handler)
     return () => window.removeEventListener("coffee-changed", handler)

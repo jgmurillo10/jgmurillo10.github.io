@@ -42,7 +42,7 @@ export default function StatusBar() {
 
   useEffect(() => {
     const handler = () => {
-      setCups((n) => Math.min(n + 1, 12))
+      setCups((n) => Math.min(n + 1, 9))
       flashCoffee()
       window.dispatchEvent(new CustomEvent("coffee-changed"))
     }
