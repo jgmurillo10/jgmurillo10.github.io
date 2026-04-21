@@ -22,12 +22,13 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    const ordinal = (n: number) => {
-      if (locale === "es") return String(n)
-      if (n === 1) return "1st"
-      if (n === 2) return "2nd"
-      if (n === 3) return "3rd"
-      return n + "th"
+    const coffeeLine = (n: number) => {
+      if (n >= 9) return t("typingItems.3overflow")
+      if (locale === "es")
+        return t("typingItems.3").replace("{n}", String(n))
+      const ord =
+        n === 1 ? "1st" : n === 2 ? "2nd" : n === 3 ? "3rd" : n + "th"
+      return t("typingItems.3").replace("{n}", ord)
     }
 
     // Build items dynamically so the coffee line reads the live count
@@ -35,7 +36,7 @@ export default function Hero() {
       t("typingItems.0"),
       t("typingItems.1"),
       t("typingItems.2"),
-      t("typingItems.3").replace("{n}", ordinal(coffeeRef.current)),
+      coffeeLine(coffeeRef.current),
       t("typingItems.4"),
     ]
 

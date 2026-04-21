@@ -27,6 +27,7 @@
       "1": "pairing with Claude at 7am",
       "2": "shipping Temporal workflows",
       "3": "brewing the {n} cup",
+      "3overflow": "lost count of cups",
       "4": "trying new dev tools"
     },
     "ctaWork": "see selected work",
