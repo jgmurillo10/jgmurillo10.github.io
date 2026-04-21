@@ -3,27 +3,27 @@
     "work": "trabajo",
     "services": "servicios",
     "experience": "experiencia",
-    "about": "sobre mi",
+    "about": "sobre m\u00ed",
     "contact": "contacto",
     "letsTalk": "hablemos"
   },
   "StatusBar": {
     "deployed": "deployed",
-    "location": "Bogota · -05 UTC",
+    "location": "Bogot\u00e1 \u00b7 -05 UTC",
     "status": "abierto a conectar"
   },
   "Hero": {
-    "statusTag": "abierto a conectar · Q2 2026",
-    "roleTag": "senior full-stack · lider tecnico",
+    "statusTag": "abierto a conectar \u00b7 Q2 2026",
+    "roleTag": "senior full-stack \u00b7 l\u00edder t\u00e9cnico",
     "line1": "Hola, soy",
     "firstName": "Juan",
     "line2": "Construyo",
     "underlined": "cosas\u00a0complejas",
-    "line3": "con IA, codigo y",
-    "coffeeWord": "cafe",
-    "basedIn": "Bogota, trabajando globalmente",
+    "line3": "con IA, c\u00f3digo y",
+    "coffeeWord": "caf\u00e9",
+    "basedIn": "Bogot\u00e1, trabajando globalmente",
     "typingItems": {
-      "0": "liderando automatizacion con IA en Snappr",
+      "0": "liderando automatizaci\u00f3n con IA en Snappr",
       "1": "programando con Claude a las 7am",
       "2": "lanzando workflows en Temporal",
       "3": "preparando la {n}a taza",
@@ -32,56 +32,56 @@
     "ctaWork": "ver trabajo seleccionado",
     "ctaHello": "saludar",
     "termTitle": "Senior Full-Stack Engineer & Technical Lead",
-    "termTeams": "lidere 3-8 ingenieros, 3 zonas horarias",
-    "achievement1": "CLOUD-6999 cerrado despues de 10+ anos",
-    "achievement2": "Imagenes de comida automatizadas 0% \u2192 56%",
-    "achievement3": "Entrevista YC en menos de 30 dias"
+    "termTeams": "lider\u00e9 3\u20138 ingenieros, 3 zonas horarias",
+    "achievement1": "CLOUD-6999 cerrado despu\u00e9s de 10+ a\u00f1os",
+    "achievement2": "Im\u00e1genes de comida automatizadas 0% \u2192 56%",
+    "achievement3": "Entrevista YC en menos de 30 d\u00edas"
   },
   "FeaturedWork": {
     "headingStart": "Algunos proyectos de los que estoy",
     "headingAccent": "orgulloso",
-    "subheading": "No solo lo que se lanzo. El contexto, el enfoque, y lo que realmente contribui. Me importa ser honesto con mi parte.",
+    "subheading": "No solo lo que se lanz\u00f3. El contexto, el enfoque, y lo que realmente contribu\u00ed. Me importa ser honesto con mi parte.",
     "theProblem": "problema",
     "myRole": "mi rol",
     "studies": {
       "0": {
         "company": "Snappr",
         "period": "2024 \u2192 presente",
-        "role": "lider tecnico",
-        "team": "AI Food · AI Core",
-        "statusValue": "\u25CF en produccion",
-        "titleStart": "Liderando automatizacion con IA para",
-        "titleAccent": "imagenes de comida",
-        "problem": "Apps de delivery a nivel mundial necesitaban miles de imagenes de comida. Cada imagen se tomaba, editaba y revisaba manualmente. El proceso no escalaba con la demanda.",
-        "approach": "Como lider tecnico de AI Food y AI Core, lidere el pipeline de automatizacion. Orquestando generacion, etiquetado y revision de imagenes con workflows de Temporal en AWS. Estabilice la app de Next.js que Ops usa a diario, y coordine entre zonas horarias con equipos de Ops e IA.",
-        "result": "El equipo paso de 0% a 56% de automatizacion. No construi cada pieza, pero lidere el pipeline, mantuve el sistema estable y me asegure de que las partes encajaran.",
+        "role": "l\u00edder t\u00e9cnico",
+        "team": "AI Food \u00b7 AI Core",
+        "statusValue": "\u25cf en producci\u00f3n",
+        "titleStart": "Liderando automatizaci\u00f3n con IA para",
+        "titleAccent": "im\u00e1genes de comida",
+        "problem": "Apps de delivery a nivel mundial necesitaban miles de im\u00e1genes de comida. Cada imagen se tomaba, editaba y revisaba manualmente. El proceso no escalaba con la demanda.",
+        "approach": "Como l\u00edder t\u00e9cnico de AI Food y AI Core, lider\u00e9 el pipeline de automatizaci\u00f3n. Orquestando generaci\u00f3n, etiquetado y revisi\u00f3n de im\u00e1genes con workflows de Temporal en AWS. Estabilic\u00e9 la app de Next.js que Ops usa a diario, y coordin\u00e9 entre zonas horarias con equipos de Ops e IA.",
+        "result": "El equipo pas\u00f3 de 0% a 56% de automatizaci\u00f3n. No constru\u00ed cada pieza, pero lider\u00e9 el pipeline, mantuve el sistema estable y me asegur\u00e9 de que las partes encajaran.",
         "resultLabel": "automatizado"
       },
       "1": {
         "company": "Atlassian",
         "period": "2022 \u2192 2024",
-        "role": "lider tecnico (via EPAM)",
+        "role": "l\u00edder t\u00e9cnico (v\u00eda EPAM)",
         "team": "Custom Domains",
-        "statusValue": "CLOUD-6999 · 10+ anos",
+        "statusValue": "CLOUD-6999 \u00b7 10+ a\u00f1os",
         "titleStart": "Ayudando a cerrar un",
-        "titleAccent": "ticket de una decada",
-        "problem": "Los dominios personalizados para productos de Atlassian necesitaban una interfaz de admin completa, manejo seguro de entrada de datos y deteccion de amenazas en tiempo real. El ticket llevaba abierto mas de diez anos.",
-        "approach": "Arquitecte la interfaz React para gestionar dominios personalizados, con proteccion contra XSS y accesibilidad WCAG 2.1 AA, y lidere la integracion entre equipos. Tambien construi el componente de monitoreo de Certificate Transparency Logs: un sistema basado en eventos en Node.js y Go en AWS Lambda, para detectar ataques man-in-the-middle.",
-        "result": "Mis contribuciones fueron partes clave de lo que se necesito para cerrarlo. Un esfuerzo de equipo que abarco multiples grupos. Estoy orgulloso de las piezas que lidere.",
+        "titleAccent": "ticket de una d\u00e9cada",
+        "problem": "Los dominios personalizados para productos de Atlassian necesitaban una interfaz de admin completa, manejo seguro de entrada de datos y detecci\u00f3n de amenazas en tiempo real. El ticket llevaba abierto m\u00e1s de diez a\u00f1os.",
+        "approach": "Arquitect\u00e9 la interfaz React para gestionar dominios personalizados, con protecci\u00f3n contra XSS y accesibilidad WCAG 2.1 AA, y lider\u00e9 la integraci\u00f3n entre equipos. Tambi\u00e9n constru\u00ed el componente de monitoreo de Certificate Transparency Logs: un sistema basado en eventos en Node.js y Go en AWS Lambda, para detectar ataques man-in-the-middle.",
+        "result": "Mis contribuciones fueron partes clave de lo que se necesit\u00f3 para cerrarlo. Un esfuerzo de equipo que abarc\u00f3 m\u00faltiples grupos. Estoy orgulloso de las piezas que lider\u00e9.",
         "resultLabel": "ticket \u2192 cerrado",
         "linkLabel": "ver el ticket"
       },
       "2": {
-        "company": "Arje Coffee",
+        "company": "Arj\u00e9 Coffee",
         "period": "2019 \u2192 2021",
-        "role": "CTO · cofundador",
-        "team": "2 fundadores · 0 \u2192 1",
+        "role": "CTO \u00b7 cofundador",
+        "team": "2 fundadores \u00b7 0 \u2192 1",
         "statusValue": "entrevista YC",
         "titleStart": "Del",
         "titleAccent": "grano al navegador",
-        "problem": "Queriamos construir un marketplace de suscripcion de cafe conectando fincas colombianas con consumidores globales. Sin equipo, sin producto, plazo ajustado.",
-        "approach": "Construimos todo el stack tecnologico: frontend en React, backend en Node.js, integraciones de pago, APIs de gestion de pedidos. Automatizamos el 66% de la revision manual de pedidos. Lanzamos tanto el marketplace como el producto fisico desde cero.",
-        "result": "Lanzamos el MVP en menos de un mes y conseguimos una entrevista con Y Combinator. Construir tanto el producto como la tecnologia me enseno mas sobre lanzar productos que cualquier trabajo anterior.",
+        "problem": "Quer\u00edamos construir un marketplace de suscripci\u00f3n de caf\u00e9 conectando fincas colombianas con consumidores globales. Sin equipo, sin producto, plazo ajustado.",
+        "approach": "Construimos todo el stack tecnol\u00f3gico: frontend en React, backend en Node.js, integraciones de pago, APIs de gesti\u00f3n de pedidos. Automatizamos el 66% de la revisi\u00f3n manual de pedidos. Lanzamos tanto el marketplace como el producto f\u00edsico desde cero.",
+        "result": "Lanzamos el MVP en menos de un mes y conseguimos una entrevista con Y Combinator. Construir tanto el producto como la tecnolog\u00eda me ense\u00f1\u00f3 m\u00e1s sobre lanzar productos que cualquier trabajo anterior.",
         "resultLabel": "para lanzar"
       }
     }
@@ -90,30 +90,30 @@
     "headingStart": "Me especializo en",
     "headingAccent": "tres",
     "headingEnd": " cosas.",
-    "subheading": "Prefiero ser excelente en pocas cosas que pasable en muchas. Aqui es donde genero mas impacto.",
+    "subheading": "Prefiero ser excelente en pocas cosas que pasable en muchas. Aqu\u00ed es donde genero m\u00e1s impacto.",
     "capabilities": {
       "0": {
         "titleStart": "Productos ",
         "titleAccent": "full-stack",
         "titleEnd": ", de punta a punta.",
-        "description": "Del frontend al backend a la infraestructura. React, TypeScript, Node.js, Python, PostgreSQL, desplegado en AWS o GCP. Me gusta ser dueno de todo el panorama, desde la interfaz que alguien ve hasta el pipeline que corre detras."
+        "description": "Del frontend al backend a la infraestructura. React, TypeScript, Node.js, Python, PostgreSQL, desplegado en AWS o GCP. Me gusta ser due\u00f1o de todo el panorama, desde la interfaz que alguien ve hasta el pipeline que corre detr\u00e1s."
       },
       "1": {
-        "titleStart": "IA y automatizacion que ",
+        "titleStart": "IA y automatizaci\u00f3n que ",
         "titleAccent": "realmente funciona",
         "titleEnd": ".",
-        "description": "Agentes de IA en produccion, modelos ajustados con GRPO, workflows de Temporal que reemplazaron pipelines manuales. Disfruto la parte complicada: descubrir donde la IA realmente ayuda vs. donde solo agrega complejidad."
+        "description": "Agentes de IA en producci\u00f3n, modelos ajustados con GRPO, workflows de Temporal que reemplazaron pipelines manuales. Disfruto la parte complicada: descubrir d\u00f3nde la IA realmente ayuda vs. d\u00f3nde solo agrega complejidad."
       },
       "2": {
         "titleStart": "Liderando ",
         "titleAccent": "equipos",
-        "titleEnd": " de ingenieria.",
-        "description": "He liderado equipos de 3 a 8 ingenieros, dirigido revisiones de arquitectura y mentorado entre zonas horarias. Me importa la calidad del codigo, pero me importa mas que el equipo lance lo correcto juntos."
+        "titleEnd": " de ingenier\u00eda.",
+        "description": "He liderado equipos de 3 a 8 ingenieros, dirigido revisiones de arquitectura y mentorado entre zonas horarias. Me importa la calidad del c\u00f3digo, pero me importa m\u00e1s que el equipo lance lo correcto juntos."
       }
     }
   },
   "Experience": {
-    "headingStart": "La version",
+    "headingStart": "La versi\u00f3n",
     "headingAccent": "corta",
     "headingEnd": ".",
     "subheading": "Una historia condensada. Pasa el cursor sobre cualquier fila para inspeccionar.",
@@ -122,25 +122,25 @@
         "company": "Snappr",
         "role": "Senior Full-Stack Engineer II",
         "period": "2024 \u2192 ahora",
-        "description": "Lider tecnico de AI Food y AI Core. Liderando el pipeline de automatizacion de 0% a 56%. Coordinando colaboracion entre zonas horarias con equipos de Ops e IA en AWS."
+        "description": "L\u00edder t\u00e9cnico de AI Food y AI Core. Liderando el pipeline de automatizaci\u00f3n de 0% a 56%. Coordinando colaboraci\u00f3n entre zonas horarias con equipos de Ops e IA en AWS."
       },
       "1": {
         "company": "EPAM @ Atlassian",
-        "role": "Lider Tecnico",
+        "role": "L\u00edder T\u00e9cnico",
         "period": "2022 \u2192 2024",
-        "description": "Contribuidor clave para cerrar CLOUD-6999. Construi la interfaz de dominios personalizados y el monitoreo de deteccion de amenazas. Gestione y mentore un equipo de 3 ingenieros."
+        "description": "Contribuidor clave para cerrar CLOUD-6999. Constru\u00ed la interfaz de dominios personalizados y el monitoreo de detecci\u00f3n de amenazas. Gestion\u00e9 y mentor\u00e9 un equipo de 3 ingenieros."
       },
       "2": {
         "company": "Huge @ Google",
         "role": "Ingeniero Senior",
         "period": "2019 \u2192 2022",
-        "description": "Optimice el rendimiento del sitio web de marketing de Google Play. Construi pipelines de CI/CD. Cree una extension de Chrome que redujo las localizaciones faltantes en produccion en un 30%."
+        "description": "Optimic\u00e9 el rendimiento del sitio web de marketing de Google Play. Constru\u00ed pipelines de CI/CD. Cre\u00e9 una extensi\u00f3n de Chrome que redujo las localizaciones faltantes en producci\u00f3n en un 30%."
       },
       "3": {
-        "company": "Arje Coffee",
+        "company": "Arj\u00e9 Coffee",
         "role": "CTO y Cofundador",
         "period": "2019 \u2192 2021",
-        "description": "Construi el marketplace de suscripcion desde cero. Automatice pagos, lance en menos de un mes, consegui una entrevista con Y Combinator."
+        "description": "Constru\u00ed el marketplace de suscripci\u00f3n desde cero. Automatic\u00e9 pagos, lanc\u00e9 en menos de un mes, consegu\u00ed una entrevista con Y Combinator."
       }
     }
   },
@@ -152,60 +152,60 @@
     "thoughts": {
       "0": {
         "titleStart": "Cerrando la ",
-        "titleAccent": "brecha tecnica",
+        "titleAccent": "brecha t\u00e9cnica",
         "titleEnd": ".",
-        "description": "La mejor tecnologia se siente invisible. El verdadero desafio no es construir herramientas de IA poderosas. Es hacerlas tan intuitivas que los equipos no tecnicos las adopten sin pensarlo dos veces. Ahi es donde vive el mayor impacto."
+        "description": "La mejor tecnolog\u00eda se siente invisible. El verdadero desaf\u00edo no es construir herramientas de IA poderosas. Es hacerlas tan intuitivas que los equipos no t\u00e9cnicos las adopten sin pensarlo dos veces. Ah\u00ed es donde vive el mayor impacto."
       },
       "1": {
         "titleStart": "Programando con ",
         "titleAccent": "Claude y Cursor",
         "titleEnd": ".",
-        "description": "He estado usando herramientas de IA para programar a diario, no como autocompletado, sino como companero de pensamiento. Codex, Claude CLI, Cursor, Devin. El flujo de trabajo esta cambiando rapido."
+        "description": "He estado usando herramientas de IA para programar a diario, no como autocompletado, sino como compa\u00f1ero de pensamiento. Codex, Claude CLI, Cursor, Devin. El flujo de trabajo est\u00e1 cambiando r\u00e1pido."
       },
       "2": {
         "titleStart": "Sigo ",
         "titleAccent": "obsesionado",
-        "titleEnd": " con el cafe.",
-        "description": "Arje Coffee me enseno mas sobre construir productos que cualquier trabajo. Cuando tienes que lanzar tanto el codigo como el producto fisico, aprendes lo que realmente le importa a los usuarios."
+        "titleEnd": " con el caf\u00e9.",
+        "description": "Arj\u00e9 Coffee me ense\u00f1\u00f3 m\u00e1s sobre construir productos que cualquier trabajo. Cuando tienes que lanzar tanto el c\u00f3digo como el producto f\u00edsico, aprendes lo que realmente le importa a los usuarios."
       }
     }
   },
   "About": {
-    "headingStart": "Un poco mas de",
+    "headingStart": "Un poco m\u00e1s de",
     "headingAccent": "contexto",
-    "location": "Bogota, CO · trabajando globalmente",
-    "paragraph1": "Estudie <em>Ingenieria de Sistemas y Computacion</em> en la Universidad de los Andes en Bogota. Mi primer proyecto real fue Shipyard, una app React de codigo abierto construida sobre navio.dev para que cualquier persona pudiera explorar visualizaciones de redes grandes sin escribir codigo. Ahi me di cuenta de que los proyectos que mas disfruto son los que le quitan friccion a los demas.",
-    "paragraph2": "Ese principio se quedo conmigo. Ya sea construyendo funcionalidades de Google Play usadas por millones, un sistema de seguridad protegiendo la infraestructura cloud de Atlassian, o un pipeline de IA reemplazando flujos de trabajo manuales en Snappr, siempre vuelvo a la misma pregunta: <em>esto realmente le facilita el dia a alguien?</em>",
-    "paragraph3": "He hablado en <strong>JSConf Colombia</strong> dos veces (2018 y 2023), he sido mentor en Code Your Future, y sigo construyendo proyectos por diversion. Hablo ingles y espanol de forma nativa, y trabajo mejor con equipos que se mueven rapido y les importa la calidad."
+    "location": "Bogot\u00e1, CO \u00b7 trabajando globalmente",
+    "paragraph1": "Estudi\u00e9 <em>Ingenier\u00eda de Sistemas y Computaci\u00f3n</em> en la Universidad de los Andes en Bogot\u00e1. Mi primer proyecto real fue Shipyard, una app React de c\u00f3digo abierto construida sobre navio.dev para que cualquier persona pudiera explorar visualizaciones de redes grandes sin escribir c\u00f3digo. Ah\u00ed me di cuenta de que los proyectos que m\u00e1s disfruto son los que le quitan fricci\u00f3n a los dem\u00e1s.",
+    "paragraph2": "Ese principio se qued\u00f3 conmigo. Ya sea construyendo funcionalidades de Google Play usadas por millones, un sistema de seguridad protegiendo la infraestructura cloud de Atlassian, o un pipeline de IA reemplazando flujos de trabajo manuales en Snappr, siempre vuelvo a la misma pregunta: <em>\u00bfesto realmente le facilita el d\u00eda a alguien?</em>",
+    "paragraph3": "He hablado en <strong>JSConf Colombia</strong> dos veces (2018 y 2023), he sido mentor en Code Your Future, y sigo construyendo proyectos por diversi\u00f3n. Hablo ingl\u00e9s y espa\u00f1ol de forma nativa, y trabajo mejor con equipos que se mueven r\u00e1pido y les importa la calidad."
   },
   "Contact": {
     "headingStart": "Siempre estoy abierto a una",
-    "headingAccent": "buena conversacion",
-    "subheading": "Ya sea sobre asesoria tecnica, hablar en tu evento, colaborar en algo interesante, o simplemente hablar de cafe y codigo. Escribeme.",
+    "headingAccent": "buena conversaci\u00f3n",
+    "subheading": "Ya sea sobre asesor\u00eda t\u00e9cnica, hablar en tu evento, colaborar en algo interesante, o simplemente hablar de caf\u00e9 y c\u00f3digo. Escr\u00edbeme.",
     "jsconfLabel": "Charla JSConf Colombia 2023"
   },
   "Footer": {
-    "basedIn": "Desde Colombia · trabajando remotamente con equipos globales",
-    "copyright": "\u00a9 2026 Juan Murillo · hecho con proposito y cafeina"
+    "basedIn": "Desde Colombia \u00b7 trabajando remotamente con equipos globales",
+    "copyright": "\u00a9 2026 Juan Murillo \u00b7 hecho con prop\u00f3sito y cafe\u00edna"
   },
   "CommandPalette": {
-    "placeholder": "Ir a seccion, cambiar tema, copiar email\u2026",
+    "placeholder": "Ir a secci\u00f3n, cambiar tema, copiar email\u2026",
     "noMatches": "Sin resultados. Intenta \"trabajo\", \"email\" o \"tema\".",
     "groupNav": "navegar",
     "groupActions": "acciones",
-    "groupFun": "diversion",
+    "groupFun": "diversi\u00f3n",
     "goToTop": "Ir arriba",
     "goToWork": "Trabajo / proyectos seleccionados",
     "goToServices": "Lo que hago",
     "goToExperience": "Experiencia",
     "goToNow": "Ahora mismo",
-    "goToAbout": "Sobre mi",
+    "goToAbout": "Sobre m\u00ed",
     "goToContact": "Contacto",
     "copyEmail": "Copiar email / juanchomurcas@gmail.com",
     "openLinkedIn": "Abrir LinkedIn",
     "openGitHub": "Abrir GitHub",
     "sendEmail": "Enviar un email",
-    "pourCoffee": "Servir otro cafe",
+    "pourCoffee": "Servir otro caf\u00e9",
     "footerNav": "navegar",
     "footerSelect": "seleccionar",
     "footerClose": "cerrar"
@@ -215,9 +215,9 @@
     "es": "ES"
   },
   "Metadata": {
-    "title": "Juan Murillo \u00b7 Ingeniero Full-Stack Senior & Lider Tecnico",
-    "description": "Ingeniero Full-Stack Senior con mas de 7 anos en Google, Atlassian y Snappr. Desarrollo de apps web escalables, pipelines de automatizacion con IA y liderazgo de equipos de ingenieria. React, TypeScript, Python, AWS.",
-    "ogTitle": "Juan Murillo | Ingeniero Full-Stack Senior & Lider Tecnico",
-    "ogDescription": "Ingeniero Full-Stack Senior con mas de 7 anos construyendo en Google, Atlassian y Snappr. Automatizacion con IA, arquitectura cloud y liderazgo tecnico."
+    "title": "Juan Murillo \u00b7 Ingeniero Full-Stack Senior & L\u00edder T\u00e9cnico",
+    "description": "Ingeniero Full-Stack Senior con m\u00e1s de 7 a\u00f1os en Google, Atlassian y Snappr. Desarrollo de apps web escalables, pipelines de automatizaci\u00f3n con IA y liderazgo de equipos de ingenier\u00eda. React, TypeScript, Python, AWS.",
+    "ogTitle": "Juan Murillo | Ingeniero Full-Stack Senior & L\u00edder T\u00e9cnico",
+    "ogDescription": "Ingeniero Full-Stack Senior con m\u00e1s de 7 a\u00f1os construyendo en Google, Atlassian y Snappr. Automatizaci\u00f3n con IA, arquitectura cloud y liderazgo t\u00e9cnico."
   }
 }
