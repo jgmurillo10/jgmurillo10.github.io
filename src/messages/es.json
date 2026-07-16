@@ -9,7 +9,7 @@
   },
   "StatusBar": {
     "deployed": "deployed",
-    "location": "Bogot\u00e1 \u00b7 -05 UTC",
+    "location": "Londres \u00b7 +01 UTC",
     "status": "abierto a conectar"
   },
   "Hero": {
@@ -21,7 +21,7 @@
     "underlined": "cosas\u00a0complejas",
     "line3": "con IA, c\u00f3digo y",
     "coffeeWord": "caf\u00e9",
-    "basedIn": "Bogot\u00e1, trabajando globalmente",
+    "basedIn": "Londres, trabajando globalmente",
     "typingItems": {
       "0": "liderando IA en Snappr",
       "1": "programando con Claude a las 7am",
@@ -173,7 +173,7 @@
   "About": {
     "headingStart": "Un poco m\u00e1s de",
     "headingAccent": "contexto",
-    "location": "Bogot\u00e1, CO \u00b7 trabajando globalmente",
+    "location": "Londres, UK \u00b7 trabajando globalmente",
     "paragraph1": "Estudi\u00e9 <em>Ingenier\u00eda de Sistemas y Computaci\u00f3n</em> en la Universidad de los Andes en Bogot\u00e1. Mi primer proyecto real fue Shipyard, una app React de c\u00f3digo abierto construida sobre navio.dev para que cualquier persona pudiera explorar visualizaciones de redes grandes sin escribir c\u00f3digo. Ah\u00ed me di cuenta de que los proyectos que m\u00e1s disfruto son los que le quitan fricci\u00f3n a los dem\u00e1s.",
     "paragraph2": "Ese principio se qued\u00f3 conmigo. Ya sea construyendo funcionalidades de Google Play usadas por millones, un sistema de seguridad protegiendo la infraestructura cloud de Atlassian, o un pipeline de IA reemplazando flujos de trabajo manuales en Snappr, siempre vuelvo a la misma pregunta: <em>\u00bfesto realmente le facilita el d\u00eda a alguien?</em>",
     "paragraph3": "He hablado en <strong>JSConf Colombia</strong> dos veces (2018 y 2023), he sido mentor en Code Your Future, y sigo construyendo proyectos por diversi\u00f3n. Hablo ingl\u00e9s y espa\u00f1ol de forma nativa, y trabajo mejor con equipos que se mueven r\u00e1pido y les importa la calidad."

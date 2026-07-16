@@ -9,7 +9,7 @@
   },
   "StatusBar": {
     "deployed": "deployed",
-    "location": "Bogota · -05 UTC",
+    "location": "London · +01 UTC",
     "status": "open to connect"
   },
   "Hero": {
@@ -21,7 +21,7 @@
     "underlined": "complex\u00a0things",
     "line3": "with AI, code &",
     "coffeeWord": "coffee",
-    "basedIn": "Bogota, working globally",
+    "basedIn": "London, working globally",
     "typingItems": {
       "0": "leading AI at Snappr",
       "1": "pairing with Claude at 7am",
@@ -173,7 +173,7 @@
   "About": {
     "headingStart": "A bit more",
     "headingAccent": "context",
-    "location": "Bogota, CO · working globally",
+    "location": "London, UK · working globally",
     "paragraph1": "I studied <em>Systems & Computing Engineering</em> at Universidad de los Andes in Bogota. My first real project was Shipyard, an open-source React app built on top of navio.dev, to help people explore large network visualizations without writing code. That's when I realized the projects I enjoy most are the ones that remove friction for others.",
     "paragraph2": "That principle stuck. Whether I was building Google Play features used by millions, a security system protecting cloud infrastructure, or an AI pipeline replacing manual workflows, I keep coming back to the same question: <em>does this actually make someone's day easier?</em>",
     "paragraph3": "I've spoken at <strong>JSConf Colombia</strong> twice (2018 & 2023), mentored at Code Your Future, and I still build side projects for fun. I speak English and Spanish natively, and I work best with teams that move fast and care about craft."
@@ -185,7 +185,7 @@
     "jsconfLabel": "JSConf Colombia 2023 talk"
   },
   "Footer": {
-    "basedIn": "Based in Colombia · working remotely with global teams",
+    "basedIn": "Based in London · working remotely with global teams",
     "copyright": "\u00a9 2026 Juan Murillo · crafted with purpose & caffeine"
   },
   "CommandPalette": {
